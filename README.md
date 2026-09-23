@@ -2,6 +2,20 @@
 
 Homepage for a US abaya / modest-wear e-commerce store. It is a static site with no build step and no dependencies: plain HTML, CSS and vanilla JS.
 
+## Two homepage versions
+
+There are two homepage designs for the client to choose between. Both use the same photos, videos and product data.
+
+| | `index.html`: Version 1 | `v2.html`: Version 2 |
+|---|---|---|
+| Mood | Warm ivory, soft and classic | Monochrome, modern luxury |
+| Fonts | Cormorant Garamond + Jost | Bodoni Moda + Manrope |
+| Hero | 3-slide carousel | Full-screen triptych of three looks |
+| Categories | Image tiles | Numbered editorial list with hover preview |
+| Highlights | Split banners, campaign banner, occasions | Piece of the Season feature, dark video band, lookbook mosaic |
+
+A small **V1 / V2** switcher sits in the bottom-left corner of both pages. Once a version is chosen, delete the `version-switch` block from the HTML and its CSS (both are marked *remove before launch*). If V2 is chosen, rename `v2.html` to `index.html`.
+
 ## Run locally
 
 Open `index.html` in a browser, or serve the folder:
@@ -13,9 +27,12 @@ python3 -m http.server 8000   # then visit http://localhost:8000
 ## Structure
 
 ```
-index.html              Homepage markup (all sections)
-assets/css/styles.css   Design tokens (colors, fonts) at the top, then styles per section
-assets/js/main.js       Hero slider, announcement bar, mega menu, mobile drawer,
+index.html              Homepage Version 1
+v2.html                 Homepage Version 2
+assets/css/styles.css   Version 1 styles (design tokens at the top)
+assets/css/v2.css       Version 2 styles (design tokens at the top)
+assets/js/v2.js         Version 2 extras (category preview, size picker)
+assets/js/main.js       Shared by both versions: hero slider, announcement bar, mega menu, mobile drawer,
                         search overlay, product grid + tabs, wishlist/quick-add, newsletter
 assets/images/photos/   Product & campaign photography (web-optimized JPGs)
 assets/videos/          Collection videos (WebM + MP4) with poster frames

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maison Noor | Luxury Abayas & Modest Wear – USA</title>
+  <meta name="description" content="Shop elegant abayas, kaftans, hijabs and modest sets designed for everyday and occasion. Free US shipping on orders over $150.">
+  <meta name="theme-color" content="#111111">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/v2.css">
+</head>
+<body>
+
+  <!-- SVG icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-9-9.2C1.9 7.3 4.2 4 7.6 4c2 0 3.4 1.1 4.4 2.6C13 5.1 14.4 4 16.4 4c3.4 0 5.7 3.3 4.6 6.8C19.5 15.4 12 20 12 20z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6L5 8z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 016 0v2" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 8h18M3 16h18" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M14 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></symbol>
+  </svg>
+
+  <!-- Header -->
+  <header class="header" data-header>
+    <div class="header__inner">
+      <button class="icon-btn header__burger" aria-label="Open menu" data-open-drawer><svg><use href="#i-menu"/></svg></button>
+      <a href="#" class="logo" aria-label="Maison Noor home">Maison Noor</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#">New In</a>
+        <a href="#">Abayas</a>
+        <a href="#">Kaftans</a>
+        <a href="#">Hijabs</a>
+        <a href="#">Occasion</a>
+        <a href="#">Journal</a>
+        <a href="#" class="nav__sale">Sale</a>
+      </nav>
+      <div class="header__icons">
+        <button class="icon-btn" aria-label="Search" data-open-search><svg><use href="#i-search"/></svg></button>
+        <a href="#" class="icon-btn hide-sm" aria-label="Account"><svg><use href="#i-user"/></svg></a>
+        <a href="#" class="icon-btn hide-sm" aria-label="Wishlist"><svg><use href="#i-heart"/></svg></a>
+        <a href="#" class="icon-btn cart-btn" aria-label="Cart"><svg><use href="#i-bag"/></svg><span class="cart-count" data-cart-count>0</span></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile drawer -->
+  <div class="drawer" data-drawer aria-hidden="true">
+    <div class="drawer__overlay" data-close-drawer></div>
+    <aside class="drawer__panel" aria-label="Menu">
+      <div class="drawer__head">
+        <span class="logo">Maison Noor</span>
+        <button class="icon-btn" aria-label="Close menu" data-close-drawer><svg><use href="#i-close"/></svg></button>
+      </div>
+      <ul class="drawer__list">
+        <li><a href="#">New In</a></li>
+        <li><a href="#">Abayas</a></li>
+        <li><a href="#">Kaftans</a></li>
+        <li><a href="#">Hijabs</a></li>
+        <li><a href="#">Occasion</a></li>
+        <li><a href="#">Journal</a></li>
+        <li><a href="#" class="nav__sale">Sale</a></li>
+      </ul>
+      <div class="drawer__foot">
+        <a href="#">Sign in / Register</a>
+        <a href="#">Wishlist</a>
+        <span>United States (USD $)</span>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Search overlay -->
+  <div class="search" data-search aria-hidden="true">
+    <div class="search__inner">
+      <form class="search__form" role="search" onsubmit="return false">
+        <input type="search" placeholder="Search the Maison" aria-label="Search" data-search-input>
+        <button type="button" class="icon-btn" aria-label="Close search" data-close-search><svg><use href="#i-close"/></svg></button>
+      </form>
+      <div class="search__popular">
+        <span>Trending</span>
+        <a href="#">Black abaya</a><a href="#">Open front</a><a href="#">Embroidered</a><a href="#">Chiffon hijab</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- Hero triptych -->
+    <section class="hero" aria-label="Autumn / Winter 2026 collection">
+      <div class="hero__panels">
+        <img src="assets/images/photos/noir-crystal-front.jpg" alt="Model in the black Noir Crystal chiffon abaya">
+        <img src="assets/images/photos/ivory-pearl-front.jpg" alt="Model in the ivory Pearl embroidered abaya with blush hijab" class="hide-sm">
+        <img src="assets/images/photos/burgundy-petal-full.jpg" alt="Model in the burgundy Petal Sleeve abaya" class="hide-sm">
+      </div>
+      <div class="hero__content">
+        <p class="kicker">Autumn / Winter 2026</p>
+        <h1 class="hero__title">Quiet <em>Luxury</em></h1>
+        <div class="hero__links">
+          <a href="#" class="btn btn--light">Shop the Collection</a>
+          <a href="#" class="text-link text-link--light">Discover the Campaign</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee" aria-label="Store benefits">
+      <div class="marquee__track">
+        <span>Free US shipping over $150</span><span>30-day returns</span><span>Ships from the USA in 2–5 days</span><span>Pay in 4 with Klarna</span>
+        <span aria-hidden="true">Free US shipping over $150</span><span aria-hidden="true">30-day returns</span><span aria-hidden="true">Ships from the USA in 2–5 days</span><span aria-hidden="true">Pay in 4 with Klarna</span>
+      </div>
+    </div>
+
+    <!-- Statement -->
+    <section class="statement container">
+      <p class="kicker">The Maison</p>
+      <p class="statement__text">Considered abayas, cut from fabrics chosen for how they <em>move</em>, finished by hand, and made to be worn for years, not seasons.</p>
+    </section>
+
+    <!-- Category index -->
+    <section class="index container" aria-label="Shop by category">
+      <div class="index__list" data-index>
+        <a href="#" class="index__item" data-img="assets/images/photos/mauve-ruffle.jpg">
+          <span class="index__num">01</span><span class="index__name">Everyday Abayas</span>
+          <img src="assets/images/photos/mauve-ruffle.jpg" alt="" class="index__thumb" loading="lazy"><svg><use href="#i-arrow"/></svg>
+        </a>
+        <a href="#" class="index__item" data-img="assets/images/photos/navy-open-full.jpg">
+          <span class="index__num">02</span><span class="index__name">Open Abayas</span>
+          <img src="assets/images/photos/navy-open-full.jpg" alt="" class="index__thumb" loading="lazy"><svg><use href="#i-arrow"/></svg>
+        </a>
+        <a href="#" class="index__item" data-img="assets/images/photos/ivory-pearl-detail.jpg">
+          <span class="index__num">03</span><span class="index__name">Embroidered</span>
+          <img src="assets/images/photos/ivory-pearl-detail.jpg" alt="" class="index__thumb" loading="lazy"><svg><use href="#i-arrow"/></svg>
+        </a>
+        <a href="#" class="index__item" data-img="assets/images/photos/noir-crystal-back.jpg">
+          <span class="index__num">04</span><span class="index__name">Butterfly &amp; Kaftan</span>
+          <img src="assets/images/photos/noir-crystal-back.jpg" alt="" class="index__thumb" loading="lazy"><svg><use href="#i-arrow"/></svg>
+        </a>
+        <a href="#" class="index__item" data-img="assets/images/photos/navy-open-hooded.jpg">
+          <span class="index__num">05</span><span class="index__name">Hijabs &amp; Shawls</span>
+          <img src="assets/images/photos/navy-open-hooded.jpg" alt="" class="index__thumb" loading="lazy"><svg><use href="#i-arrow"/></svg>
+        </a>
+        <a href="#" class="index__item" data-img="assets/images/photos/burgundy-petal-full.jpg">
+          <span class="index__num">06</span><span class="index__name">Occasion Wear</span>
+          <img src="assets/images/photos/burgundy-petal-full.jpg" alt="" class="index__thumb" loading="lazy"><svg><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+      <div class="index__preview" aria-hidden="true">
+        <img src="assets/images/photos/mauve-ruffle.jpg" alt="" data-index-preview>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section class="shop" aria-label="Products">
+      <div class="container shop__head">
+        <h2 class="title">The Edit</h2>
+        <div class="tabs" role="tablist" data-tabs>
+          <button role="tab" class="tab is-active" aria-selected="true" data-tab="new">New In</button>
+          <button role="tab" class="tab" aria-selected="false" data-tab="best">Best Sellers</button>
+        </div>
+      </div>
+      <div class="container">
+        <div class="products" data-products></div>
+      </div>
+      <div class="container shop__foot"><a href="#" class="text-link">View all products <svg><use href="#i-arrow"/></svg></a></div>
+    </section>
+
+    <!-- Piece of the season -->
+    <section class="feature">
+      <div class="feature__media">
+        <img src="assets/images/photos/ivory-pearl-pose.jpg" alt="Model in the Ivory Pearl Embroidered Abaya" loading="lazy">
+        <img src="assets/images/photos/ivory-pearl-detail.jpg" alt="Close-up of blush embroidery and crystal trim" loading="lazy" class="feature__detail">
+      </div>
+      <div class="feature__info">
+        <p class="kicker">Piece of the Season</p>
+        <h2 class="title">Ivory Pearl Embroidered Abaya</h2>
+        <p class="feature__price">$219</p>
+        <p class="feature__desc">Soft ivory crepe with blush thread-work and hand-set crystals along the sleeves and side panels. Finished with a matching blush chiffon hijab.</p>
+        <p class="feature__label">Size</p>
+        <div class="feature__sizes" data-feature-sizes>
+          <button type="button" class="chip">S</button><button type="button" class="chip is-active">M</button><button type="button" class="chip">L</button><button type="button" class="chip">XL</button>
+        </div>
+        <button type="button" class="btn btn--dark btn--block" data-add="Ivory Pearl Embroidered Abaya" data-size="M" data-feature-add>Add to Bag</button>
+        <ul class="feature__notes">
+          <li>Free US shipping &amp; 30-day returns</li>
+          <li>Crepe body, chiffon hijab · Dry clean</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Video band -->
+    <section class="film" aria-label="Collection videos">
+      <div class="film__inner container">
+        <div class="film__text">
+          <p class="kicker">In Motion</p>
+          <h2 class="title">Made to <em>Move</em></h2>
+          <p>Soft chiffon and satin that catch the light with every step. See the collection as it's meant to be worn.</p>
+          <a href="#" class="text-link text-link--light">Shop the Collection <svg><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="film__reels">
+          <figure class="reel">
+            <div class="reel__media">
+              <video poster="assets/videos/lilac-lace-abaya-poster.jpg" muted loop playsinline preload="none" aria-label="Model twirling in the lilac abaya with black lace trim" data-reel>
+                <source src="assets/videos/lilac-lace-abaya.mp4" type="video/mp4">
+                <source src="assets/videos/lilac-lace-abaya.webm" type="video/webm">
+              </video>
+              <button class="reel__toggle" aria-label="Pause video" data-reel-toggle><span></span></button>
+            </div>
+            <figcaption><a href="#">Lilac Lace Trim Abaya</a><span>$149</span></figcaption>
+          </figure>
+          <figure class="reel">
+            <div class="reel__media">
+              <video poster="assets/videos/violet-tiered-abaya-poster.jpg" muted loop playsinline preload="none" aria-label="Model in the violet tiered abaya with a matching chiffon shawl" data-reel>
+                <source src="assets/videos/violet-tiered-abaya.mp4" type="video/mp4">
+                <source src="assets/videos/violet-tiered-abaya.webm" type="video/webm">
+              </video>
+              <button class="reel__toggle" aria-label="Pause video" data-reel-toggle><span></span></button>
+            </div>
+            <figcaption><a href="#">Violet Tiered Satin Abaya</a><span>$165</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lookbook mosaic -->
+    <section class="lookbook container" aria-label="Lookbook">
+      <div class="lookbook__head">
+        <h2 class="title">Worn by You</h2>
+        <a href="#" class="text-link"><svg><use href="#i-instagram"/></svg> @maisonnoor</a>
+      </div>
+      <div class="mosaic">
+        <a href="#" class="mosaic__item mosaic__item--lg"><img src="assets/images/photos/charcoal-cuff-wide.jpg" alt="Charcoal abaya with embroidered bell sleeves" loading="lazy"></a>
+        <a href="#" class="mosaic__item"><img src="assets/images/photos/burgundy-petal-close.jpg" alt="Burgundy petal-cuff abaya" loading="lazy"></a>
+        <a href="#" class="mosaic__item"><img src="assets/images/photos/navy-open-full.jpg" alt="Navy open abaya with grey shawl" loading="lazy"></a>
+        <a href="#" class="mosaic__item"><img src="assets/images/photos/mauve-ruffle.jpg" alt="Mauve abaya with ruffle cuffs" loading="lazy"></a>
+        <a href="#" class="mosaic__item"><img src="assets/images/photos/noir-crystal-front.jpg" alt="Black crystal chiffon abaya" loading="lazy"></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__top">
+      <div class="footer__news">
+        <h2 class="title">Join the Maison</h2>
+        <p>10% off your first order, plus early access to new collections.</p>
+        <form class="newsletter__form" data-newsletter novalidate>
+          <input type="email" placeholder="Email address" aria-label="Email address" required>
+          <button type="submit" aria-label="Subscribe"><svg><use href="#i-arrow"/></svg></button>
+        </form>
+        <p class="newsletter__msg" data-newsletter-msg role="status"></p>
+      </div>
+      <div class="footer__cols">
+        <details class="footer__col" open>
+          <summary>Shop</summary>
+          <a href="#">New In</a><a href="#">Abayas</a><a href="#">Kaftans</a><a href="#">Hijabs</a><a href="#">Gift Cards</a>
+        </details>
+        <details class="footer__col" open>
+          <summary>Client Care</summary>
+          <a href="#">Contact Us</a><a href="#">Shipping</a><a href="#">Returns &amp; Exchanges</a><a href="#">Size Guide</a><a href="#">Track Order</a>
+        </details>
+        <details class="footer__col" open>
+          <summary>The Maison</summary>
+          <a href="#">Our Story</a><a href="#">Craftsmanship</a><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Pinterest</a>
+        </details>
+      </div>
+    </div>
+    <div class="footer__brand">Maison Noor</div>
+    <div class="container footer__bottom">
+      <span>&copy; <span data-year>2026</span> Maison Noor</span>
+      <span>United States (USD $)</span>
+      <span><a href="#">Privacy</a> · <a href="#">Terms</a></span>
+    </div>
+  </footer>
+
+  <!-- Design review switcher: remove before launch -->
+  <nav class="version-switch" aria-label="Homepage versions">
+    <a href="index.html">V1</a><a href="v2.html" aria-current="page">V2</a>
+  </nav>
+
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/v2.js"></script>
+</body>
+</html>
