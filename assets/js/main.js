@@ -232,10 +232,12 @@
       setPaused(video, true);
       video.addEventListener('play', () => setPaused(video, false));
       video.addEventListener('pause', () => setPaused(video, true));
-      $('[data-reel-toggle]', video.closest('.reel')).addEventListener('click', () => {
+      const toggle = () => {
         video.dataset.userPaused = video.paused ? 'false' : 'true';
         video.paused ? play(video) : video.pause();
-      });
+      };
+      $('[data-reel-toggle]', video.closest('.reel')).addEventListener('click', toggle);
+      video.addEventListener('click', toggle);
     });
 
     // only load and play while on screen
