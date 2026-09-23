@@ -212,6 +212,46 @@
     go(0);
   }
 
+  /* ---------- Video reels ---------- */
+  const reels = $$('[data-reel]');
+  if (reels.length) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const setPaused = (video, paused) => {
+      const fig = video.closest('.reel');
+      fig.classList.toggle('is-paused', paused);
+      $('[data-reel-toggle]', fig).setAttribute('aria-label', paused ? 'Play video' : 'Pause video');
+    };
+    const play = (video) => {
+      const p = video.play();
+      if (p && p.catch) p.catch(() => {}); // autoplay blocked: poster stays, button offers play
+    };
+
+    reels.forEach((video) => {
+      // user-paused videos stay paused while scrolling
+      video.dataset.userPaused = reduceMotion ? 'true' : 'false';
+      setPaused(video, true);
+      video.addEventListener('play', () => setPaused(video, false));
+      video.addEventListener('pause', () => setPaused(video, true));
+      $('[data-reel-toggle]', video.closest('.reel')).addEventListener('click', () => {
+        video.dataset.userPaused = video.paused ? 'false' : 'true';
+        video.paused ? play(video) : video.pause();
+      });
+    });
+
+    // only load and play while on screen
+    if ('IntersectionObserver' in window) {
+      const vio = new IntersectionObserver((entries) => {
+        entries.forEach(({ target: video, isIntersecting }) => {
+          if (isIntersecting && video.dataset.userPaused !== 'true') play(video);
+          else if (!isIntersecting && !video.paused) video.pause();
+        });
+      }, { threshold: 0.25 });
+      reels.forEach((v) => vio.observe(v));
+    } else if (!reduceMotion) {
+      reels.forEach(play);
+    }
+  }
+
   /* ---------- Newsletter ---------- */
   const form = $('[data-newsletter]');
   if (form) {
