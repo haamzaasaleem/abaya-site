@@ -1,4 +1,4 @@
-/* Maison Noor — Version 2 extras (shared behaviour lives in main.js) */
+/* Hayabella — Version 2 extras (shared behaviour lives in main.js) */
 (function () {
   'use strict';
 

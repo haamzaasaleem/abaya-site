@@ -1,4 +1,4 @@
-/* Maison Noor — homepage interactions (no dependencies) */
+/* Hayabella — homepage interactions (no dependencies) */
 (function () {
   'use strict';
 
@@ -264,7 +264,7 @@
       const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
       input.classList.toggle('is-invalid', !ok);
       msg.textContent = ok
-        ? 'Welcome to the Maison! Check your inbox for your 10% off code.'
+        ? 'Welcome to Hayabella! Check your inbox for your 10% off code.'
         : 'Please enter a valid email address.';
       if (ok) form.reset();
     });

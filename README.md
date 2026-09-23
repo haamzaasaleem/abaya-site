@@ -1,4 +1,4 @@
-# Maison Noor — Abaya Store (US)
+# Hayabella — Abaya Store (US)
 
 Homepage for a US abaya / modest-wear e-commerce store. It is a static site with no build step and no dependencies: plain HTML, CSS and vanilla JS.
 
@@ -57,7 +57,7 @@ assets/videos/          Collection videos (WebM + MP4) with poster frames
 
 ## Customising
 
-- **Brand name**: "Maison Noor" is a placeholder. Search and replace it in `index.html`.
+- **Brand name**: "Hayabella" appears in the logo, page titles, footer and copy of `index.html` and `v2.html`.
 - **Colors / fonts**: edit the CSS variables in `:root` at the top of `styles.css`.
 - **Products**: edit `CATALOG` / `PRODUCTS` at the top of `main.js`. Each item takes `img` (and an optional `alt` hover image) from `assets/images/photos/`.
 - **Banners**: swap the `src` of the images in `index.html`. Hero slides take two portrait photos; the background tone of each slide is set with `style="--slide-bg:…"`.
