@@ -30,9 +30,9 @@ assets/videos/          Collection videos (WebM + MP4) with poster frames
 5. Shop by Category (horizontal scroll on mobile)
 6. Two split feature banners
 7. New Arrivals / Best Sellers product grid with hover image swap, quick add, wishlist, sale pricing (USD)
-8. "Made to Move" video section: two vertical videos that autoplay muted when scrolled into view, with pause/play buttons
-9. Full-width campaign banner
-10. Shop by Occasion
+8. Full-width campaign banner
+9. Shop by Occasion
+10. "Made to Move" film banner: two vertical videos over a blurred backdrop, autoplaying muted when scrolled into view, with pause/play buttons
 11. Brand story
 12. Instagram / lookbook grid
 13. Newsletter sign-up (10% off)
