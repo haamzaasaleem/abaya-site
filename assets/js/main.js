@@ -14,20 +14,39 @@
     burgundy: { name: 'Burgundy Petal Sleeve Abaya', img: 'burgundy-petal-full', alt: 'burgundy-petal-close', price: 179, sizes: ['XS', 'S', 'M', 'L'], colors: ['#5B1E2A'] },
     ivory: { name: 'Ivory Pearl Embroidered Abaya', img: 'ivory-pearl-front', alt: 'ivory-pearl-pose', price: 219, sizes: ['S', 'M', 'L', 'XL'], colors: ['#F1EAD8', '#F3D5C8'] },
     mauve: { name: 'Mauve Ruffle Cuff Abaya', img: 'mauve-ruffle', price: 139, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#8E6F80', '#141414'] },
-    charcoal: { name: 'Charcoal Embroidered Bell Sleeve Abaya', img: 'charcoal-cuff-wide', price: 159, sizes: ['S', 'M', 'L'], colors: ['#3A3A3F'] }
+    charcoal: { name: 'Charcoal Embroidered Bell Sleeve Abaya', img: 'charcoal-cuff-wide', price: 159, sizes: ['S', 'M', 'L'], colors: ['#3A3A3F'] },
+    lilac: { name: 'Lilac Lace Trim Abaya', img: 'lilac-lace-full', alt: 'lilac-lace-close', price: 149, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#B88AC4', '#141414'] },
+    violet: { name: 'Violet Tiered Satin Abaya', img: 'violet-tiered-full', alt: 'violet-tiered-close', price: 165, sizes: ['S', 'M', 'L', 'XL'], colors: ['#3E1A6B'] }
   };
+  // One list per product slider on the page (matched by data-products="<key>")
   const PRODUCTS = {
     new: [
+      { ...CATALOG.lilac, badge: 'New' },
       { ...CATALOG.noir, badge: 'New' },
+      { ...CATALOG.violet, badge: 'New' },
       { ...CATALOG.burgundy, badge: 'New' },
+      { ...CATALOG.navy, badge: 'New' },
       { ...CATALOG.ivory, badge: 'Limited' },
-      { ...CATALOG.navy, badge: 'New' }
+      { ...CATALOG.mauve },
+      { ...CATALOG.charcoal }
     ],
     best: [
       { ...CATALOG.ivory, badge: 'Bestseller' },
       { ...CATALOG.mauve, sale: 119 },
+      { ...CATALOG.noir, badge: 'Bestseller' },
       { ...CATALOG.charcoal, sale: 129 },
-      { ...CATALOG.noir, badge: 'Bestseller' }
+      { ...CATALOG.navy },
+      { ...CATALOG.lilac },
+      { ...CATALOG.burgundy, sale: 149 },
+      { ...CATALOG.violet }
+    ],
+    occasion: [
+      { ...CATALOG.burgundy },
+      { ...CATALOG.ivory, badge: 'Limited' },
+      { ...CATALOG.violet },
+      { ...CATALOG.noir },
+      { ...CATALOG.navy },
+      { ...CATALOG.lilac }
     ]
   };
 
@@ -39,7 +58,7 @@
       ? `<s>${money(p.price)}</s><span class="now">${money(p.sale)}</span>`
       : `<span>${money(p.price)}</span>`;
     return `
-      <article class="product reveal">
+      <article class="product">
         <div class="product__media">
           <a href="#" class="product__link" aria-label="${p.name}">
             <img src="${IMG + p.img}.jpg" alt="${p.name}" loading="lazy">
@@ -58,10 +77,36 @@
       </article>`;
   }
 
-  const grid = $('[data-products]');
-  function renderProducts(key) {
-    grid.innerHTML = PRODUCTS[key].map(productCard).join('');
-    observeReveals(grid);
+  /* ---------- Product sliders ---------- */
+  function setupRail(rail) {
+    const track = $('[data-products]', rail);
+    const prev = $('[data-rail-prev]', rail);
+    const next = $('[data-rail-next]', rail);
+    const thumb = $('[data-rail-progress] span', rail);
+    track.innerHTML = (PRODUCTS[track.dataset.products] || []).map(productCard).join('');
+
+    const step = () => {
+      const card = track.firstElementChild;
+      if (!card) return track.clientWidth;
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      const cardW = card.offsetWidth + gap;
+      return cardW * Math.max(1, Math.floor((track.clientWidth + gap) / cardW));
+    };
+    const update = () => {
+      const max = track.scrollWidth - track.clientWidth;
+      if (prev) prev.disabled = track.scrollLeft <= 2;
+      if (next) next.disabled = track.scrollLeft >= max - 2;
+      if (thumb) {
+        const size = track.clientWidth / track.scrollWidth;
+        thumb.style.width = size * 100 + '%';
+        thumb.style.left = (max > 0 ? (track.scrollLeft / max) * (1 - size) : 0) * 100 + '%';
+      }
+    };
+    if (prev) prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+    if (next) next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
   }
 
   /* ---------- Toast & cart ---------- */
@@ -93,22 +138,6 @@
       wish.setAttribute('aria-pressed', on);
       showToast(on ? 'Added to wishlist' : 'Removed from wishlist');
     }
-  });
-
-  /* ---------- Tabs ---------- */
-  $$('[data-tab]').forEach((tab) => {
-    tab.addEventListener('click', () => {
-      if (tab.classList.contains('is-active')) return;
-      $$('[data-tab]').forEach((t) => {
-        t.classList.toggle('is-active', t === tab);
-        t.setAttribute('aria-selected', t === tab);
-      });
-      grid.classList.add('is-loading');
-      setTimeout(() => {
-        renderProducts(tab.dataset.tab);
-        grid.classList.remove('is-loading');
-      }, 250);
-    });
   });
 
   /* ---------- Announcement bar ---------- */
@@ -296,6 +325,6 @@
 
   $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
-  renderProducts('new');
+  $$('[data-rail]').forEach(setupRail);
   observeReveals();
 })();

@@ -28,21 +28,25 @@ assets/videos/          Collection videos (WebM + MP4) with poster frames
 3. Hero slider with 3 banners: autoplay, progress dots, arrows, swipe, pause on hover
 4. Trust strip: free US shipping, 30-day returns, ships from the USA, secure checkout
 5. Shop by Category (horizontal scroll on mobile)
-6. Two split feature banners
-7. New Arrivals / Best Sellers product grid with hover image swap, quick add, wishlist, sale pricing (USD)
-8. Full-width campaign banner
-9. Shop by Occasion
-10. "Made to Move" film banner: two vertical videos over a blurred backdrop, autoplaying muted when scrolled into view, with pause/play buttons
-11. Brand story
-12. Instagram / lookbook grid
-13. Newsletter sign-up (10% off)
-14. Footer (accordion on mobile)
+6. **Product slider: New Arrivals**
+7. Two split feature banners
+8. **Product slider: Best Sellers**
+9. Full-width campaign banner
+10. Shop by Occasion
+11. **Product slider: The Occasion Edit**
+12. "Made to Move" film banner: two vertical videos over a blurred backdrop, autoplaying muted when scrolled into view, with pause/play buttons
+13. Brand story
+14. Instagram / lookbook grid
+15. Newsletter sign-up (10% off)
+16. Footer (accordion on mobile)
+
+Each product slider shows 4 products per view on desktop (3 on tablet) with arrows, a progress bar and a "View All" link. On mobile it is a swipeable row with the next card peeking in. Product cards have hover image swap, quick add, wishlist and sale pricing (USD).
 
 ## Customising
 
 - **Brand name**: "Hayabella" appears in the logo, page title, footer and copy of `index.html`.
 - **Colors / fonts**: edit the CSS variables in `:root` at the top of `styles.css`.
-- **Products**: edit `CATALOG` / `PRODUCTS` at the top of `main.js`. Each item takes `img` (and an optional `alt` hover image) from `assets/images/photos/`.
+- **Products**: edit `CATALOG` (every product) and `PRODUCTS` (which products appear in each slider) at the top of `main.js`. Each slider in `index.html` picks its list with `data-products="new"`, `"best"` or `"occasion"`. To add another slider, copy a slider section and add a new list to `PRODUCTS`.
 - **Banners**: swap the `src` of the images in `index.html`. Hero slides take two portrait photos; the background tone of each slide is set with `style="--slide-bg:…"`.
 - **Videos**: vertical clips work best. Keep each under about 2 MB with no audio track, and provide both `.webm` and `.mp4` plus a poster `.jpg`. Example with ffmpeg:
   ```bash
