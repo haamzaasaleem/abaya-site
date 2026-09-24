@@ -21,7 +21,8 @@ index.html              Homepage markup (all sections)
 assets/css/styles.css   Design tokens (colors, fonts) at the top, then styles per section
 assets/js/main.js       Hero slider, announcement bar, mega menu, mobile drawer,
                         search overlay, product grid + tabs, wishlist/quick-add, newsletter
-assets/images/photos/   Product & campaign photography (web-optimized JPGs)
+assets/images/photos/   Lifestyle & campaign photography (web-optimized JPGs)
+assets/images/products/ Product card images: model cut out onto a plain #EEEAE5 studio background
 assets/videos/          Collection videos (WebM + MP4) with poster frames
 ```
 
@@ -59,3 +60,4 @@ Each product slider has a centered title and intro line, then the products: 4 pe
   ffmpeg -i out.mp4 -an -c:v libvpx-vp9 -b:v 0 -crf 36 out.webm
   ffmpeg -ss 1 -i out.mp4 -frames:v 1 out-poster.jpg
   ```
+- **Product images**: cards use `assets/images/products/`, where each photo's background was removed (rembg, BiRefNet portrait model) and the model placed on a plain `#EEEAE5` background at a consistent size. For a new product, add a studio shot on a plain background with the same name, or run the same cut-out step.

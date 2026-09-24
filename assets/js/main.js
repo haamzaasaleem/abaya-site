@@ -7,7 +7,8 @@
   const money = (n) => 'USD ' + n.toFixed(2);
 
   /* ---------- Product data (replace with API / CMS later) ---------- */
-  const IMG = 'assets/images/photos/';
+  // Product cards use the studio cut-outs (plain background); other sections use lifestyle photos
+  const IMG = 'assets/images/products/';
   const CATALOG = {
     noir: { name: 'Noir Crystal Chiffon Abaya', tag: 'Chiffon | Crystal Embellished', img: 'noir-crystal-front', alt: 'noir-crystal-back', price: 189, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#141414'] },
     navy: { name: 'Midnight Embellished Open Abaya', tag: 'Crepe | Hand Embellished', img: 'navy-open-hooded', alt: 'navy-open-full', price: 169, sizes: ['S', 'M', 'L', 'XL'], colors: ['#1F2740', '#9AA5B5'] },
@@ -19,12 +20,11 @@
     champagne: { name: 'Champagne Crystal Wave Abaya', tag: 'Satin | Crystal Embellished', img: 'champagne-wave-front', alt: 'champagne-wave-side', price: 229, sizes: ['S', 'M', 'L', 'XL'], colors: ['#D8C8BC'] },
     skyblue: { name: 'Sky Blue Greek Key Abaya', tag: 'Satin | Crystal Border', img: 'skyblue-greekkey-front', alt: 'skyblue-greekkey-side', price: 219, sizes: ['S', 'M', 'L', 'XL'], colors: ['#8FB3C8'] },
     rose: { name: 'Dusty Rose Crystal Abaya', tag: 'Crepe | Crystal Embellished', img: 'rose-crystal-close', price: 199, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#B98A7C'] },
-    blackrose: { name: 'Black Rose Print Kimono Abaya', tag: 'Crepe | Printed', img: 'blackrose-print-front', alt: 'blackrose-print-duo', price: 139, sizes: ['S', 'M', 'L', 'XL'], colors: ['#1A1A1A'] },
-    stripe: { name: 'Riviera Stripe Kimono Abaya', tag: 'Crepe | Printed', img: 'stripe-kimono-front', alt: 'stripe-kimono-duo', price: 135, sizes: ['S', 'M', 'L', 'XL'], colors: ['#2A3FB0', '#FFFFFF'] },
+    blackrose: { name: 'Black Rose Print Kimono Abaya', tag: 'Crepe | Printed', img: 'blackrose-print-front', price: 139, sizes: ['S', 'M', 'L', 'XL'], colors: ['#1A1A1A'] },
+    stripe: { name: 'Riviera Stripe Kimono Abaya', tag: 'Crepe | Printed', img: 'stripe-kimono-front', price: 135, sizes: ['S', 'M', 'L', 'XL'], colors: ['#2A3FB0', '#FFFFFF'] },
     blush: { name: 'Blush Floral Belted Abaya', tag: 'Crepe | Printed', img: 'blush-floral-front', alt: 'blush-floral-garden', price: 145, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#F2C4C0'] },
-    white: { name: 'Pearl White Greek Key Abaya', tag: 'Satin | Crystal Border', img: 'white-greekkey-seated', alt: 'white-greekkey-duo', price: 229, sizes: ['S', 'M', 'L', 'XL'], colors: ['#F7F5F0'] },
+    white: { name: 'Pearl White Greek Key Abaya', tag: 'Satin | Crystal Border', img: 'white-greekkey-seated', price: 229, sizes: ['S', 'M', 'L', 'XL'], colors: ['#F7F5F0'] },
     beige: { name: 'Sand Cutwork Belted Abaya', tag: 'Crepe | Embellished', img: 'beige-cutwork-front', price: 209, sizes: ['S', 'M', 'L', 'XL'], colors: ['#D4B49A'] },
-    lavender: { name: 'Lavender Line Art Kimono Abaya', tag: 'Crepe | Printed', img: 'lavender-lineart', price: 139, sizes: ['S', 'M', 'L', 'XL'], colors: ['#A99BD6', '#1A1A1A'] },
     sage: { name: 'Sage Branch Embroidered Abaya', tag: 'Linen | Embroidered', img: 'sage-embroidered-front', alt: 'sage-embroidered-close', price: 159, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#B9C3C4'] },
     violet: { name: 'Violet Tiered Satin Abaya', tag: 'Satin | Tiered', img: 'violet-tiered-full', alt: 'violet-tiered-close', price: 165, sizes: ['S', 'M', 'L', 'XL'], colors: ['#3E1A6B'] }
   };
@@ -35,7 +35,7 @@
       { ...CATALOG.skyblue, badge: 'New' },
       { ...CATALOG.sage, badge: 'New' },
       { ...CATALOG.blush, badge: 'New' },
-      { ...CATALOG.lavender, badge: 'New' },
+      { ...CATALOG.navy, badge: 'New' },
       { ...CATALOG.stripe, badge: 'New' },
       { ...CATALOG.lilac, badge: 'New' },
       { ...CATALOG.noir, badge: 'New' }
