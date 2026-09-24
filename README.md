@@ -10,6 +10,10 @@ Open `index.html` in a browser, or serve the folder:
 python3 -m http.server 8000   # then visit http://localhost:8000
 ```
 
+## Publishing updates
+
+`index.html` loads `styles.css?v=…` and `main.js?v=…`. After changing CSS or JS, bump that version string (both links) so browsers and hosts like GitHub Pages don't serve an old cached copy alongside the new page.
+
 ## Structure
 
 ```
