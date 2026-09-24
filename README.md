@@ -2,20 +2,6 @@
 
 Homepage for a US abaya / modest-wear e-commerce store. It is a static site with no build step and no dependencies: plain HTML, CSS and vanilla JS.
 
-## Two homepage versions
-
-There are two homepage designs for the client to choose between. Both use the same photos, videos and product data.
-
-| | `index.html`: Version 1 | `v2.html`: Version 2 |
-|---|---|---|
-| Mood | Warm ivory, soft and editorial | Clean white retail, Khaadi-style |
-| Fonts | Cormorant Garamond + Jost | Montserrat |
-| Hero | 3-slide split banners (text + photos) | 3-slide full-width banners (wide photo, collage, sale) |
-| Categories | Image tiles | Round category icons with a sale badge |
-| Highlights | Split banners, video section, campaign banner, occasions | Promo banners, "Watch & Shop" videos with prices, occasions, benefits row |
-
-A small **V1 / V2** switcher sits in the bottom-left corner of both pages. Once a version is chosen, delete the `version-switch` block from the HTML and its CSS (both are marked *remove before launch*). If V2 is chosen, rename `v2.html` to `index.html`.
-
 ## Run locally
 
 Open `index.html` in a browser, or serve the folder:
@@ -27,11 +13,9 @@ python3 -m http.server 8000   # then visit http://localhost:8000
 ## Structure
 
 ```
-index.html              Homepage Version 1
-v2.html                 Homepage Version 2
-assets/css/styles.css   Version 1 styles (design tokens at the top)
-assets/css/v2.css       Version 2 styles (design tokens at the top)
-assets/js/main.js       Shared by both versions: hero slider, announcement bar, mega menu, mobile drawer,
+index.html              Homepage markup (all sections)
+assets/css/styles.css   Design tokens (colors, fonts) at the top, then styles per section
+assets/js/main.js       Hero slider, announcement bar, mega menu, mobile drawer,
                         search overlay, product grid + tabs, wishlist/quick-add, newsletter
 assets/images/photos/   Product & campaign photography (web-optimized JPGs)
 assets/videos/          Collection videos (WebM + MP4) with poster frames
@@ -56,7 +40,7 @@ assets/videos/          Collection videos (WebM + MP4) with poster frames
 
 ## Customising
 
-- **Brand name**: "Hayabella" appears in the logo, page titles, footer and copy of `index.html` and `v2.html`.
+- **Brand name**: "Hayabella" appears in the logo, page title, footer and copy of `index.html`.
 - **Colors / fonts**: edit the CSS variables in `:root` at the top of `styles.css`.
 - **Products**: edit `CATALOG` / `PRODUCTS` at the top of `main.js`. Each item takes `img` (and an optional `alt` hover image) from `assets/images/photos/`.
 - **Banners**: swap the `src` of the images in `index.html`. Hero slides take two portrait photos; the background tone of each slide is set with `style="--slide-bg:…"`.
