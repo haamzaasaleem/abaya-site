@@ -29,7 +29,7 @@ assets/videos/          Collection videos (WebM + MP4) with poster frames
 
 1. Rotating announcement bar (free US shipping, returns…)
 2. Sticky header with centered logo, mega menu (desktop) and slide-out drawer (mobile)
-3. Hero slider with 3 banners: autoplay, progress dots, arrows, swipe, pause on hover
+3. Hero slider of 3-photo strips (New Arrivals, Midnight & Violet, The Occasion Edit) with the title over the middle photo (below the strip on mobile): autoplay, dots, arrows, swipe, pause on hover
 4. Trust strip: free US shipping, 30-day returns, ships from the USA, secure checkout
 5. Shop by Category (horizontal scroll on mobile)
 6. **Product slider: New Arrivals**
