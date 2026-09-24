@@ -16,37 +16,49 @@
     mauve: { name: 'Mauve Ruffle Cuff Abaya', tag: 'Satin | Ruffle Cuff', img: 'mauve-ruffle', price: 139, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#8E6F80', '#141414'] },
     charcoal: { name: 'Charcoal Embroidered Bell Sleeve Abaya', tag: 'Nida | Embroidered', img: 'charcoal-cuff-wide', price: 159, sizes: ['S', 'M', 'L'], colors: ['#3A3A3F'] },
     lilac: { name: 'Lilac Lace Trim Abaya', tag: 'Chiffon | Lace Trim', img: 'lilac-lace-full', alt: 'lilac-lace-close', price: 149, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#B88AC4', '#141414'] },
+    champagne: { name: 'Champagne Crystal Wave Abaya', tag: 'Satin | Crystal Embellished', img: 'champagne-wave-front', alt: 'champagne-wave-side', price: 229, sizes: ['S', 'M', 'L', 'XL'], colors: ['#D8C8BC'] },
+    skyblue: { name: 'Sky Blue Greek Key Abaya', tag: 'Satin | Crystal Border', img: 'skyblue-greekkey-front', alt: 'skyblue-greekkey-side', price: 219, sizes: ['S', 'M', 'L', 'XL'], colors: ['#8FB3C8'] },
+    rose: { name: 'Dusty Rose Crystal Abaya', tag: 'Crepe | Crystal Embellished', img: 'rose-crystal-close', price: 199, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#B98A7C'] },
+    blackrose: { name: 'Black Rose Print Kimono Abaya', tag: 'Crepe | Printed', img: 'blackrose-print-front', alt: 'blackrose-print-duo', price: 139, sizes: ['S', 'M', 'L', 'XL'], colors: ['#1A1A1A'] },
+    stripe: { name: 'Riviera Stripe Kimono Abaya', tag: 'Crepe | Printed', img: 'stripe-kimono-front', alt: 'stripe-kimono-duo', price: 135, sizes: ['S', 'M', 'L', 'XL'], colors: ['#2A3FB0', '#FFFFFF'] },
+    blush: { name: 'Blush Floral Belted Abaya', tag: 'Crepe | Printed', img: 'blush-floral-front', alt: 'blush-floral-garden', price: 145, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#F2C4C0'] },
+    white: { name: 'Pearl White Greek Key Abaya', tag: 'Satin | Crystal Border', img: 'white-greekkey-seated', alt: 'white-greekkey-duo', price: 229, sizes: ['S', 'M', 'L', 'XL'], colors: ['#F7F5F0'] },
+    beige: { name: 'Sand Cutwork Belted Abaya', tag: 'Crepe | Embellished', img: 'beige-cutwork-front', price: 209, sizes: ['S', 'M', 'L', 'XL'], colors: ['#D4B49A'] },
+    lavender: { name: 'Lavender Line Art Kimono Abaya', tag: 'Crepe | Printed', img: 'lavender-lineart', price: 139, sizes: ['S', 'M', 'L', 'XL'], colors: ['#A99BD6', '#1A1A1A'] },
+    sage: { name: 'Sage Branch Embroidered Abaya', tag: 'Linen | Embroidered', img: 'sage-embroidered-front', alt: 'sage-embroidered-close', price: 159, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#B9C3C4'] },
     violet: { name: 'Violet Tiered Satin Abaya', tag: 'Satin | Tiered', img: 'violet-tiered-full', alt: 'violet-tiered-close', price: 165, sizes: ['S', 'M', 'L', 'XL'], colors: ['#3E1A6B'] }
   };
   // One list per product slider on the page (matched by data-products="<key>")
   const PRODUCTS = {
     new: [
+      { ...CATALOG.champagne, badge: 'New' },
+      { ...CATALOG.skyblue, badge: 'New' },
+      { ...CATALOG.sage, badge: 'New' },
+      { ...CATALOG.blush, badge: 'New' },
+      { ...CATALOG.lavender, badge: 'New' },
+      { ...CATALOG.stripe, badge: 'New' },
       { ...CATALOG.lilac, badge: 'New' },
-      { ...CATALOG.noir, badge: 'New' },
-      { ...CATALOG.violet, badge: 'New' },
-      { ...CATALOG.burgundy, badge: 'New' },
-      { ...CATALOG.navy, badge: 'New' },
-      { ...CATALOG.ivory, badge: 'Limited' },
-      { ...CATALOG.mauve },
-      { ...CATALOG.charcoal }
+      { ...CATALOG.noir, badge: 'New' }
     ],
     best: [
+      { ...CATALOG.blackrose, badge: 'Bestseller' },
+      { ...CATALOG.rose, badge: 'Bestseller' },
       { ...CATALOG.ivory, badge: 'Bestseller' },
+      { ...CATALOG.stripe, sale: 115 },
       { ...CATALOG.mauve, sale: 119 },
-      { ...CATALOG.noir, badge: 'Bestseller' },
-      { ...CATALOG.charcoal, sale: 129 },
       { ...CATALOG.navy },
-      { ...CATALOG.lilac },
-      { ...CATALOG.burgundy, sale: 149 },
-      { ...CATALOG.violet }
+      { ...CATALOG.blush },
+      { ...CATALOG.charcoal, sale: 129 }
     ],
     occasion: [
+      { ...CATALOG.white, badge: 'Limited' },
+      { ...CATALOG.beige },
+      { ...CATALOG.champagne },
+      { ...CATALOG.skyblue },
       { ...CATALOG.burgundy },
-      { ...CATALOG.ivory, badge: 'Limited' },
       { ...CATALOG.violet },
       { ...CATALOG.noir },
-      { ...CATALOG.navy },
-      { ...CATALOG.lilac }
+      { ...CATALOG.ivory, badge: 'Limited' }
     ]
   };
 

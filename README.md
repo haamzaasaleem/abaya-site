@@ -38,7 +38,7 @@ assets/videos/          Collection videos (WebM + MP4) with poster frames
 9. Full-width campaign banner
 10. Shop by Occasion
 11. **Product slider: The Occasion Edit**
-12. "Made to Move" film banner: two vertical videos over a blurred backdrop, autoplaying muted when scrolled into view, with pause/play buttons
+12. "Made to Move" film banner: three vertical videos over a blurred backdrop, autoplaying muted when scrolled into view, with pause/play buttons
 13. Brand story
 14. Instagram / lookbook grid
 15. Newsletter sign-up (10% off)
