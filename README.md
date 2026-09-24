@@ -44,7 +44,7 @@ assets/videos/          Collection videos (WebM + MP4) with poster frames
 15. Newsletter sign-up (10% off)
 16. Footer (accordion on mobile)
 
-Each product slider has a centered title and intro line, a 3-photo banner strip, then the products: 4 per view on desktop, 3 on tablet and mobile, with side arrows (desktop), swipe, dot pagination and a "View All" link. Product cards show a fabric line, name, USD price and a "New" / "% Off" pill, plus hover image swap, quick add and wishlist.
+Each product slider has a centered title and intro line, then the products: 4 per view on desktop, 3 on tablet and mobile, with side arrows (desktop), swipe, dot pagination and a "View All" link. Product cards show a fabric line, name, USD price and a "New" / "% Off" pill, plus hover image swap, quick add and wishlist.
 
 ## Customising
 
