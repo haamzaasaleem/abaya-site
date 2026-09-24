@@ -50,7 +50,7 @@ Each product slider has a centered title and intro line, then the products: 4 pe
 ## Customising
 
 - **Brand name**: "Hayabella" appears in the logo, page title, footer and copy of `index.html`.
-- **Colors / fonts**: edit the CSS variables in `:root` at the top of `styles.css`.
+- **Colors / fonts**: the accent is olive (`--olive`, taken from the HB logo), used for small labels, the announcement bar, New pills, the cart count, slider dots and hover states; the Our Story band uses `--sage-tint`. Edit edit the CSS variables in `:root` at the top of `styles.css`.
 - **Products**: edit `CATALOG` (every product) and `PRODUCTS` (which products appear in each slider) at the top of `main.js`. Each slider in `index.html` picks its list with `data-products="new"`, `"best"` or `"occasion"`. To add another slider, copy a slider section and add a new list to `PRODUCTS`. The fabric line under each photo comes from each product's `tag`.
 - **Banners**: swap the `src` of the images in `index.html`. Hero slides take two portrait photos; the background tone of each slide is set with `style="--slide-bg:…"`.
 - **Videos**: vertical clips work best. Keep each under about 2 MB with no audio track, and provide both `.webm` and `.mp4` plus a poster `.jpg`. Example with ffmpeg:

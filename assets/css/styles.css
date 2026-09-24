@@ -10,6 +10,9 @@
   --sand: #f1ebe3;
   --line: #e4dcd2;
   --gold: #a8844f;
+  --olive: #4f5122;       /* from the HB logo */
+  --olive-deep: #3d3f18;
+  --sage-tint: #eef0e5;
   --sale: #9b2c2c;
   --white: #fff;
 
@@ -51,9 +54,10 @@ svg { width: 22px; height: 22px; flex-shrink: 0; }
   text-transform: uppercase;
   font-weight: 400;
   margin-bottom: 12px;
-  color: inherit;
-  opacity: .8;
+  color: var(--olive);
 }
+/* on photos and dark bands the eyebrow keeps the surrounding text colour */
+.film .eyebrow, .campaign .eyebrow, .split__content .eyebrow, .hero__slide--light .eyebrow { color: inherit; opacity: .85; }
 
 /* Buttons ---------------------------------------------------------------- */
 .btn {
@@ -64,7 +68,7 @@ svg { width: 22px; height: 22px; flex-shrink: 0; }
   transition: background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease);
 }
 .btn--dark { background: var(--ink); color: var(--white); }
-.btn--dark:hover { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn--dark:hover { background: var(--olive); color: var(--white); border-color: var(--olive); }
 .btn--light { background: var(--white); color: var(--ink); }
 .btn--light:hover { background: transparent; color: var(--white); border-color: var(--white); }
 .btn--outline { border-color: var(--ink); }
@@ -79,7 +83,7 @@ svg { width: 22px; height: 22px; flex-shrink: 0; }
   background: linear-gradient(currentColor, currentColor) left bottom / 100% 1px no-repeat;
   transition: background-size .4s var(--ease);
 }
-a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; }
+a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color: var(--olive); }
 
 .icon-btn {
   position: relative;
@@ -90,7 +94,7 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; }
 .icon-btn:hover { opacity: .6; }
 
 /* Announcement ----------------------------------------------------------- */
-.announcement { background: var(--ink); color: var(--white); height: 36px; overflow: hidden; }
+.announcement { background: var(--olive-deep); color: var(--white); height: 36px; overflow: hidden; }
 .announcement__track { position: relative; height: 100%; }
 .announcement__track p {
   position: absolute; inset: 0;
@@ -127,7 +131,7 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; }
 .cart-count {
   position: absolute; top: 4px; right: 2px;
   min-width: 16px; height: 16px; padding: 0 4px;
-  border-radius: 8px; background: var(--ink); color: var(--white);
+  border-radius: 8px; background: var(--olive); color: var(--white);
   font-size: 10px; line-height: 16px; text-align: center; font-weight: 400;
 }
 .cart-count.bump { animation: bump .4s var(--ease); }
@@ -147,7 +151,7 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; }
   background: currentColor; transform: scaleX(0); transition: transform .35s var(--ease);
 }
 .nav__link:hover::after, .has-mega:hover > .nav__link::after { transform: scaleX(1); }
-.nav__link--accent { color: var(--gold); }
+.nav__link--accent { color: var(--olive); }
 .nav__link--sale { color: var(--sale); }
 
 .mega {
@@ -245,7 +249,7 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; }
 .hero__dots { position: absolute; bottom: 28px; left: 0; width: 42%; display: flex; justify-content: center; gap: 10px; z-index: 2; }
 .hero__dot { width: 36px; height: 20px; position: relative; }
 .hero__dot::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: rgba(30, 27, 26, .25); }
-.hero__dot::after { content: ""; position: absolute; left: 0; top: 50%; height: 2px; width: 0; background: var(--ink); }
+.hero__dot::after { content: ""; position: absolute; left: 0; top: 50%; height: 2px; width: 0; background: var(--olive); }
 .hero__dot.is-active::after { animation: progress var(--slide-duration, 6s) linear forwards; }
 .hero.is-paused .hero__dot.is-active::after { animation-play-state: paused; }
 .hero--light-ui .hero__dot::before { background: rgba(255, 255, 255, .35); }
@@ -256,7 +260,7 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; }
 .usp { background: var(--sand); border-bottom: 1px solid var(--line); }
 .usp__inner { display: grid; grid-template-columns: repeat(4, 1fr); }
 .usp__item { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 22px 12px; }
-.usp__item svg { width: 28px; height: 28px; color: var(--gold); }
+.usp__item svg { width: 28px; height: 28px; color: var(--olive); }
 .usp__item strong { display: block; font-weight: 400; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; }
 .usp__item span { font-size: 13px; color: var(--muted); }
 
@@ -303,7 +307,7 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; }
 .rail__btn svg { width: 18px; height: 18px; }
 .rail__btn--prev { left: -18px; }
 .rail__btn--next { right: -18px; }
-.rail__btn:hover:not(:disabled) { background: var(--ink); color: var(--white); }
+.rail__btn:hover:not(:disabled) { background: var(--olive); color: var(--white); }
 .rail__btn:disabled { opacity: 0; pointer-events: none; }
 .rail__track {
   display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 3 * 16px) / 4); gap: 16px;
@@ -315,7 +319,7 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; }
 .rail__dots[hidden] { display: none; }
 .rail__dot { width: 7px; height: 7px; border-radius: 50%; background: #cfc8c0; transition: background .25s, transform .25s; }
 .rail__dot:hover { background: var(--muted); }
-.rail__dot.is-active { background: var(--ink); transform: scale(1.15); }
+.rail__dot.is-active { background: var(--olive); transform: scale(1.15); }
 .rail .center { margin-top: 24px; }
 
 /* Product cards (markup generated by main.js) ---------------------------- */
@@ -352,7 +356,7 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; }
 .product__price .now { color: var(--sale); }
 .pill {
   display: inline-block; margin-top: 8px; padding: 3px 11px; border-radius: 20px;
-  background: var(--ink); color: var(--white); font-size: 10px; letter-spacing: .06em; text-transform: uppercase;
+  background: var(--olive); color: var(--white); font-size: 10px; letter-spacing: .06em; text-transform: uppercase;
 }
 .pill--sale { background: #c8553d; }
 
@@ -410,7 +414,7 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; }
 .occasion__label h3 { font-family: var(--serif); font-size: 26px; margin-bottom: 8px; }
 
 /* Story ------------------------------------------------------------------ */
-.story { background: var(--sand); padding: clamp(64px, 9vw, 120px) 0; text-align: center; }
+.story { background: var(--sage-tint); padding: clamp(64px, 9vw, 120px) 0; text-align: center; }
 .story__inner { max-width: 760px; }
 .story__title { font-family: var(--serif); font-style: italic; font-size: clamp(30px, 4vw, 48px); line-height: 1.15; margin-bottom: 22px; }
 .story p:not(.eyebrow) { color: var(--ink-soft); font-size: 16px; margin-bottom: 28px; }
@@ -530,6 +534,7 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; }
   .hero__slide::after { content: ""; position: absolute; inset: 35% 0 0; background: linear-gradient(transparent, rgba(20, 16, 15, .78)); pointer-events: none; }
   .hero__content { position: absolute; inset: 0; z-index: 1; padding: 0 var(--gutter) 72px; justify-content: flex-end; align-items: center; text-align: center; color: var(--white); }
   .hero__content .btn--dark { background: var(--white); color: var(--ink); }
+  .hero .eyebrow { color: inherit; opacity: .85; }
   .hero__content .btn--ghost-dark { border-color: var(--white); color: var(--white); }
   .hero__ctas { justify-content: center; }
   .hero__text { font-size: 15px; margin-bottom: 22px; }
