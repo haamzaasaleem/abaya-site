@@ -441,6 +441,21 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; }
 .newsletter__form input.is-invalid { border-color: var(--sale); }
 .newsletter__msg { margin: 14px 0 0 !important; font-size: 13px; min-height: 20px; }
 
+/* Benefits bar ----------------------------------------------------------- */
+.perks { background: #fbefe7; border-top: 1px solid #f3dccf; border-bottom: 1px solid #f3dccf; }
+.perks__inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding-top: 28px; padding-bottom: 28px; }
+.perk { display: flex; align-items: center; justify-content: center; gap: 16px; }
+.perk__icon {
+  flex-shrink: 0; width: 50px; height: 50px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px dashed #d98a6c; color: #c8553d;
+}
+.perk__icon svg { width: 22px; height: 22px; }
+.perk strong { display: block; font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 2px; }
+.perk span { font-size: 13px; color: var(--ink-soft); }
+.perk a { text-decoration: underline; text-underline-offset: 3px; }
+.perk a:hover { color: #c8553d; }
+
 /* Footer ----------------------------------------------------------------- */
 .footer { background: var(--ink); color: #d8d1ca; padding-top: 72px; }
 .footer__grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 56px; }
@@ -548,6 +563,9 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; }
   .campaign::after { background: linear-gradient(0deg, rgba(30, 27, 26, .75), rgba(30, 27, 26, 0) 70%); }
   .campaign__content { top: auto; bottom: 40px; transform: none; right: var(--gutter); }
   .looks { grid-template-columns: repeat(3, 1fr); }
+  .perks__inner { grid-template-columns: 1fr; gap: 18px; padding-top: 24px; padding-bottom: 24px; }
+  .perk { justify-content: flex-start; }
+  .perk__icon { width: 44px; height: 44px; }
   .footer { padding-top: 48px; }
   .footer__grid { grid-template-columns: 1fr; gap: 0; }
   .footer__brand { margin-bottom: 28px; }
@@ -558,7 +576,7 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; }
   .footer__col a:last-child { margin-bottom: 16px; }
   .footer__bottom { flex-direction: column; align-items: flex-start; }
   .newsletter__form { flex-direction: column; gap: 10px; }
-  .newsletter__form input { border-right: 1px solid var(--ink); }
+  .newsletter__form input { flex: none; border-right: 1px solid var(--ink); }
 }
 
 @media (prefers-reduced-motion: reduce) {
