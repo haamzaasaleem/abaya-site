@@ -4,19 +4,19 @@
 
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
-  const money = (n) => '$' + n.toFixed(2).replace(/\.00$/, '');
+  const money = (n) => 'USD ' + n.toFixed(2);
 
   /* ---------- Product data (replace with API / CMS later) ---------- */
   const IMG = 'assets/images/photos/';
   const CATALOG = {
-    noir: { name: 'Noir Crystal Chiffon Abaya', img: 'noir-crystal-front', alt: 'noir-crystal-back', price: 189, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#141414'] },
-    navy: { name: 'Midnight Embellished Open Abaya', img: 'navy-open-hooded', alt: 'navy-open-full', price: 169, sizes: ['S', 'M', 'L', 'XL'], colors: ['#1F2740', '#9AA5B5'] },
-    burgundy: { name: 'Burgundy Petal Sleeve Abaya', img: 'burgundy-petal-full', alt: 'burgundy-petal-close', price: 179, sizes: ['XS', 'S', 'M', 'L'], colors: ['#5B1E2A'] },
-    ivory: { name: 'Ivory Pearl Embroidered Abaya', img: 'ivory-pearl-front', alt: 'ivory-pearl-pose', price: 219, sizes: ['S', 'M', 'L', 'XL'], colors: ['#F1EAD8', '#F3D5C8'] },
-    mauve: { name: 'Mauve Ruffle Cuff Abaya', img: 'mauve-ruffle', price: 139, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#8E6F80', '#141414'] },
-    charcoal: { name: 'Charcoal Embroidered Bell Sleeve Abaya', img: 'charcoal-cuff-wide', price: 159, sizes: ['S', 'M', 'L'], colors: ['#3A3A3F'] },
-    lilac: { name: 'Lilac Lace Trim Abaya', img: 'lilac-lace-full', alt: 'lilac-lace-close', price: 149, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#B88AC4', '#141414'] },
-    violet: { name: 'Violet Tiered Satin Abaya', img: 'violet-tiered-full', alt: 'violet-tiered-close', price: 165, sizes: ['S', 'M', 'L', 'XL'], colors: ['#3E1A6B'] }
+    noir: { name: 'Noir Crystal Chiffon Abaya', tag: 'Chiffon | Crystal Embellished', img: 'noir-crystal-front', alt: 'noir-crystal-back', price: 189, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#141414'] },
+    navy: { name: 'Midnight Embellished Open Abaya', tag: 'Crepe | Hand Embellished', img: 'navy-open-hooded', alt: 'navy-open-full', price: 169, sizes: ['S', 'M', 'L', 'XL'], colors: ['#1F2740', '#9AA5B5'] },
+    burgundy: { name: 'Burgundy Petal Sleeve Abaya', tag: 'Satin | Petal Sleeve', img: 'burgundy-petal-full', alt: 'burgundy-petal-close', price: 179, sizes: ['XS', 'S', 'M', 'L'], colors: ['#5B1E2A'] },
+    ivory: { name: 'Ivory Pearl Embroidered Abaya', tag: 'Crepe | Embroidered', img: 'ivory-pearl-front', alt: 'ivory-pearl-pose', price: 219, sizes: ['S', 'M', 'L', 'XL'], colors: ['#F1EAD8', '#F3D5C8'] },
+    mauve: { name: 'Mauve Ruffle Cuff Abaya', tag: 'Satin | Ruffle Cuff', img: 'mauve-ruffle', price: 139, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#8E6F80', '#141414'] },
+    charcoal: { name: 'Charcoal Embroidered Bell Sleeve Abaya', tag: 'Nida | Embroidered', img: 'charcoal-cuff-wide', price: 159, sizes: ['S', 'M', 'L'], colors: ['#3A3A3F'] },
+    lilac: { name: 'Lilac Lace Trim Abaya', tag: 'Chiffon | Lace Trim', img: 'lilac-lace-full', alt: 'lilac-lace-close', price: 149, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#B88AC4', '#141414'] },
+    violet: { name: 'Violet Tiered Satin Abaya', tag: 'Satin | Tiered', img: 'violet-tiered-full', alt: 'violet-tiered-close', price: 165, sizes: ['S', 'M', 'L', 'XL'], colors: ['#3E1A6B'] }
   };
   // One list per product slider on the page (matched by data-products="<key>")
   const PRODUCTS = {
@@ -51,9 +51,9 @@
   };
 
   function productCard(p) {
-    const badge = p.sale
-      ? `<span class="badge badge--sale">-${Math.round((1 - p.sale / p.price) * 100)}%</span>`
-      : p.badge ? `<span class="badge">${p.badge}</span>` : '';
+    const pill = p.sale
+      ? `<span class="pill pill--sale">${Math.round((1 - p.sale / p.price) * 100)}% Off</span>`
+      : p.badge ? `<span class="pill">${p.badge}</span>` : '';
     const price = p.sale
       ? `<s>${money(p.price)}</s><span class="now">${money(p.sale)}</span>`
       : `<span>${money(p.price)}</span>`;
@@ -64,16 +64,16 @@
             <img src="${IMG + p.img}.jpg" alt="${p.name}" loading="lazy">
             ${p.alt ? `<img src="${IMG + p.alt}.jpg" alt="" class="img-alt" loading="lazy">` : ''}
           </a>
-          ${badge}
           <button class="wish" aria-label="Add ${p.name} to wishlist" aria-pressed="false"><svg><use href="#i-heart"/></svg></button>
           <div class="quick-add">
             <span class="quick-add__label">Quick Add</span>
             <div class="sizes">${p.sizes.map((s) => `<button class="size" data-add="${p.name}" data-size="${s}">${s}</button>`).join('')}</div>
           </div>
         </div>
+        <p class="product__tag">${p.tag}</p>
         <h3 class="product__name"><a href="#">${p.name}</a></h3>
         <div class="product__price">${price}</div>
-        <div class="swatches">${p.colors.map((c) => `<span class="swatch" style="background:${c}"></span>`).join('')}</div>
+        ${pill}
       </article>`;
   }
 
@@ -82,30 +82,52 @@
     const track = $('[data-products]', rail);
     const prev = $('[data-rail-prev]', rail);
     const next = $('[data-rail-next]', rail);
-    const thumb = $('[data-rail-progress] span', rail);
+    const dotsWrap = $('[data-rail-dots]', rail);
     track.innerHTML = (PRODUCTS[track.dataset.products] || []).map(productCard).join('');
+    const count = track.children.length;
+    let dots = [];
 
-    const step = () => {
+    // card width + gap, and how many cards fit in one view
+    const metrics = () => {
       const card = track.firstElementChild;
-      if (!card) return track.clientWidth;
       const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-      const cardW = card.offsetWidth + gap;
-      return cardW * Math.max(1, Math.floor((track.clientWidth + gap) / cardW));
+      const cardStep = card ? card.offsetWidth + gap : track.clientWidth;
+      const perView = Math.max(1, Math.round((track.clientWidth + gap) / cardStep));
+      return { cardStep, perView, pages: Math.max(1, Math.ceil(count / perView)) };
+    };
+    const goTo = (page) => {
+      const { cardStep, perView } = metrics();
+      track.scrollTo({ left: page * perView * cardStep, behavior: 'smooth' });
+    };
+    const buildDots = () => {
+      const { pages } = metrics();
+      if (dots.length === pages) return;
+      dotsWrap.innerHTML = '';
+      dots = Array.from({ length: pages }, (_, i) => {
+        const d = document.createElement('button');
+        d.className = 'rail__dot';
+        d.setAttribute('aria-label', `Show products page ${i + 1} of ${pages}`);
+        d.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(d);
+        return d;
+      });
+      dotsWrap.hidden = pages < 2;
     };
     const update = () => {
+      const { cardStep, perView, pages } = metrics();
       const max = track.scrollWidth - track.clientWidth;
+      const atEnd = track.scrollLeft >= max - 2;
+      const page = atEnd ? pages - 1 : Math.round(track.scrollLeft / (perView * cardStep));
+      dots.forEach((d, i) => d.classList.toggle('is-active', i === page));
       if (prev) prev.disabled = track.scrollLeft <= 2;
-      if (next) next.disabled = track.scrollLeft >= max - 2;
-      if (thumb) {
-        const size = track.clientWidth / track.scrollWidth;
-        thumb.style.width = size * 100 + '%';
-        thumb.style.left = (max > 0 ? (track.scrollLeft / max) * (1 - size) : 0) * 100 + '%';
-      }
+      if (next) next.disabled = atEnd;
     };
-    if (prev) prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
-    if (next) next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+    const current = () => dots.findIndex((d) => d.classList.contains('is-active'));
+    if (prev) prev.addEventListener('click', () => goTo(Math.max(0, current() - 1)));
+    if (next) next.addEventListener('click', () => goTo(Math.min(dots.length - 1, current() + 1)));
     track.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
+    window.addEventListener('resize', () => { buildDots(); update(); });
+    buildDots();
     update();
   }
 
