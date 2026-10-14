@@ -23,22 +23,23 @@
     blackrose: { name: 'Black Rose Print Kimono Abaya', tag: 'Crepe | Printed', img: 'blackrose-print-front', price: 139, sizes: ['S', 'M', 'L', 'XL'], colors: ['#1A1A1A'] },
     stripe: { name: 'Riviera Stripe Kimono Abaya', tag: 'Crepe | Printed', img: 'stripe-kimono-front', price: 135, sizes: ['S', 'M', 'L', 'XL'], colors: ['#2A3FB0', '#FFFFFF'] },
     blush: { name: 'Blush Floral Belted Abaya', tag: 'Crepe | Printed', img: 'blush-floral-front', alt: 'blush-floral-garden', price: 145, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#F2C4C0'] },
-    white: { name: 'Pearl White Greek Key Abaya', tag: 'Satin | Crystal Border', img: 'white-greekkey-seated', price: 229, sizes: ['S', 'M', 'L', 'XL'], colors: ['#F7F5F0'] },
+    white: { name: 'Pearl White Greek Key Abaya', tag: 'Satin | Crystal Border', img: 'white-greekkey-feature', alt: 'white-greekkey-standing', price: 229, sizes: ['S', 'M', 'L', 'XL'], colors: ['#F7F5F0'] },
     beige: { name: 'Sand Cutwork Belted Abaya', tag: 'Crepe | Embellished', img: 'beige-cutwork-front', price: 209, sizes: ['S', 'M', 'L', 'XL'], colors: ['#D4B49A'] },
+    plum: { name: 'Plum Velvet Crystal Abaya', tag: 'Velvet | Crystal Trim', img: 'plum-velvet-full', alt: 'plum-velvet-close', price: 189, sizes: ['S', 'M', 'L', 'XL'], colors: ['#4E2A5A'] },
     sage: { name: 'Sage Branch Embroidered Abaya', tag: 'Linen | Embroidered', img: 'sage-embroidered-front', alt: 'sage-embroidered-close', price: 159, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#B9C3C4'] },
     violet: { name: 'Violet Tiered Satin Abaya', tag: 'Satin | Tiered', img: 'violet-tiered-full', alt: 'violet-tiered-close', price: 165, sizes: ['S', 'M', 'L', 'XL'], colors: ['#3E1A6B'] }
   };
   // One list per product slider on the page (matched by data-products="<key>")
   const PRODUCTS = {
     new: [
+      { ...CATALOG.white, badge: 'New' },
+      { ...CATALOG.plum, badge: 'New' },
       { ...CATALOG.champagne, badge: 'New' },
       { ...CATALOG.skyblue, badge: 'New' },
       { ...CATALOG.sage, badge: 'New' },
       { ...CATALOG.blush, badge: 'New' },
-      { ...CATALOG.navy, badge: 'New' },
       { ...CATALOG.stripe, badge: 'New' },
-      { ...CATALOG.lilac, badge: 'New' },
-      { ...CATALOG.noir, badge: 'New' }
+      { ...CATALOG.navy, badge: 'New' }
     ],
     best: [
       { ...CATALOG.blackrose, badge: 'Bestseller' },
@@ -52,6 +53,7 @@
     ],
     occasion: [
       { ...CATALOG.white, badge: 'Limited' },
+      { ...CATALOG.plum },
       { ...CATALOG.beige },
       { ...CATALOG.champagne },
       { ...CATALOG.skyblue },
@@ -76,6 +78,7 @@
             <img src="${IMG + p.img}.jpg" alt="${p.name}" loading="lazy">
             ${p.alt ? `<img src="${IMG + p.alt}.jpg" alt="" class="img-alt" loading="lazy">` : ''}
           </a>
+          <img src="assets/images/brand/hb-logo-full.svg" alt="" class="product__mark" aria-hidden="true">
           <button class="wish" aria-label="Add ${p.name} to wishlist" aria-pressed="false"><svg><use href="#i-heart"/></svg></button>
           <div class="quick-add">
             <span class="quick-add__label">Quick Add</span>

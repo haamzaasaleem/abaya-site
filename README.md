@@ -22,6 +22,7 @@ assets/css/styles.css   Design tokens (colors, fonts) at the top, then styles pe
 assets/js/main.js       Hero slider, announcement bar, mega menu, mobile drawer,
                         search overlay, product grid + tabs, wishlist/quick-add, newsletter
 assets/images/photos/   Lifestyle & campaign photography (web-optimized JPGs)
+assets/images/brand/    Official logos (SVG): wordmark, HB monogram, full logo, cream footer version
 assets/images/products/ Product card images: model cut out onto a plain #EEEAE5 studio background
 assets/videos/          Collection videos (WebM + MP4) with poster frames
 ```
@@ -39,7 +40,7 @@ assets/videos/          Collection videos (WebM + MP4) with poster frames
 9. Full-width campaign banner
 10. Shop by Occasion
 11. **Product slider: The Occasion Edit**
-12. "Made to Move" film banner: three vertical videos over a blurred backdrop, autoplaying muted when scrolled into view, with pause/play buttons
+12. "Made to Move" film banner: five vertical videos in a staggered row (swipeable on mobile) over a blurred backdrop, autoplaying muted when scrolled into view, with pause/play buttons
 13. Brand story
 14. Instagram / lookbook grid
 15. Newsletter sign-up (10% off)
@@ -61,3 +62,4 @@ Each product slider has a centered title and intro line, then the products: 4 pe
   ffmpeg -ss 1 -i out.mp4 -frames:v 1 out-poster.jpg
   ```
 - **Product images**: cards use `assets/images/products/`, where each photo's background was removed (rembg, BiRefNet portrait model) and the model placed on a plain `#EEEAE5` background at a consistent size. For a new product, add a studio shot on a plain background with the same name, or run the same cut-out step.
+- **Brand**: colours come from the brand guide, olive `#45451B` (`--olive`) and blush cream `#F4E9E2` (`--cream` / `--sand`). Header uses `hayabella-wordmark.svg` with the tagline "Modesty – The New Bold"; footer uses the cream full logo; the HB monogram is the favicon and the watermark shown on every product image (`.product__mark`, an overlay so it stays sharp and consistent).

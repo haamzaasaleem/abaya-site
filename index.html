@@ -6,11 +6,11 @@
   <title>Hayabella | Luxury Abayas & Modest Wear – USA</title>
   <meta name="description" content="Shop elegant abayas, kaftans, hijabs and modest sets designed for everyday and occasion. Free US shipping on orders over $150.">
   <meta name="theme-color" content="#1E1B1A">
-  <link rel="icon" href="data:,">
+  <link rel="icon" href="assets/images/brand/hb-monogram.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260924i">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261014c">
 </head>
 <body>
 
@@ -53,8 +53,8 @@
       </div>
 
       <a href="#" class="logo" aria-label="Hayabella home">
-        <span class="logo__mark">Hayabella</span>
-        <span class="logo__sub">Modest Couture</span>
+        <img src="assets/images/brand/hayabella-wordmark.svg" alt="Hayabella" class="logo__img" width="182" height="40">
+        <span class="logo__sub">Modesty &ndash; The New Bold</span>
       </a>
 
       <div class="header__right">
@@ -105,7 +105,7 @@
     <div class="drawer__overlay" data-close-drawer></div>
     <aside class="drawer__panel" aria-label="Menu">
       <div class="drawer__head">
-        <span class="logo__mark">Hayabella</span>
+        <img src="assets/images/brand/hayabella-wordmark.svg" alt="Hayabella" class="logo__img logo__img--sm" width="137" height="30">
         <button class="icon-btn" aria-label="Close menu" data-close-drawer><svg><use href="#i-close"/></svg></button>
       </div>
       <ul class="drawer__list">
@@ -330,28 +330,42 @@
         <div class="film__text">
           <p class="eyebrow">Hayabella Films</p>
           <h2 class="film__title">Made to Move</h2>
-          <p>Soft chiffon and satin that catch the light with every step. See the collection as it's meant to be worn.</p>
+          <p>Satin, chiffon and velvet that catch the light with every step. See the collection as it's meant to be worn.</p>
           <a href="#" class="btn btn--light">Shop the Collection</a>
         </div>
-        <div class="film__reels">
+        <div class="film__reels" data-film-reels>
           <figure class="reel">
+            <video poster="assets/videos/burgundy-petal-abaya-poster.jpg" muted loop playsinline preload="none" aria-label="Model turning in the burgundy abaya with petal cuffs" data-reel>
+              <source src="assets/videos/burgundy-petal-abaya.mp4" type="video/mp4">
+              <source src="assets/videos/burgundy-petal-abaya.webm" type="video/webm">
+            </video>
+            <button class="reel__toggle" aria-label="Pause video" data-reel-toggle><span></span></button>
+          </figure>
+          <figure class="reel reel--offset">
             <video poster="assets/videos/lilac-lace-abaya-poster.jpg" muted loop playsinline preload="none" aria-label="Model twirling in the lilac abaya with black lace trim" data-reel>
               <source src="assets/videos/lilac-lace-abaya.mp4" type="video/mp4">
               <source src="assets/videos/lilac-lace-abaya.webm" type="video/webm">
             </video>
             <button class="reel__toggle" aria-label="Pause video" data-reel-toggle><span></span></button>
           </figure>
+          <figure class="reel">
+            <video poster="assets/videos/plum-velvet-abaya-poster.jpg" muted loop playsinline preload="none" aria-label="Model in the plum velvet abaya with crystal trim" data-reel>
+              <source src="assets/videos/plum-velvet-abaya.mp4" type="video/mp4">
+              <source src="assets/videos/plum-velvet-abaya.webm" type="video/webm">
+            </video>
+            <button class="reel__toggle" aria-label="Pause video" data-reel-toggle><span></span></button>
+          </figure>
           <figure class="reel reel--offset">
-            <video poster="assets/videos/violet-tiered-abaya-poster.jpg" muted loop playsinline preload="none" aria-label="Model in the violet tiered abaya with a matching chiffon shawl" data-reel>
-              <source src="assets/videos/violet-tiered-abaya.mp4" type="video/mp4">
-              <source src="assets/videos/violet-tiered-abaya.webm" type="video/webm">
+            <video poster="assets/videos/sage-embroidered-abaya-poster.jpg" muted loop playsinline preload="none" aria-label="Model in the sage abaya with white branch embroidery" data-reel>
+              <source src="assets/videos/sage-embroidered-abaya.mp4" type="video/mp4">
+              <source src="assets/videos/sage-embroidered-abaya.webm" type="video/webm">
             </video>
             <button class="reel__toggle" aria-label="Pause video" data-reel-toggle><span></span></button>
           </figure>
           <figure class="reel">
-            <video poster="assets/videos/sage-embroidered-abaya-poster.jpg" muted loop playsinline preload="none" aria-label="Model in the sage abaya with white branch embroidery" data-reel>
-              <source src="assets/videos/sage-embroidered-abaya.mp4" type="video/mp4">
-              <source src="assets/videos/sage-embroidered-abaya.webm" type="video/webm">
+            <video poster="assets/videos/violet-tiered-abaya-poster.jpg" muted loop playsinline preload="none" aria-label="Model in the violet tiered abaya with a matching chiffon shawl" data-reel>
+              <source src="assets/videos/violet-tiered-abaya.mp4" type="video/mp4">
+              <source src="assets/videos/violet-tiered-abaya.webm" type="video/webm">
             </video>
             <button class="reel__toggle" aria-label="Pause video" data-reel-toggle><span></span></button>
           </figure>
@@ -422,7 +436,7 @@
   <footer class="footer">
     <div class="container footer__grid">
       <div class="footer__brand">
-        <span class="logo__mark">Hayabella</span>
+        <img src="assets/images/brand/hb-logo-full-light.svg" alt="Hayabella" class="footer__logo" width="116" height="100">
         <p>Elegant abayas and modest wear, designed for the modern woman and shipped across the United States.</p>
         <div class="socials">
           <a href="#" aria-label="Instagram"><svg><use href="#i-instagram"/></svg></a>
@@ -455,6 +469,6 @@
 
   <div class="toast" role="status" aria-live="polite" data-toast></div>
 
-  <script src="assets/js/main.js?v=20260924i"></script>
+  <script src="assets/js/main.js?v=20261014c"></script>
 </body>
 </html>

@@ -7,11 +7,12 @@
   --ink-soft: #4a4442;
   --muted: #857c76;
   --ivory: #faf7f3;
-  --sand: #f1ebe3;
+  --sand: #f4e9e2;        /* brand blush cream */
   --line: #e4dcd2;
   --gold: #a8844f;
-  --olive: #4f5122;       /* from the HB logo */
-  --olive-deep: #3d3f18;
+  --olive: #45451b;       /* brand olive (logo) */
+  --olive-deep: #45451b;
+  --cream: #f4e9e2;       /* brand blush cream */
   --sage-tint: #eef0e5;
   --sale: #9b2c2c;
   --white: #fff;
@@ -125,8 +126,9 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color
 .header__burger { display: none; }
 
 .logo { display: flex; flex-direction: column; align-items: center; line-height: 1; }
-.logo__mark { font-family: var(--serif); font-size: 30px; letter-spacing: .12em; text-transform: uppercase; font-weight: 500; }
-.logo__sub { font-size: 9px; letter-spacing: .5em; text-transform: uppercase; margin-top: 6px; color: var(--muted); }
+.logo__img { display: block; height: 40px; width: auto; }
+.logo__img--sm { height: 30px; }
+.logo__sub { font-size: 8px; letter-spacing: .42em; text-transform: uppercase; margin-top: 7px; color: var(--olive); }
 
 .cart-count {
   position: absolute; top: 4px; right: 2px;
@@ -182,7 +184,6 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color
 }
 .drawer.is-open .drawer__panel { transform: none; }
 .drawer__head { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--line); }
-.drawer__head .logo__mark { font-size: 22px; }
 .drawer__list { list-style: none; margin: 0; padding: 8px 0; flex: 1; overflow-y: auto; }
 .drawer__list a { display: block; padding: 16px 24px; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; border-bottom: 1px solid var(--line); }
 .drawer__foot { padding: 20px 24px; display: grid; gap: 14px; background: var(--sand); }
@@ -330,6 +331,11 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color
 .product__media .img-alt { opacity: 0; }
 .product:hover .img-alt { opacity: 1; }
 .product:hover .product__media img { transform: scale(1.03); }
+/* HB Hayabella watermark on every product image */
+.product__media .product__mark {
+  inset: auto; top: 12px; left: 12px; z-index: 1; width: 40px; height: auto;
+  object-fit: contain; opacity: .9; transform: none !important; pointer-events: none;
+}
 .wish {
   position: absolute; top: 10px; right: 10px; z-index: 2;
   width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
@@ -367,14 +373,14 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color
   background: url("../videos/lilac-lace-abaya-poster.jpg") center / cover no-repeat;
   filter: blur(48px) saturate(1.1); transform: scale(1.1); opacity: .9;
 }
-.film__backdrop::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(30, 22, 34, .82) 20%, rgba(30, 22, 34, .45)); }
-.film__inner { position: relative; display: grid; grid-template-columns: 1fr 1.5fr; gap: clamp(32px, 6vw, 96px); align-items: center; }
-.film__text { max-width: 440px; }
+.film__backdrop::after { content: ""; position: absolute; inset: 0; background: rgba(30, 22, 34, .68); }
+.film__inner { position: relative; display: flex; flex-direction: column; align-items: center; gap: clamp(32px, 4vw, 56px); }
+.film__text { max-width: 560px; text-align: center; }
 .film__title { font-family: var(--serif); font-size: clamp(44px, 5.6vw, 80px); line-height: 1; margin-bottom: 22px; }
-.film__text p:not(.eyebrow) { font-size: 16px; opacity: .85; margin-bottom: 34px; }
-.film__reels { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(12px, 1.6vw, 20px); max-width: min(760px, calc(60vh * 9 / 16 * 3 + 40px)); width: 100%; justify-self: end; padding-bottom: 56px; }
+.film__text p:not(.eyebrow) { font-size: 16px; opacity: .85; margin: 0 auto 30px; max-width: 460px; }
+.film__reels { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(12px, 1.6vw, 22px); width: 100%; max-width: 1200px; padding-bottom: 48px; }
 .reel { position: relative; margin: 0; aspect-ratio: 9/16; overflow: hidden; background: #3a2f3e; box-shadow: 0 30px 60px rgba(0, 0, 0, .35); }
-.reel--offset { transform: translateY(56px); }
+.reel--offset { transform: translateY(48px); }
 .reel video { width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer; }
 .reel__toggle {
   position: absolute; right: 12px; bottom: 12px; width: 32px; height: 32px; border-radius: 50%;
@@ -446,24 +452,24 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color
 .newsletter__msg { margin: 14px 0 0 !important; font-size: 13px; min-height: 20px; }
 
 /* Benefits bar ----------------------------------------------------------- */
-.perks { background: #fbefe7; border-top: 1px solid #f3dccf; border-bottom: 1px solid #f3dccf; }
+.perks { background: var(--cream); border-top: 1px solid #eadbd1; border-bottom: 1px solid #eadbd1; }
 .perks__inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding-top: 28px; padding-bottom: 28px; }
 .perk { display: flex; align-items: center; justify-content: center; gap: 16px; }
 .perk__icon {
   flex-shrink: 0; width: 50px; height: 50px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  border: 1px dashed #d98a6c; color: #c8553d;
+  border: 1px dashed rgba(69, 69, 27, .55); color: var(--olive);
 }
 .perk__icon svg { width: 22px; height: 22px; }
 .perk strong { display: block; font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 2px; }
 .perk span { font-size: 13px; color: var(--ink-soft); }
 .perk a { text-decoration: underline; text-underline-offset: 3px; }
-.perk a:hover { color: #c8553d; }
+.perk a:hover { color: var(--olive); }
 
 /* Footer ----------------------------------------------------------------- */
-.footer { background: var(--ink); color: #d8d1ca; padding-top: 72px; }
+.footer { background: var(--olive); color: rgba(244, 233, 226, .82); padding-top: 72px; }
 .footer__grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 56px; }
-.footer__brand .logo__mark { color: var(--white); font-size: 26px; display: block; margin-bottom: 18px; }
+.footer__logo { display: block; height: 96px; width: auto; margin-bottom: 22px; }
 .footer__brand p { max-width: 320px; font-size: 14px; margin-bottom: 24px; }
 .socials { display: flex; gap: 10px; }
 .socials a { width: 38px; height: 38px; border: 1px solid rgba(255, 255, 255, .25); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background .3s, color .3s; }
@@ -512,7 +518,7 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color
   .nav { display: none; }
   .header__burger { display: inline-flex; }
   .header__inner { height: 64px; }
-  .logo__mark { font-size: 22px; letter-spacing: .08em; white-space: nowrap; }
+  .logo__img { height: 30px; }
   .header__left, .header__right { gap: 0; }
   .logo__sub { display: none; }
   .usp__inner { grid-template-columns: repeat(2, 1fr); }
@@ -558,13 +564,18 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color
   .product__price { font-size: 12px; }
   .pill { font-size: 9px; padding: 2px 9px; margin-top: 6px; }
   .wish { width: 30px; height: 30px; top: 8px; right: 8px; }
+  .product__media .product__mark { width: 30px; top: 9px; left: 9px; }
   .wish svg { width: 15px; height: 15px; }
   .rail__dots { margin-top: 20px; gap: 8px; }
-  .film__inner { grid-template-columns: 1fr; }
-  .film__text { text-align: center; margin: 0 auto; }
   .film__backdrop::after { background: rgba(30, 22, 34, .7); }
-  .film__reels { justify-self: stretch; max-width: none; gap: 10px; padding-bottom: 32px; }
-  .reel--offset { transform: translateY(32px); }
+  /* swipeable reel row on phones */
+  .film__reels {
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+    width: auto; align-self: stretch; margin: 0 calc(var(--gutter) * -1); padding: 0 var(--gutter) 28px; gap: 10px;
+  }
+  .film__reels::-webkit-scrollbar { display: none; }
+  .film__reels .reel { flex: 0 0 42%; scroll-snap-align: center; }
+  .reel--offset { transform: translateY(28px); }
   .campaign::after { background: linear-gradient(0deg, rgba(30, 27, 26, .75), rgba(30, 27, 26, 0) 70%); }
   .campaign__content { top: auto; bottom: 40px; transform: none; right: var(--gutter); }
   .looks { grid-template-columns: repeat(3, 1fr); }
