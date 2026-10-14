@@ -1,68 +1,11 @@
-/* Hayabella — homepage interactions (no dependencies) */
+/* Hayabella — shared site interactions (no dependencies). Needs catalog.js loaded first. */
 (function () {
   'use strict';
 
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
-  const money = (n) => 'USD ' + n.toFixed(2);
 
-  /* ---------- Product data (replace with API / CMS later) ---------- */
-  // Product cards use the studio cut-outs (plain background); other sections use lifestyle photos
-  const IMG = 'assets/images/products/';
-  const CATALOG = {
-    noir: { name: 'Noir Crystal Chiffon Abaya', tag: 'Chiffon | Crystal Embellished', img: 'noir-crystal-front', alt: 'noir-crystal-back', price: 189, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#141414'] },
-    navy: { name: 'Midnight Embellished Open Abaya', tag: 'Crepe | Hand Embellished', img: 'navy-open-hooded', alt: 'navy-open-full', price: 169, sizes: ['S', 'M', 'L', 'XL'], colors: ['#1F2740', '#9AA5B5'] },
-    burgundy: { name: 'Burgundy Petal Sleeve Abaya', tag: 'Satin | Petal Sleeve', img: 'burgundy-petal-full', alt: 'burgundy-petal-close', price: 179, sizes: ['XS', 'S', 'M', 'L'], colors: ['#5B1E2A'] },
-    ivory: { name: 'Ivory Pearl Embroidered Abaya', tag: 'Crepe | Embroidered', img: 'ivory-pearl-front', alt: 'ivory-pearl-pose', price: 219, sizes: ['S', 'M', 'L', 'XL'], colors: ['#F1EAD8', '#F3D5C8'] },
-    mauve: { name: 'Mauve Ruffle Cuff Abaya', tag: 'Satin | Ruffle Cuff', img: 'mauve-ruffle', price: 139, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#8E6F80', '#141414'] },
-    charcoal: { name: 'Charcoal Embroidered Bell Sleeve Abaya', tag: 'Nida | Embroidered', img: 'charcoal-cuff-wide', price: 159, sizes: ['S', 'M', 'L'], colors: ['#3A3A3F'] },
-    lilac: { name: 'Lilac Lace Trim Abaya', tag: 'Chiffon | Lace Trim', img: 'lilac-lace-full', alt: 'lilac-lace-close', price: 149, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#B88AC4', '#141414'] },
-    champagne: { name: 'Champagne Crystal Wave Abaya', tag: 'Satin | Crystal Embellished', img: 'champagne-wave-front', alt: 'champagne-wave-side', price: 229, sizes: ['S', 'M', 'L', 'XL'], colors: ['#D8C8BC'] },
-    skyblue: { name: 'Sky Blue Greek Key Abaya', tag: 'Satin | Crystal Border', img: 'skyblue-greekkey-front', alt: 'skyblue-greekkey-side', price: 219, sizes: ['S', 'M', 'L', 'XL'], colors: ['#8FB3C8'] },
-    rose: { name: 'Dusty Rose Crystal Abaya', tag: 'Crepe | Crystal Embellished', img: 'rose-crystal-close', price: 199, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#B98A7C'] },
-    blackrose: { name: 'Black Rose Print Kimono Abaya', tag: 'Crepe | Printed', img: 'blackrose-print-front', price: 139, sizes: ['S', 'M', 'L', 'XL'], colors: ['#1A1A1A'] },
-    stripe: { name: 'Riviera Stripe Kimono Abaya', tag: 'Crepe | Printed', img: 'stripe-kimono-front', price: 135, sizes: ['S', 'M', 'L', 'XL'], colors: ['#2A3FB0', '#FFFFFF'] },
-    blush: { name: 'Blush Floral Belted Abaya', tag: 'Crepe | Printed', img: 'blush-floral-front', alt: 'blush-floral-garden', price: 145, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#F2C4C0'] },
-    white: { name: 'Pearl White Greek Key Abaya', tag: 'Satin | Crystal Border', img: 'white-greekkey-feature', alt: 'white-greekkey-standing', price: 229, sizes: ['S', 'M', 'L', 'XL'], colors: ['#F7F5F0'] },
-    beige: { name: 'Sand Cutwork Belted Abaya', tag: 'Crepe | Embellished', img: 'beige-cutwork-front', price: 209, sizes: ['S', 'M', 'L', 'XL'], colors: ['#D4B49A'] },
-    plum: { name: 'Plum Velvet Crystal Abaya', tag: 'Velvet | Crystal Trim', img: 'plum-velvet-full', alt: 'plum-velvet-close', price: 189, sizes: ['S', 'M', 'L', 'XL'], colors: ['#4E2A5A'] },
-    sage: { name: 'Sage Branch Embroidered Abaya', tag: 'Linen | Embroidered', img: 'sage-embroidered-front', alt: 'sage-embroidered-close', price: 159, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['#B9C3C4'] },
-    violet: { name: 'Violet Tiered Satin Abaya', tag: 'Satin | Tiered', img: 'violet-tiered-full', alt: 'violet-tiered-close', price: 165, sizes: ['S', 'M', 'L', 'XL'], colors: ['#3E1A6B'] }
-  };
-  // One list per product slider on the page (matched by data-products="<key>")
-  const PRODUCTS = {
-    new: [
-      { ...CATALOG.white, badge: 'New' },
-      { ...CATALOG.plum, badge: 'New' },
-      { ...CATALOG.champagne, badge: 'New' },
-      { ...CATALOG.skyblue, badge: 'New' },
-      { ...CATALOG.sage, badge: 'New' },
-      { ...CATALOG.blush, badge: 'New' },
-      { ...CATALOG.stripe, badge: 'New' },
-      { ...CATALOG.navy, badge: 'New' }
-    ],
-    best: [
-      { ...CATALOG.blackrose, badge: 'Bestseller' },
-      { ...CATALOG.rose, badge: 'Bestseller' },
-      { ...CATALOG.ivory, badge: 'Bestseller' },
-      { ...CATALOG.stripe, sale: 115 },
-      { ...CATALOG.mauve, sale: 119 },
-      { ...CATALOG.navy },
-      { ...CATALOG.blush },
-      { ...CATALOG.charcoal, sale: 129 }
-    ],
-    occasion: [
-      { ...CATALOG.white, badge: 'Limited' },
-      { ...CATALOG.plum },
-      { ...CATALOG.beige },
-      { ...CATALOG.champagne },
-      { ...CATALOG.skyblue },
-      { ...CATALOG.burgundy },
-      { ...CATALOG.violet },
-      { ...CATALOG.noir },
-      { ...CATALOG.ivory, badge: 'Limited' }
-    ]
-  };
+  const { PRODUCTS, IMG, money, url } = window.HAYABELLA;
 
   function productCard(p) {
     const pill = p.sale
@@ -74,7 +17,7 @@
     return `
       <article class="product">
         <div class="product__media">
-          <a href="#" class="product__link" aria-label="${p.name}">
+          <a href="${url(p.key)}" class="product__link" aria-label="${p.name}">
             <img src="${IMG + p.img}.jpg" alt="${p.name}" loading="lazy">
             ${p.alt ? `<img src="${IMG + p.alt}.jpg" alt="" class="img-alt" loading="lazy">` : ''}
           </a>
@@ -86,7 +29,7 @@
           </div>
         </div>
         <p class="product__tag">${p.tag}</p>
-        <h3 class="product__name"><a href="#">${p.name}</a></h3>
+        <h3 class="product__name"><a href="${url(p.key)}">${p.name}</a></h3>
         <div class="product__price">${price}</div>
         ${pill}
       </article>`;
@@ -156,17 +99,27 @@
     toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2600);
   }
 
+  // Bag count persists across pages for this visitor (no checkout yet)
   const cartCount = $('[data-cart-count]');
-  let cart = 0;
+  const readCart = () => { try { return parseInt(localStorage.getItem('hb-bag') || '0', 10) || 0; } catch (e) { return 0; } };
+  let cart = readCart();
+  cartCount.textContent = cart;
+  function addToBag(name, size, qty = 1) {
+    cart += qty;
+    try { localStorage.setItem('hb-bag', String(cart)); } catch (e) { /* storage unavailable */ }
+    cartCount.textContent = cart;
+    cartCount.classList.remove('bump');
+    void cartCount.offsetWidth;
+    cartCount.classList.add('bump');
+    showToast(`${qty > 1 ? qty + ' × ' : ''}${name} (${size}) added to bag`);
+  }
+  window.HAYABELLA.addToBag = addToBag;
+  window.HAYABELLA.showToast = showToast;
+
   document.addEventListener('click', (e) => {
     const add = e.target.closest('[data-add]');
     if (add) {
-      cart += 1;
-      cartCount.textContent = cart;
-      cartCount.classList.remove('bump');
-      void cartCount.offsetWidth;
-      cartCount.classList.add('bump');
-      showToast(`${add.dataset.add} (${add.dataset.size}) added to bag`);
+      addToBag(add.dataset.add, add.dataset.size);
       return;
     }
     const wish = e.target.closest('.wish');

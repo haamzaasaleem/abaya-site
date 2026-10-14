@@ -18,8 +18,11 @@ python3 -m http.server 8000   # then visit http://localhost:8000
 
 ```
 index.html              Homepage markup (all sections)
+product.html            Single product page (product.html?p=<key>, e.g. ?p=white)
 assets/css/styles.css   Design tokens (colors, fonts) at the top, then styles per section
-assets/js/main.js       Hero slider, announcement bar, mega menu, mobile drawer,
+assets/js/catalog.js    Product catalog shared by both pages (names, prices, sizes, images, descriptions)
+assets/js/product.js    Product page: gallery, size/quantity, add to bag, size guide, related products
+assets/js/main.js       Shared: hero slider, announcement bar, mega menu, mobile drawer,
                         search overlay, product grid + tabs, wishlist/quick-add, newsletter
 assets/images/photos/   Lifestyle & campaign photography (web-optimized JPGs)
 assets/images/brand/    Official logos (SVG): wordmark, HB monogram, full logo, cream footer version
@@ -53,7 +56,7 @@ Each product slider has a centered title and intro line, then the products: 4 pe
 
 - **Brand name**: "Hayabella" appears in the logo, page title, footer and copy of `index.html`.
 - **Colors / fonts**: the accent is olive (`--olive`, taken from the HB logo), used for small labels, the announcement bar, New pills, the cart count, slider dots and hover states; the Our Story band uses `--sage-tint`. Edit edit the CSS variables in `:root` at the top of `styles.css`.
-- **Products**: edit `CATALOG` (every product) and `PRODUCTS` (which products appear in each slider) at the top of `main.js`. Each slider in `index.html` picks its list with `data-products="new"`, `"best"` or `"occasion"`. To add another slider, copy a slider section and add a new list to `PRODUCTS`. The fabric line under each photo comes from each product's `tag`.
+- **Products**: edit `CATALOG` (every product) and `PRODUCTS` (which products appear in each slider) in `assets/js/catalog.js`. Every card links to `product.html?p=<key>`. Each slider in `index.html` picks its list with `data-products="new"`, `"best"` or `"occasion"`. To add another slider, copy a slider section and add a new list to `PRODUCTS`. The fabric line under each photo comes from each product's `tag`.
 - **Banners**: swap the `src` of the images in `index.html`. Hero slides take two portrait photos; the background tone of each slide is set with `style="--slide-bg:…"`.
 - **Videos**: vertical clips work best. Keep each under about 2 MB with no audio track, and provide both `.webm` and `.mp4` plus a poster `.jpg`. Example with ffmpeg:
   ```bash
@@ -63,3 +66,7 @@ Each product slider has a centered title and intro line, then the products: 4 pe
   ```
 - **Product images**: cards use `assets/images/products/`, where each photo's background was removed (rembg, BiRefNet portrait model) and the model placed on a plain `#EEEAE5` background at a consistent size. For a new product, add a studio shot on a plain background with the same name, or run the same cut-out step.
 - **Brand**: colours come from the brand guide, olive `#45451B` (`--olive`) and blush cream `#F4E9E2` (`--cream` / `--sand`). Header uses `hayabella-wordmark.svg` with the tagline "Modesty – The New Bold"; footer uses the cream full logo; the HB monogram is the favicon and the watermark shown on every product image (`.product__mark`, an overlay so it stays sharp and consistent).
+
+## Product page
+
+`product.html?p=<key>` renders any product from `catalog.js`: breadcrumb, gallery (studio images, the product video if it has one, and lifestyle photos; thumbnails on desktop, swipe + dots on mobile), price with sale/badge, Klarna instalment line, colour, size picker (required before adding), quantity, Add to Bag, wishlist, Description / Fabric & Care / Size & Fit / Shipping & Returns accordions, a size guide pop-up, "You May Also Like" (same fabric first) and a sticky Add to Bag bar on mobile. The bag count is kept in the visitor's browser across pages; there is no checkout yet.
