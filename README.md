@@ -19,10 +19,12 @@ python3 -m http.server 8000   # then visit http://localhost:8000
 ```
 index.html              Homepage markup (all sections)
 collection.html         Collection page with filters (collection.html?fabric=Satin&sort=price-asc)
+cart.html               Bag page
 product.html            Single product page (product.html?p=<key>, e.g. ?p=white)
 assets/css/styles.css   Design tokens (colors, fonts) at the top, then styles per section
 assets/js/catalog.js    Product catalog shared by both pages (names, prices, sizes, images, descriptions)
 assets/js/collection.js Collection page: filters, faceted counts, sorting, URL state
+assets/js/cart.js       Bag page: line items, quantities, sizes, promo code, totals
 assets/js/product.js    Product page: gallery, size/quantity, add to bag, size guide, related products
 assets/js/main.js       Shared: hero slider, announcement bar, mega menu, mobile drawer,
                         search overlay, product grid + tabs, wishlist/quick-add, newsletter
@@ -71,7 +73,7 @@ Each product slider has a centered title and intro line, then the products: 4 pe
 
 ## Product page
 
-`product.html?p=<key>` renders any product from `catalog.js`: breadcrumb, gallery (studio images, the product video if it has one, and lifestyle photos; thumbnails on desktop, swipe + dots on mobile), price with sale/badge, Klarna instalment line, colour, size picker (required before adding), quantity, Add to Bag, wishlist, Description / Fabric & Care / Size & Fit / Shipping & Returns accordions, a size guide pop-up, "You May Also Like" (same fabric first) and a sticky Add to Bag bar on mobile. The bag count is kept in the visitor's browser across pages; there is no checkout yet.
+`product.html?p=<key>` renders any product from `catalog.js`: breadcrumb, gallery (studio images, the product video if it has one, and lifestyle photos; thumbnails on desktop, swipe + dots on mobile), price with sale/badge, Klarna instalment line, colour, size picker (required before adding), quantity, Add to Bag, wishlist, Description / Fabric & Care / Size & Fit / Shipping & Returns accordions, a size guide pop-up, "You May Also Like" (same fabric first) and a sticky Add to Bag bar on mobile. The bag is kept in the visitor's browser across pages (see Bag page below).
 
 ## Collection page
 
@@ -91,3 +93,15 @@ Filters live in the URL, so any view can be linked or shared. Values are comma-s
 | `sort` | `featured`, `new`, `price-asc`, `price-desc`, `name` |
 
 The header menu, mega menu, footer, category tiles, hero buttons and "View All" links all point at these views. A product's colour family, embellishment and style are set in `FACETS` in `catalog.js`.
+
+## Bag page
+
+`cart.html` shows everything added from product pages and quick add. The bag is stored in the visitor's browser (`localStorage`, key `hb-cart`, lines of `{ key, size, qty }`) and the header count stays in sync on every page, even across tabs. "Add to bag" toasts include a "View bag" link.
+
+- Free-shipping meter: "You're USD X away from free US shipping" (free at $150, otherwise $9.95 standard)
+- Each line: image, name, fabric line, price (with sale), colour, size dropdown (merges with an existing line of the same size), quantity stepper (1–10), remove with Undo, line total
+- Order summary: subtotal, discount, shipping, "tax calculated at checkout", promo code, total, Klarna instalments, Checkout button, accepted payments
+- Promo codes live in `CODES` in `cart.js`; `WELCOME10` gives 10% off (matches the newsletter offer)
+- Empty state with links to New In and all abayas, and a Best Sellers slider
+
+There is no payment step yet: Checkout shows "Checkout is coming soon." It is ready to hand the lines to Shopify, Stripe Checkout or another platform.

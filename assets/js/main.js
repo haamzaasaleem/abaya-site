@@ -25,7 +25,7 @@
           <button class="wish" aria-label="Add ${p.name} to wishlist" aria-pressed="false"><svg><use href="#i-heart"/></svg></button>
           <div class="quick-add">
             <span class="quick-add__label">Quick Add</span>
-            <div class="sizes">${p.sizes.map((s) => `<button class="size" data-add="${p.name}" data-size="${s}">${s}</button>`).join('')}</div>
+            <div class="sizes">${p.sizes.map((s) => `<button class="size" data-add="${p.key}" data-size="${s}">${s}</button>`).join('')}</div>
           </div>
         </div>
         <p class="product__tag">${p.tag}</p>
@@ -91,30 +91,74 @@
     update();
   }
 
-  /* ---------- Toast & cart ---------- */
+  /* ---------- Toast ---------- */
   const toast = $('[data-toast]');
   let toastTimer;
-  function showToast(msg) {
+  function showToast(msg, link) {
     toast.textContent = msg;
+    if (link) {
+      const a = document.createElement('a');
+      a.href = link.href; a.textContent = link.text; a.className = 'toast__link';
+      toast.appendChild(a);
+    }
     toast.classList.add('is-visible');
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2600);
+    toastTimer = setTimeout(() => toast.classList.remove('is-visible'), link ? 4200 : 2600);
   }
 
-  // Bag count persists across pages for this visitor (no checkout yet)
+  /* ---------- Bag (kept in this visitor's browser; no checkout yet) ----------
+     Lines are { key, size, qty }; product details come from catalog.js. */
+  const BAG_KEY = 'hb-cart';
   const cartCount = $('[data-cart-count]');
-  const readCart = () => { try { return parseInt(localStorage.getItem('hb-bag') || '0', 10) || 0; } catch (e) { return 0; } };
-  let cart = readCart();
-  cartCount.textContent = cart;
-  function addToBag(name, size, qty = 1) {
-    cart += qty;
-    try { localStorage.setItem('hb-bag', String(cart)); } catch (e) { /* storage unavailable */ }
-    cartCount.textContent = cart;
+  const listeners = [];
+  const readBag = () => {
+    try {
+      const raw = JSON.parse(localStorage.getItem(BAG_KEY) || '[]');
+      return Array.isArray(raw) ? raw.filter((l) => window.HAYABELLA.CATALOG[l.key] && l.qty > 0) : [];
+    } catch (e) { return []; }
+  };
+  let bag = readBag();
+  const count = () => bag.reduce((n, l) => n + l.qty, 0);
+  function saveBag() {
+    try { localStorage.setItem(BAG_KEY, JSON.stringify(bag)); } catch (e) { /* storage unavailable */ }
+    cartCount.textContent = count();
+    listeners.forEach((fn) => fn(bag));
+  }
+  const clampQty = (n) => Math.min(10, Math.max(1, parseInt(n, 10) || 1));
+  const cart = {
+    lines: () => bag.map((l) => ({ ...l })),
+    count,
+    add(key, size, qty = 1) {
+      const line = bag.find((l) => l.key === key && l.size === size);
+      if (line) line.qty = clampQty(line.qty + qty); else bag.push({ key, size, qty: clampQty(qty) });
+      saveBag();
+    },
+    setQty(i, qty) { if (bag[i]) { bag[i].qty = clampQty(qty); saveBag(); } },
+    setSize(i, size) {
+      const line = bag[i];
+      if (!line || line.size === size) return;
+      const twin = bag.findIndex((l, j) => j !== i && l.key === line.key && l.size === size);
+      if (twin > -1) { bag[twin].qty = clampQty(bag[twin].qty + line.qty); bag.splice(i, 1); } else line.size = size;
+      saveBag();
+    },
+    remove(i) { bag.splice(i, 1); saveBag(); },
+    restore(i, line) { bag.splice(i, 0, line); saveBag(); },
+    onChange(fn) { listeners.push(fn); }
+  };
+  cartCount.textContent = count();
+  // keep the count in sync if the bag changes in another tab
+  window.addEventListener('storage', (e) => { if (e.key === BAG_KEY) { bag = readBag(); cartCount.textContent = count(); listeners.forEach((fn) => fn(bag)); } });
+
+  function addToBag(key, size, qty = 1) {
+    const p = window.HAYABELLA.CATALOG[key];
+    if (!p) return;
+    cart.add(key, size, qty);
     cartCount.classList.remove('bump');
     void cartCount.offsetWidth;
     cartCount.classList.add('bump');
-    showToast(`${qty > 1 ? qty + ' × ' : ''}${name} (${size}) added to bag`);
+    showToast(`${qty > 1 ? qty + ' × ' : ''}${p.name} (${size}) added to bag`, { href: 'cart.html', text: 'View bag' });
   }
+  window.HAYABELLA.cart = cart;
   window.HAYABELLA.addToBag = addToBag;
   window.HAYABELLA.showToast = showToast;
 

@@ -115,7 +115,7 @@
       sizesEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
-    H.addToBag(p.name, size, clampQty(qtyInput.value));
+    H.addToBag(key, size, clampQty(qtyInput.value));
   }
   $('[data-pdp-add]').addEventListener('click', add);
   $('[data-pdp-bar-add]').addEventListener('click', add);
