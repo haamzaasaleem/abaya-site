@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261014f">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261014g">
 </head>
 <body>
 
@@ -69,36 +69,36 @@
 
     <nav class="nav" aria-label="Primary">
       <ul class="nav__list container">
-        <li><a href="#" class="nav__link nav__link--accent">New In</a></li>
+        <li><a href="collection.html?edit=new" class="nav__link nav__link--accent">New In</a></li>
         <li class="has-mega">
-          <a href="#" class="nav__link">Abayas</a>
+          <a href="collection.html" class="nav__link">Abayas</a>
           <div class="mega">
             <div class="mega__inner container">
               <div class="mega__col">
                 <h4>Shop by Style</h4>
-                <a href="#">Everyday Abayas</a><a href="#">Open Front</a><a href="#">Closed Abayas</a><a href="#">Kimono Abayas</a><a href="#">Belted Abayas</a>
+                <a href="collection.html?fabric=Crepe,Linen">Everyday Abayas</a><a href="collection.html?cut=Open">Open Front</a><a href="collection.html?cut=Closed">Closed Abayas</a><a href="collection.html?cut=Kimono">Kimono Abayas</a><a href="collection.html?cut=Belted">Belted Abayas</a>
               </div>
               <div class="mega__col">
                 <h4>Shop by Fabric</h4>
-                <a href="#">Nida</a><a href="#">Crepe</a><a href="#">Linen</a><a href="#">Chiffon</a><a href="#">Satin</a>
+                <a href="collection.html?fabric=Nida">Nida</a><a href="collection.html?fabric=Crepe">Crepe</a><a href="collection.html?fabric=Linen">Linen</a><a href="collection.html?fabric=Chiffon">Chiffon</a><a href="collection.html?fabric=Satin">Satin</a>
               </div>
               <div class="mega__col">
                 <h4>Shop by Color</h4>
-                <a href="#">Classic Black</a><a href="#">Neutrals</a><a href="#">Earth Tones</a><a href="#">Pastels</a>
+                <a href="collection.html?color=Black">Classic Black</a><a href="collection.html?color=White,Neutral">Neutrals</a><a href="collection.html?color=Red,Grey,Green">Earth Tones</a><a href="collection.html?color=Pink,Blue,Purple">Pastels</a>
               </div>
-              <a href="#" class="mega__promo">
+              <a href="collection.html?style=Embroidered" class="mega__promo">
                 <img src="assets/images/photos/ivory-pearl-detail.jpg" alt="" loading="lazy">
                 <span>The Embroidered Edit</span>
               </a>
             </div>
           </div>
         </li>
-        <li><a href="#" class="nav__link">Kaftans</a></li>
+        <li><a href="collection.html?cut=Butterfly" class="nav__link">Kaftans</a></li>
         <li><a href="#" class="nav__link">Hijabs</a></li>
         <li><a href="#" class="nav__link">Modest Sets</a></li>
-        <li><a href="#" class="nav__link">Occasion Wear</a></li>
+        <li><a href="collection.html?edit=occasion" class="nav__link">Occasion Wear</a></li>
         <li><a href="#" class="nav__link">Accessories</a></li>
-        <li><a href="#" class="nav__link nav__link--sale">Sale</a></li>
+        <li><a href="collection.html?edit=sale" class="nav__link nav__link--sale">Sale</a></li>
       </ul>
     </nav>
   </header>
@@ -112,14 +112,14 @@
         <button class="icon-btn" aria-label="Close menu" data-close-drawer><svg><use href="#i-close"/></svg></button>
       </div>
       <ul class="drawer__list">
-        <li><a href="#">New In</a></li>
-        <li><a href="#">Abayas</a></li>
-        <li><a href="#">Kaftans</a></li>
+        <li><a href="collection.html?edit=new">New In</a></li>
+        <li><a href="collection.html">Abayas</a></li>
+        <li><a href="collection.html?cut=Butterfly">Kaftans</a></li>
         <li><a href="#">Hijabs</a></li>
         <li><a href="#">Modest Sets</a></li>
-        <li><a href="#">Occasion Wear</a></li>
+        <li><a href="collection.html?edit=occasion">Occasion Wear</a></li>
         <li><a href="#">Accessories</a></li>
-        <li><a href="#" class="nav__link--sale">Sale</a></li>
+        <li><a href="collection.html?edit=sale" class="nav__link--sale">Sale</a></li>
       </ul>
       <div class="drawer__foot">
         <a href="#"><svg><use href="#i-user"/></svg> Sign in / Register</a>
@@ -139,14 +139,14 @@
       </form>
       <div class="search__popular">
         <span>Popular:</span>
-        <a href="#">Black abaya</a><a href="#">Open front</a><a href="#">Eid collection</a><a href="#">Linen</a><a href="#">Jersey hijab</a>
+        <a href="#">Black abaya</a><a href="#">Open front</a><a href="#">Eid collection</a><a href="collection.html?fabric=Linen">Linen</a><a href="#">Jersey hijab</a>
       </div>
     </div>
   </div>
 
   <main class="pdp-page">
     <nav class="breadcrumb container" aria-label="Breadcrumb">
-      <a href="index.html">Home</a><span>/</span><a href="#">Abayas</a><span>/</span><span aria-current="page" data-pdp-crumb></span>
+      <a href="index.html">Home</a><span>/</span><a href="collection.html">Abayas</a><span>/</span><span aria-current="page" data-pdp-crumb></span>
     </nav>
 
     <!-- Product: filled in by product.js from catalog.js -->
@@ -295,7 +295,7 @@
       </div>
       <details class="footer__col" open>
         <summary>Shop</summary>
-        <a href="#">New In</a><a href="#">Abayas</a><a href="#">Kaftans</a><a href="#">Hijabs</a><a href="#">Gift Cards</a><a href="#">Sale</a>
+        <a href="collection.html?edit=new">New In</a><a href="collection.html">Abayas</a><a href="collection.html?cut=Butterfly">Kaftans</a><a href="#">Hijabs</a><a href="#">Gift Cards</a><a href="collection.html?edit=sale">Sale</a>
       </details>
       <details class="footer__col" open>
         <summary>Customer Care</summary>
@@ -317,8 +317,8 @@
 
   <div class="toast" role="status" aria-live="polite" data-toast></div>
 
-  <script src="assets/js/catalog.js?v=20261014f"></script>
-  <script src="assets/js/product.js?v=20261014f"></script>
-  <script src="assets/js/main.js?v=20261014f"></script>
+  <script src="assets/js/catalog.js?v=20261014g"></script>
+  <script src="assets/js/product.js?v=20261014g"></script>
+  <script src="assets/js/main.js?v=20261014g"></script>
 </body>
 </html>

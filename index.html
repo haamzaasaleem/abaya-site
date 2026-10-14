@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261014f">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261014g">
 </head>
 <body>
 
@@ -52,7 +52,7 @@
         <button class="icon-btn" aria-label="Search" data-open-search><svg><use href="#i-search"/></svg></button>
       </div>
 
-      <a href="#" class="logo" aria-label="Hayabella home">
+      <a href="index.html" class="logo" aria-label="Hayabella home">
         <img src="assets/images/brand/hayabella-wordmark.svg" alt="Hayabella" class="logo__img" width="182" height="40">
         <span class="logo__sub">Modesty &ndash; The New Bold</span>
       </a>
@@ -66,36 +66,36 @@
 
     <nav class="nav" aria-label="Primary">
       <ul class="nav__list container">
-        <li><a href="#" class="nav__link nav__link--accent">New In</a></li>
+        <li><a href="collection.html?edit=new" class="nav__link nav__link--accent">New In</a></li>
         <li class="has-mega">
-          <a href="#" class="nav__link">Abayas</a>
+          <a href="collection.html" class="nav__link">Abayas</a>
           <div class="mega">
             <div class="mega__inner container">
               <div class="mega__col">
                 <h4>Shop by Style</h4>
-                <a href="#">Everyday Abayas</a><a href="#">Open Front</a><a href="#">Closed Abayas</a><a href="#">Kimono Abayas</a><a href="#">Belted Abayas</a>
+                <a href="collection.html?fabric=Crepe,Linen">Everyday Abayas</a><a href="collection.html?cut=Open">Open Front</a><a href="collection.html?cut=Closed">Closed Abayas</a><a href="collection.html?cut=Kimono">Kimono Abayas</a><a href="collection.html?cut=Belted">Belted Abayas</a>
               </div>
               <div class="mega__col">
                 <h4>Shop by Fabric</h4>
-                <a href="#">Nida</a><a href="#">Crepe</a><a href="#">Linen</a><a href="#">Chiffon</a><a href="#">Satin</a>
+                <a href="collection.html?fabric=Nida">Nida</a><a href="collection.html?fabric=Crepe">Crepe</a><a href="collection.html?fabric=Linen">Linen</a><a href="collection.html?fabric=Chiffon">Chiffon</a><a href="collection.html?fabric=Satin">Satin</a>
               </div>
               <div class="mega__col">
                 <h4>Shop by Color</h4>
-                <a href="#">Classic Black</a><a href="#">Neutrals</a><a href="#">Earth Tones</a><a href="#">Pastels</a>
+                <a href="collection.html?color=Black">Classic Black</a><a href="collection.html?color=White,Neutral">Neutrals</a><a href="collection.html?color=Red,Grey,Green">Earth Tones</a><a href="collection.html?color=Pink,Blue,Purple">Pastels</a>
               </div>
-              <a href="#" class="mega__promo">
+              <a href="collection.html?style=Embroidered" class="mega__promo">
                 <img src="assets/images/photos/ivory-pearl-detail.jpg" alt="" loading="lazy">
                 <span>The Embroidered Edit</span>
               </a>
             </div>
           </div>
         </li>
-        <li><a href="#" class="nav__link">Kaftans</a></li>
+        <li><a href="collection.html?cut=Butterfly" class="nav__link">Kaftans</a></li>
         <li><a href="#" class="nav__link">Hijabs</a></li>
         <li><a href="#" class="nav__link">Modest Sets</a></li>
-        <li><a href="#" class="nav__link">Occasion Wear</a></li>
+        <li><a href="collection.html?edit=occasion" class="nav__link">Occasion Wear</a></li>
         <li><a href="#" class="nav__link">Accessories</a></li>
-        <li><a href="#" class="nav__link nav__link--sale">Sale</a></li>
+        <li><a href="collection.html?edit=sale" class="nav__link nav__link--sale">Sale</a></li>
       </ul>
     </nav>
   </header>
@@ -109,14 +109,14 @@
         <button class="icon-btn" aria-label="Close menu" data-close-drawer><svg><use href="#i-close"/></svg></button>
       </div>
       <ul class="drawer__list">
-        <li><a href="#">New In</a></li>
-        <li><a href="#">Abayas</a></li>
-        <li><a href="#">Kaftans</a></li>
+        <li><a href="collection.html?edit=new">New In</a></li>
+        <li><a href="collection.html">Abayas</a></li>
+        <li><a href="collection.html?cut=Butterfly">Kaftans</a></li>
         <li><a href="#">Hijabs</a></li>
         <li><a href="#">Modest Sets</a></li>
-        <li><a href="#">Occasion Wear</a></li>
+        <li><a href="collection.html?edit=occasion">Occasion Wear</a></li>
         <li><a href="#">Accessories</a></li>
-        <li><a href="#" class="nav__link--sale">Sale</a></li>
+        <li><a href="collection.html?edit=sale" class="nav__link--sale">Sale</a></li>
       </ul>
       <div class="drawer__foot">
         <a href="#"><svg><use href="#i-user"/></svg> Sign in / Register</a>
@@ -136,7 +136,7 @@
       </form>
       <div class="search__popular">
         <span>Popular:</span>
-        <a href="#">Black abaya</a><a href="#">Open front</a><a href="#">Eid collection</a><a href="#">Linen</a><a href="#">Jersey hijab</a>
+        <a href="#">Black abaya</a><a href="#">Open front</a><a href="#">Eid collection</a><a href="collection.html?fabric=Linen">Linen</a><a href="#">Jersey hijab</a>
       </div>
     </div>
   </div>
@@ -156,8 +156,8 @@
             <h1 class="hero__title">The Noir Edit</h1>
             <p class="hero__text">Fluid black chiffon, hand-set crystals. Classic silhouettes made for evening.</p>
             <div class="hero__ctas">
-              <a href="#" class="btn btn--dark">Shop Now</a>
-              <a href="#" class="btn btn--ghost-dark">Explore Lookbook</a>
+              <a href="collection.html?color=Black" class="btn btn--dark">Shop Now</a>
+              <a href="collection.html" class="btn btn--ghost-dark">Explore Lookbook</a>
             </div>
           </div>
         </article>
@@ -172,7 +172,7 @@
             <h2 class="hero__title">Berry Luxe</h2>
             <p class="hero__text">Sculpted petal cuffs and flowing layers in deep burgundy for special occasions.</p>
             <div class="hero__ctas">
-              <a href="#" class="btn btn--light">Shop Berry Luxe</a>
+              <a href="product.html?p=burgundy" class="btn btn--light">Shop Berry Luxe</a>
             </div>
           </div>
         </article>
@@ -187,7 +187,7 @@
             <h2 class="hero__title">The Pearl Collection</h2>
             <p class="hero__text">Soft ivory crepe finished with blush embroidery and crystal detailing.</p>
             <div class="hero__ctas">
-              <a href="#" class="btn btn--dark">Shop the Collection</a>
+              <a href="product.html?p=ivory" class="btn btn--dark">Shop the Collection</a>
             </div>
           </div>
         </article>
@@ -216,12 +216,12 @@
           <h2 class="section__title">Shop by Category</h2>
         </header>
         <div class="cats" data-scroll-row>
-          <a href="#" class="cat"><div class="cat__img"><img src="assets/images/photos/mauve-ruffle.jpg" alt="" loading="lazy"></div><span class="cat__name">Everyday Abayas</span></a>
-          <a href="#" class="cat"><div class="cat__img"><img src="assets/images/photos/navy-open-full.jpg" alt="" loading="lazy"></div><span class="cat__name">Open Abayas</span></a>
-          <a href="#" class="cat"><div class="cat__img"><img src="assets/images/photos/ivory-pearl-detail.jpg" alt="" loading="lazy"></div><span class="cat__name">Embroidered</span></a>
-          <a href="#" class="cat"><div class="cat__img"><img src="assets/images/photos/noir-crystal-back.jpg" alt="" loading="lazy"></div><span class="cat__name">Butterfly &amp; Kaftan</span></a>
-          <a href="#" class="cat"><div class="cat__img"><img src="assets/images/photos/navy-open-hooded.jpg" alt="" loading="lazy"></div><span class="cat__name">Hijabs &amp; Shawls</span></a>
-          <a href="#" class="cat"><div class="cat__img"><img src="assets/images/photos/burgundy-petal-full.jpg" alt="" loading="lazy"></div><span class="cat__name">Occasion Wear</span></a>
+          <a href="collection.html?fabric=Crepe,Linen" class="cat"><div class="cat__img"><img src="assets/images/photos/mauve-ruffle.jpg" alt="" loading="lazy"></div><span class="cat__name">Everyday Abayas</span></a>
+          <a href="collection.html?cut=Open" class="cat"><div class="cat__img"><img src="assets/images/photos/navy-open-full.jpg" alt="" loading="lazy"></div><span class="cat__name">Open Abayas</span></a>
+          <a href="collection.html?style=Embroidered" class="cat"><div class="cat__img"><img src="assets/images/photos/ivory-pearl-detail.jpg" alt="" loading="lazy"></div><span class="cat__name">Embroidered</span></a>
+          <a href="collection.html?cut=Butterfly" class="cat"><div class="cat__img"><img src="assets/images/photos/noir-crystal-back.jpg" alt="" loading="lazy"></div><span class="cat__name">Butterfly &amp; Kaftan</span></a>
+          <a href="collection.html" class="cat"><div class="cat__img"><img src="assets/images/photos/navy-open-hooded.jpg" alt="" loading="lazy"></div><span class="cat__name">Hijabs &amp; Shawls</span></a>
+          <a href="collection.html?edit=occasion" class="cat"><div class="cat__img"><img src="assets/images/photos/burgundy-petal-full.jpg" alt="" loading="lazy"></div><span class="cat__name">Occasion Wear</span></a>
         </div>
       </div>
     </section>
@@ -239,13 +239,13 @@
           <button class="rail__btn rail__btn--next" aria-label="Next products" data-rail-next><svg><use href="#i-right"/></svg></button>
         </div>
         <div class="rail__dots" data-rail-dots></div>
-        <div class="center"><a href="#" class="link-underline">View All</a></div>
+        <div class="center"><a href="collection.html?edit=new" class="link-underline">View All</a></div>
       </div>
     </section>
 
     <!-- Split banners -->
     <section class="split">
-      <a href="#" class="split__item">
+      <a href="collection.html?color=White" class="split__item">
         <img src="assets/images/photos/ivory-pearl-pose.jpg" alt="Model in the ivory Pearl abaya adjusting a blush hijab" loading="lazy">
         <div class="split__content split__content--light">
           <p class="eyebrow">Limited Edition</p>
@@ -253,7 +253,7 @@
           <span class="link-underline">Discover</span>
         </div>
       </a>
-      <a href="#" class="split__item">
+      <a href="collection.html?color=Blue" class="split__item">
         <img src="assets/images/photos/navy-open-hooded.jpg" alt="Model in a navy open abaya with an embellished placket and grey shawl" loading="lazy">
         <div class="split__content split__content--light">
           <p class="eyebrow">New Arrival</p>
@@ -276,7 +276,7 @@
           <button class="rail__btn rail__btn--next" aria-label="Next products" data-rail-next><svg><use href="#i-right"/></svg></button>
         </div>
         <div class="rail__dots" data-rail-dots></div>
-        <div class="center"><a href="#" class="link-underline">View All</a></div>
+        <div class="center"><a href="collection.html?edit=best" class="link-underline">View All</a></div>
       </div>
     </section>
 
@@ -287,7 +287,7 @@
         <p class="eyebrow">Autumn / Winter 2026</p>
         <h2>Heritage, Reimagined</h2>
         <p>Timeless craftsmanship meets modern tailoring. Designed with intention, made to be treasured.</p>
-        <a href="#" class="btn btn--light">Shop the Collection</a>
+        <a href="collection.html" class="btn btn--light">Shop the Collection</a>
       </div>
     </section>
 
@@ -299,9 +299,9 @@
           <h2 class="section__title">Dressed for Every Occasion</h2>
         </header>
         <div class="occasions">
-          <a href="#" class="occasion"><img src="assets/images/photos/ivory-pearl-front.jpg" alt="" loading="lazy"><div class="occasion__label"><h3>Eid &amp; Festive</h3><span class="link-underline">Shop now</span></div></a>
-          <a href="#" class="occasion"><img src="assets/images/photos/burgundy-petal-close.jpg" alt="" loading="lazy"><div class="occasion__label"><h3>Wedding Guest</h3><span class="link-underline">Shop now</span></div></a>
-          <a href="#" class="occasion"><img src="assets/images/photos/mauve-ruffle.jpg" alt="" loading="lazy"><div class="occasion__label"><h3>Everyday Elegance</h3><span class="link-underline">Shop now</span></div></a>
+          <a href="collection.html?edit=occasion" class="occasion"><img src="assets/images/photos/ivory-pearl-front.jpg" alt="" loading="lazy"><div class="occasion__label"><h3>Eid &amp; Festive</h3><span class="link-underline">Shop now</span></div></a>
+          <a href="collection.html?style=Crystal" class="occasion"><img src="assets/images/photos/burgundy-petal-close.jpg" alt="" loading="lazy"><div class="occasion__label"><h3>Wedding Guest</h3><span class="link-underline">Shop now</span></div></a>
+          <a href="collection.html?fabric=Crepe,Linen" class="occasion"><img src="assets/images/photos/mauve-ruffle.jpg" alt="" loading="lazy"><div class="occasion__label"><h3>Everyday Elegance</h3><span class="link-underline">Shop now</span></div></a>
         </div>
       </div>
     </section>
@@ -319,7 +319,7 @@
           <button class="rail__btn rail__btn--next" aria-label="Next products" data-rail-next><svg><use href="#i-right"/></svg></button>
         </div>
         <div class="rail__dots" data-rail-dots></div>
-        <div class="center"><a href="#" class="link-underline">View All</a></div>
+        <div class="center"><a href="collection.html?edit=occasion" class="link-underline">View All</a></div>
       </div>
     </section>
 
@@ -331,7 +331,7 @@
           <p class="eyebrow">Hayabella Films</p>
           <h2 class="film__title">Made to Move</h2>
           <p>Satin, chiffon and velvet that catch the light with every step. See the collection as it's meant to be worn.</p>
-          <a href="#" class="btn btn--light">Shop the Collection</a>
+          <a href="collection.html" class="btn btn--light">Shop the Collection</a>
         </div>
         <div class="film__reels" data-film-reels>
           <figure class="reel">
@@ -447,7 +447,7 @@
       </div>
       <details class="footer__col" open>
         <summary>Shop</summary>
-        <a href="#">New In</a><a href="#">Abayas</a><a href="#">Kaftans</a><a href="#">Hijabs</a><a href="#">Gift Cards</a><a href="#">Sale</a>
+        <a href="collection.html?edit=new">New In</a><a href="collection.html">Abayas</a><a href="collection.html?cut=Butterfly">Kaftans</a><a href="#">Hijabs</a><a href="#">Gift Cards</a><a href="collection.html?edit=sale">Sale</a>
       </details>
       <details class="footer__col" open>
         <summary>Customer Care</summary>
@@ -469,7 +469,7 @@
 
   <div class="toast" role="status" aria-live="polite" data-toast></div>
 
-  <script src="assets/js/catalog.js?v=20261014f"></script>
-  <script src="assets/js/main.js?v=20261014f"></script>
+  <script src="assets/js/catalog.js?v=20261014g"></script>
+  <script src="assets/js/main.js?v=20261014g"></script>
 </body>
 </html>

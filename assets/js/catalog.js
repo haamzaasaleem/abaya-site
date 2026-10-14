@@ -54,11 +54,23 @@
       desc: 'Classic black chiffon with a rhinestone placket and a geometric crystal panel across the back.' }
   };
 
+  // Filter facets for the collection page: colour family, embellishment, cut
+  const FACETS = {
+    white: ['White', 'Crystal', 'Butterfly'], plum: ['Purple', 'Crystal', 'Belted'], champagne: ['Neutral', 'Crystal', 'Butterfly'],
+    skyblue: ['Blue', 'Crystal', 'Butterfly'], sage: ['Green', 'Embroidered', 'Open'], blush: ['Pink', 'Printed', 'Belted'],
+    stripe: ['Blue', 'Printed', 'Kimono'], navy: ['Blue', 'Embellished', 'Open'], blackrose: ['Black', 'Printed', 'Kimono'],
+    rose: ['Pink', 'Crystal', 'Closed'], ivory: ['White', 'Embroidered', 'Closed'], mauve: ['Purple', 'Lace & Ruffle', 'Closed'],
+    charcoal: ['Grey', 'Embroidered', 'Closed'], beige: ['Neutral', 'Embellished', 'Belted'], burgundy: ['Red', 'Lace & Ruffle', 'Closed'],
+    violet: ['Purple', 'Crystal', 'Belted'], lilac: ['Purple', 'Lace & Ruffle', 'Butterfly'], noir: ['Black', 'Crystal', 'Open']
+  };
+  const FAMILY_HEX = { White: '#F7F5F0', Neutral: '#D8C8BC', Pink: '#E9B9B4', Red: '#6B1F2C', Purple: '#6B4A86', Blue: '#7FA6C2', Green: '#9DB0A4', Grey: '#8A8A8F', Black: '#141414' };
+
   Object.keys(CATALOG).forEach((key) => {
     const p = CATALOG[key];
     p.key = key;
     p.fabric = p.tag.split('|')[0].trim();
     p.care = CARE[p.fabric] || CARE.Crepe;
+    [p.family, p.style, p.cut] = FACETS[key];
   });
 
   // One list per product slider (matched by data-products="<key>")
@@ -85,7 +97,7 @@
   }
 
   window.HAYABELLA = {
-    CATALOG, PRODUCTS, listing,
+    CATALOG, PRODUCTS, listing, FAMILY_HEX,
     IMG: 'assets/images/products/',
     LIFE: 'assets/images/photos/',
     VIDEO: 'assets/videos/',

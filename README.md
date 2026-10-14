@@ -18,9 +18,11 @@ python3 -m http.server 8000   # then visit http://localhost:8000
 
 ```
 index.html              Homepage markup (all sections)
+collection.html         Collection page with filters (collection.html?fabric=Satin&sort=price-asc)
 product.html            Single product page (product.html?p=<key>, e.g. ?p=white)
 assets/css/styles.css   Design tokens (colors, fonts) at the top, then styles per section
 assets/js/catalog.js    Product catalog shared by both pages (names, prices, sizes, images, descriptions)
+assets/js/collection.js Collection page: filters, faceted counts, sorting, URL state
 assets/js/product.js    Product page: gallery, size/quantity, add to bag, size guide, related products
 assets/js/main.js       Shared: hero slider, announcement bar, mega menu, mobile drawer,
                         search overlay, product grid + tabs, wishlist/quick-add, newsletter
@@ -70,3 +72,22 @@ Each product slider has a centered title and intro line, then the products: 4 pe
 ## Product page
 
 `product.html?p=<key>` renders any product from `catalog.js`: breadcrumb, gallery (studio images, the product video if it has one, and lifestyle photos; thumbnails on desktop, swipe + dots on mobile), price with sale/badge, Klarna instalment line, colour, size picker (required before adding), quantity, Add to Bag, wishlist, Description / Fabric & Care / Size & Fit / Shipping & Returns accordions, a size guide pop-up, "You May Also Like" (same fabric first) and a sticky Add to Bag bar on mobile. The bag count is kept in the visitor's browser across pages; there is no checkout yet.
+
+## Collection page
+
+`collection.html` lists every abaya with a filter sidebar (a slide-in panel on mobile): Collection (New In, Best Sellers, Occasion Edit, On Sale), Colour, Fabric, Embellishment, Style (open, closed, butterfly, kimono, belted), Size and Price. Options in one group combine with OR, groups combine with AND, and each option shows how many products it would return. Sort by featured, newest, price or name. Active filters appear as removable chips, and the page title follows the main filter (e.g. "Satin Abayas", "Sale").
+
+Filters live in the URL, so any view can be linked or shared. Values are comma-separated:
+
+| Param | Values |
+|---|---|
+| `edit` | `new`, `best`, `occasion`, `sale` |
+| `color` | `White`, `Neutral`, `Pink`, `Red`, `Purple`, `Blue`, `Green`, `Grey`, `Black` |
+| `fabric` | `Satin`, `Crepe`, `Chiffon`, `Linen`, `Velvet`, `Nida` |
+| `style` | `Crystal`, `Embroidered`, `Embellished`, `Printed`, `Lace & Ruffle` |
+| `cut` | `Open`, `Closed`, `Butterfly`, `Kimono`, `Belted` |
+| `size` | `XS`, `S`, `M`, `L`, `XL` |
+| `price` | `under-150`, `150-200`, `200-plus` |
+| `sort` | `featured`, `new`, `price-asc`, `price-desc`, `name` |
+
+The header menu, mega menu, footer, category tiles, hero buttons and "View All" links all point at these views. A product's colour family, embellishment and style are set in `FACETS` in `catalog.js`.

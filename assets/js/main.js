@@ -35,6 +35,8 @@
       </article>`;
   }
 
+  window.HAYABELLA.productCard = productCard;
+
   /* ---------- Product sliders ---------- */
   function setupRail(rail) {
     const track = $('[data-products]', rail);
