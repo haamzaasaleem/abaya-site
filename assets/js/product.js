@@ -10,6 +10,23 @@
 
   const requested = new URLSearchParams(location.search).get('p');
   const key = CATALOG[requested] ? requested : Object.keys(CATALOG)[0];
+
+  // Unknown product, or no products yet: show a friendly message and stop
+  if (!key) {
+    const title = 'This piece is no longer available';
+    const text = 'Our new collection is coming soon. Sign up to hear when it arrives.';
+    $('[data-pdp]').innerHTML = `<div class="soon">
+      <img src="assets/images/brand/hb-monogram.svg" alt="" class="soon__mark">
+      <p class="soon__title">${title}</p>
+      <p>${text}</p>
+      <div class="soon__ctas"><a href="index.html#newsletter" class="btn btn--dark">Get notified</a><a href="index.html" class="btn btn--outline">Back to home</a></div>
+    </div>`;
+    $('[data-pdp]').classList.add('pdp--empty');
+    $('[data-pdp-crumb]').textContent = 'Not available';
+    const bar = $('[data-pdp-bar]'); if (bar) bar.remove();
+    document.title = 'Not available | Hayabella – USA';
+    return;
+  }
   const base = CATALOG[key];
   const p = { ...base, ...H.listing(key) };
   const price = p.sale || p.price;

@@ -21,6 +21,20 @@
   });
   const newOrder = (PRODUCTS.new || []).map((p) => p.key);
 
+  // No products in the catalog yet: show a "coming soon" message instead of filters and an empty grid
+  if (!products.length) {
+    const title = 'Our new collection is coming soon';
+    const text = 'Hayabella abayas will be available here shortly. Sign up to be the first to know when they arrive.';
+    $('[data-plp]').innerHTML = `<div class="soon">
+      <img src="assets/images/brand/hb-monogram.svg" alt="" class="soon__mark">
+      <p class="soon__title">${title}</p>
+      <p>${text}</p>
+      <div class="soon__ctas"><a href="index.html#newsletter" class="btn btn--dark">Get notified</a><a href="index.html" class="btn btn--outline">Back to home</a></div>
+    </div>`;
+    $('[data-plp]').classList.add('plp--empty');
+    return;
+  }
+
   /* ---------- Filter groups ---------- */
   const uniq = (fn) => [...new Set(products.flatMap(fn))];
   const GROUPS = [

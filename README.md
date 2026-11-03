@@ -34,25 +34,26 @@ assets/images/products/ Product card images: model cut out onto a plain #EEEAE5 
 assets/videos/          Collection videos (WebM + MP4) with poster frames
 ```
 
+> **Catalog is currently empty.** There are no products on the site: the homepage product sliders hide themselves, the collection page shows a "coming soon" message, product links show "no longer available", and the bag empties. Add products to `CATALOG` in `assets/js/catalog.js` (there is a commented example) and everything appears again.
+
 ## Homepage sections
 
 1. Rotating announcement bar (free US shipping, returns…)
 2. Sticky header with centered logo, mega menu (desktop) and slide-out drawer (mobile)
 3. Hero slider with 3 banners: autoplay, progress dots, arrows, swipe, pause on hover
 4. Trust strip: free US shipping, 30-day returns, ships from the USA, secure checkout
-5. Shop by Category (horizontal scroll on mobile)
-6. **Product slider: New Arrivals**
-7. Two split feature banners
-8. **Product slider: Best Sellers**
-9. Full-width campaign banner
-10. Shop by Occasion
-11. **Product slider: The Occasion Edit**
-12. "Made to Move" film banner: five vertical videos in a staggered row (swipeable on mobile) over a blurred backdrop, autoplaying muted when scrolled into view, with pause/play buttons
-13. Brand story
-14. Instagram / lookbook grid
-15. Newsletter sign-up (10% off)
-16. Peach benefits bar: shipping, crafted with care, customer care
-17. Footer (accordion on mobile)
+5. **Product slider: New Arrivals**
+6. Two split feature banners
+7. **Product slider: Best Sellers**
+8. Full-width campaign banner
+9. Shop by Occasion
+10. **Product slider: The Occasion Edit**
+11. "Made to Move" film banner: five vertical videos in a staggered row (swipeable on mobile) over a blurred backdrop, autoplaying muted when scrolled into view, with pause/play buttons
+12. Brand story
+13. Instagram / lookbook grid
+14. Newsletter sign-up (10% off)
+15. Peach benefits bar: shipping, crafted with care, customer care
+16. Footer (accordion on mobile)
 
 Each product slider has a centered title and intro line, then the products: 4 per view on desktop, 3 on tablet, 2 on mobile, with side arrows (desktop), swipe, dot pagination and a "View All" link. Product cards show a fabric line, name, USD price and a "New" / "% Off" pill, plus hover image swap, quick add and wishlist.
 

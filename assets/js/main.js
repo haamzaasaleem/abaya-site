@@ -44,6 +44,8 @@
     const next = $('[data-rail-next]', rail);
     const dotsWrap = $('[data-rail-dots]', rail);
     track.innerHTML = (PRODUCTS[track.dataset.products] || []).map(productCard).join('');
+    // no products in this list yet: hide the whole slider section
+    if (!track.children.length) { rail.hidden = true; return; }
     const count = track.children.length;
     let dots = [];
 
@@ -349,7 +351,7 @@
       io ? io.observe(el) : el.classList.add('is-visible');
     });
   }
-  $$('.section__head, .cat, .occasion, .story__inner, .newsletter__inner').forEach((el) => el.classList.add('reveal'));
+  $$('.section__head, .occasion, .story__inner, .newsletter__inner').forEach((el) => el.classList.add('reveal'));
 
   /* ---------- Footer accordions closed on mobile ---------- */
   if (window.matchMedia('(max-width: 767px)').matches) {
