@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261103a">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261105a">
 </head>
 <body>
 
@@ -143,54 +143,30 @@
 
   <main>
 
-    <!-- Hero slider -->
+    <!-- Hero slider: one banner image per slide.
+         Desktop banner 1920x800, mobile banner 1080x1350 (assets/images/banners/).
+         To change a slide, replace its two images (or add another <a class="hero__slide"> block). -->
     <section class="hero" aria-roledescription="carousel" aria-label="Featured collections" data-slider>
+      <h1 class="sr-only">Hayabella, luxury abayas and modest wear</h1>
       <div class="hero__slides">
-        <article class="hero__slide is-active" style="--slide-bg:#ECE9E5" aria-roledescription="slide" aria-label="1 of 3">
-          <div class="hero__media">
-            <img src="assets/images/photos/noir-crystal-front.jpg" alt="Model wearing the black Noir Crystal abaya with a rhinestone placket">
-            <img src="assets/images/photos/noir-crystal-back.jpg" alt="Back view of the Noir Crystal abaya with a geometric crystal panel" class="hero__img-2">
-          </div>
-          <div class="hero__content">
-            <p class="eyebrow">New Season</p>
-            <h1 class="hero__title">The Noir Edit</h1>
-            <p class="hero__text">Fluid black chiffon, hand-set crystals. Classic silhouettes made for evening.</p>
-            <div class="hero__ctas">
-              <a href="collection.html?color=Black" class="btn btn--dark">Shop Now</a>
-              <a href="collection.html" class="btn btn--ghost-dark">Explore Lookbook</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="hero__slide hero__slide--light" style="--slide-bg:#4A1C24" aria-roledescription="slide" aria-label="2 of 3">
-          <div class="hero__media">
-            <img src="assets/images/photos/burgundy-petal-full.jpg" alt="Model wearing the burgundy Petal Sleeve abaya with matching shawl" loading="lazy">
-            <img src="assets/images/photos/burgundy-petal-close.jpg" alt="Close-up of the burgundy abaya's pleated petal cuffs" class="hero__img-2" loading="lazy">
-          </div>
-          <div class="hero__content">
-            <p class="eyebrow">Festive Collection</p>
-            <h2 class="hero__title">Berry Luxe</h2>
-            <p class="hero__text">Sculpted petal cuffs and flowing layers in deep burgundy for special occasions.</p>
-            <div class="hero__ctas">
-              <a href="collection.html" class="btn btn--light">Shop Berry Luxe</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="hero__slide" style="--slide-bg:#F1ECE4" aria-roledescription="slide" aria-label="3 of 3">
-          <div class="hero__media">
-            <img src="assets/images/photos/ivory-pearl-front.jpg" alt="Model wearing the ivory Pearl abaya with a blush chiffon hijab" loading="lazy">
-            <img src="assets/images/photos/ivory-pearl-detail.jpg" alt="Detail of blush embroidery and crystal trim on the ivory abaya" class="hero__img-2" loading="lazy">
-          </div>
-          <div class="hero__content">
-            <p class="eyebrow">Limited Edition</p>
-            <h2 class="hero__title">The Pearl Collection</h2>
-            <p class="hero__text">Soft ivory crepe finished with blush embroidery and crystal detailing.</p>
-            <div class="hero__ctas">
-              <a href="collection.html" class="btn btn--dark">Shop the Collection</a>
-            </div>
-          </div>
-        </article>
+        <a href="collection.html?color=Black" class="hero__slide is-active" aria-roledescription="slide" aria-label="1 of 3: The Noir Edit: fluid black chiffon, hand-set crystals. Shop now">
+          <picture>
+            <source media="(max-width: 767px)" srcset="assets/images/banners/noir-edit-mobile.jpg" width="1080" height="1350">
+            <img src="assets/images/banners/noir-edit-desktop.jpg" alt="The Noir Edit: fluid black chiffon, hand-set crystals. Shop now" width="1920" height="800">
+          </picture>
+        </a>
+        <a href="collection.html" class="hero__slide" aria-roledescription="slide" aria-label="2 of 3: Berry Luxe: sculpted petal cuffs in deep burgundy. Shop Berry Luxe">
+          <picture>
+            <source media="(max-width: 767px)" srcset="assets/images/banners/berry-luxe-mobile.jpg" width="1080" height="1350">
+            <img src="assets/images/banners/berry-luxe-desktop.jpg" alt="Berry Luxe: sculpted petal cuffs in deep burgundy. Shop Berry Luxe" width="1920" height="800" loading="lazy">
+          </picture>
+        </a>
+        <a href="collection.html" class="hero__slide" aria-roledescription="slide" aria-label="3 of 3: The Pearl Collection: ivory crepe with blush embroidery. Shop the collection">
+          <picture>
+            <source media="(max-width: 767px)" srcset="assets/images/banners/pearl-collection-mobile.jpg" width="1080" height="1350">
+            <img src="assets/images/banners/pearl-collection-desktop.jpg" alt="The Pearl Collection: ivory crepe with blush embroidery. Shop the collection" width="1920" height="800" loading="lazy">
+          </picture>
+        </a>
       </div>
 
       <button class="hero__arrow hero__arrow--prev" aria-label="Previous slide" data-prev><svg><use href="#i-left"/></svg></button>
@@ -451,7 +427,7 @@
 
   <div class="toast" role="status" aria-live="polite" data-toast></div>
 
-  <script src="assets/js/catalog.js?v=20261103a"></script>
-  <script src="assets/js/main.js?v=20261103a"></script>
+  <script src="assets/js/catalog.js?v=20261105a"></script>
+  <script src="assets/js/main.js?v=20261105a"></script>
 </body>
 </html>

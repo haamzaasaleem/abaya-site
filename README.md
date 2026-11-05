@@ -28,6 +28,7 @@ assets/js/cart.js       Bag page: line items, quantities, sizes, promo code, tot
 assets/js/product.js    Product page: gallery, size/quantity, add to bag, size guide, related products
 assets/js/main.js       Shared: hero slider, announcement bar, mega menu, mobile drawer,
                         search overlay, product grid + tabs, wishlist/quick-add, newsletter
+assets/images/banners/  Hero slider banners (desktop + mobile per slide)
 assets/images/photos/   Lifestyle & campaign photography (web-optimized JPGs)
 assets/images/brand/    Official logos (SVG): wordmark, HB monogram, full logo, cream footer version
 assets/images/products/ Product card images: model cut out onto a plain #EEEAE5 studio background
@@ -40,7 +41,7 @@ assets/videos/          Collection videos (WebM + MP4) with poster frames
 
 1. Rotating announcement bar (free US shipping, returns…)
 2. Sticky header with centered logo, mega menu (desktop) and slide-out drawer (mobile)
-3. Hero slider with 3 banners: autoplay, progress dots, arrows, swipe, pause on hover
+3. Hero slider of banner images (desktop + mobile version per slide): autoplay, progress dots, arrows, swipe, pause on hover; each banner links to its collection
 4. Trust strip: free US shipping, 30-day returns, ships from the USA, secure checkout
 5. **Product slider: New Arrivals**
 6. Two split feature banners
@@ -106,3 +107,16 @@ The header menu, mega menu, footer, category tiles, hero buttons and "View All" 
 - Empty state with links to New In and all abayas, and a Best Sellers slider
 
 There is no payment step yet: Checkout shows "Checkout is coming soon." It is ready to hand the lines to Shopify, Stripe Checkout or another platform.
+
+## Hero banners
+
+The homepage slider shows designed banner images, like most fashion stores: any text, buttons or offers are part of the image itself. Each slide needs two JPGs in `assets/images/banners/`:
+
+| Version | Size | Shown on |
+|---|---|---|
+| `<name>-desktop.jpg` | 1920 × 800 px | tablets and desktops (wider than 767 px) |
+| `<name>-mobile.jpg` | 1080 × 1350 px | phones |
+
+Keep important text and faces away from the very bottom centre (the slide dots sit there) and inside the middle 1440 px of the desktop version, since very wide or short screens trim the edges slightly. Export as JPG at about 80–85% quality, ideally under 300 KB each.
+
+To swap a banner, replace its two files with the same names. To add, remove or reorder slides, edit the `<a class="hero__slide">` blocks in `index.html`: each has the link (`href`), the two image paths and an `aria-label` describing the banner for screen readers. The three current banners (The Noir Edit, Berry Luxe, The Pearl Collection) are starter images made from the previous slides.

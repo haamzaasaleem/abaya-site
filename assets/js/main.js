@@ -246,7 +246,7 @@
       void dots[idx].offsetWidth;
       dots[idx].classList.add('is-active');
       dots.forEach((d, i) => d.setAttribute('aria-selected', i === idx));
-      hero.classList.toggle('hero--light-ui', slides[idx].classList.contains('hero__slide--light'));
+      slides.forEach((sl, i) => { sl.setAttribute('aria-hidden', i !== idx); sl.tabIndex = i === idx ? 0 : -1; });
       restart();
     }
     function restart() {
