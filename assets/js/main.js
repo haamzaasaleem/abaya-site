@@ -46,6 +46,10 @@
     track.innerHTML = (PRODUCTS[track.dataset.products] || []).map(productCard).join('');
     // no products in this list yet: hide the whole slider section
     if (!track.children.length) { rail.hidden = true; return; }
+    // few products (no scrolling needed): centre them instead of leaving a gap on the right
+    const centre = () => track.classList.toggle('is-few', track.scrollWidth <= track.clientWidth + 2);
+    centre();
+    window.addEventListener('resize', centre);
     const count = track.children.length;
     let dots = [];
 

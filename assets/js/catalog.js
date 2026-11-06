@@ -26,11 +26,19 @@
   //   },
   //
   // and add the same key to FACETS below for the collection filters.
-  const CATALOG = {};
+  const CATALOG = {
+    white: { name: 'Pearl White Greek Key Abaya', tag: 'Satin | Crystal Border', img: 'white-greekkey-feature', alt: 'white-greekkey-standing', life: ['white-greekkey-studio'], price: 229, sizes: ['S', 'M', 'L', 'XL'], colors: [['Pearl White', '#F7F5F0']],
+      desc: 'A luminous satin abaya with a relaxed batwing silhouette, framed by a Greek key border of hand-set crystals along the placket, shoulders and cuffs. Finished with a matching chiffon shawl.' },
+    plum: { name: 'Plum Velvet Crystal Abaya', tag: 'Velvet | Crystal Trim', img: 'plum-velvet-full', alt: 'plum-velvet-close', video: 'plum-velvet-abaya', price: 189, sizes: ['S', 'M', 'L', 'XL'], colors: [['Plum', '#4E2A5A']],
+      desc: 'Rich plum velvet with scalloped crystal trim tracing the placket, hem and flared sleeves. A tasseled waist tie lets you define the shape for evenings and winter occasions.' }
+  };
 
   // Filter facets for the collection page: colour family, embellishment, cut
   // key: [colour family, embellishment, style], e.g. white: ['White', 'Crystal', 'Butterfly']
-  const FACETS = {};
+  const FACETS = {
+    white: ['White', 'Crystal', 'Butterfly'],
+    plum: ['Purple', 'Crystal', 'Belted']
+  };
   const FAMILY_HEX = { White: '#F7F5F0', Neutral: '#D8C8BC', Pink: '#E9B9B4', Red: '#6B1F2C', Purple: '#6B4A86', Blue: '#7FA6C2', Green: '#9DB0A4', Grey: '#8A8A8F', Black: '#141414' };
 
   Object.keys(CATALOG).forEach((key) => {
@@ -45,9 +53,9 @@
   const C = CATALOG;
   // e.g. new: [{ ...C.white, badge: 'New' }], best: [{ ...C.white, sale: 199 }]
   const PRODUCTS = {
-    new: [],
-    best: [],
-    occasion: []
+    new: [{ ...C.white, badge: 'New' }, { ...C.plum, sale: 159 }],
+    best: [{ ...C.plum, sale: 159 }, { ...C.white, badge: 'Bestseller' }],
+    occasion: [{ ...C.white, badge: 'Limited' }, { ...C.plum, sale: 159 }]
   };
 
   // Sale price / badge as shown in the sliders, so the product page matches the card

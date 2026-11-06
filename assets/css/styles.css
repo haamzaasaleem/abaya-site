@@ -283,6 +283,7 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color
   overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none;
 }
 .rail__track::-webkit-scrollbar { display: none; }
+.rail__track.is-few { justify-content: center; }
 .rail__track > .product { scroll-snap-align: start; }
 .rail__dots { display: flex; justify-content: center; gap: 10px; margin-top: 28px; }
 .rail__dots[hidden] { display: none; }
