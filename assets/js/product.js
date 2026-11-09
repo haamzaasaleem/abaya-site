@@ -145,13 +145,8 @@
   window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(syncBar); } }, { passive: true });
   syncBar();
 
-  /* ---------- Wishlist ---------- */
-  const wish = $('[data-pdp-wish]');
-  wish.addEventListener('click', () => {
-    const on = wish.classList.toggle('is-active');
-    wish.setAttribute('aria-pressed', on);
-    H.showToast && H.showToast(on ? 'Added to wishlist' : 'Removed from wishlist');
-  });
+  /* ---------- Wishlist (handled by main.js through data-wish) ---------- */
+  $('[data-pdp-wish]').dataset.wish = key;
 
   /* ---------- Size guide ---------- */
   const guide = $('[data-guide]');

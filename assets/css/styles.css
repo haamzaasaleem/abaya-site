@@ -755,6 +755,34 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color
 .soon p:not(.soon__title) { max-width: 460px; }
 .soon__ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 14px; }
 
+/* Wishlist page ---------------------------------------------------------- */
+.cart-count[hidden] { display: none; }
+.wl-note { color: var(--ink-soft); margin-top: 10px; font-size: 14px; }
+.wl { padding-bottom: clamp(56px, 8vw, 110px); }
+.wl[hidden] { display: none; }
+.wl__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px 18px; }
+.wl-card__media { position: relative; aspect-ratio: 3/4; overflow: hidden; background: #eeeae5; margin-bottom: 12px; }
+.wl-card__media img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 1.2s var(--ease); }
+.wl-card__media:hover img { transform: scale(1.03); }
+.wl-card__remove {
+  position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; background: var(--white);
+  box-shadow: 0 2px 8px rgba(30, 27, 26, .08); transition: color .2s;
+}
+.wl-card__remove svg { width: 15px; height: 15px; }
+.wl-card__remove:hover { color: var(--sale); }
+.wl-card__buy { display: flex; gap: 8px; margin-top: 14px; }
+.wl-card__buy select { flex: 0 0 auto; min-width: 0; max-width: 46%; font: inherit; font-size: 13px; border: 1px solid var(--line); background: var(--white); padding: 0 8px; height: 44px; cursor: pointer; }
+.wl-card__buy .btn { flex: 1; min-height: 44px; padding: 0 10px; font-size: 11px; white-space: nowrap; }
+.wl-card__error { min-height: 18px; margin-top: 6px; font-size: 12px; color: var(--sale); }
+@media (max-width: 1000px) { .wl__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 767px) {
+  .wl__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 10px; }
+  .wl-card__buy { flex-direction: column; }
+  .wl-card__buy select { max-width: none; }
+  .wl-card__remove { width: 30px; height: 30px; top: 8px; right: 8px; }
+}
+
 /* Toast ------------------------------------------------------------------ */
 .toast {
   position: fixed; left: 50%; bottom: 24px; z-index: 120;

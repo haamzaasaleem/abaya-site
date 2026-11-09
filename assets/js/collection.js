@@ -157,6 +157,7 @@
   function update() {
     const list = sorted(products.filter((p) => matches(p)));
     grid.innerHTML = list.map((p) => H.productCard(p)).join('');
+    if (H.wishlist) H.wishlist.sync();
     empty.hidden = list.length > 0;
     const n = list.length;
     $('[data-plp-count]').textContent = `${n} ${n === 1 ? 'product' : 'products'}`;

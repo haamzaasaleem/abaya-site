@@ -22,7 +22,7 @@
             ${p.alt ? `<img src="${IMG + p.alt}.jpg" alt="" class="img-alt" loading="lazy">` : ''}
           </a>
           <img src="assets/images/brand/hb-logo-full.svg" alt="" class="product__mark" aria-hidden="true">
-          <button class="wish" aria-label="Add ${p.name} to wishlist" aria-pressed="false"><svg><use href="#i-heart"/></svg></button>
+          <button class="wish" data-wish="${p.key}" aria-label="Save ${p.name} to wishlist" aria-pressed="false"><svg><use href="#i-heart"/></svg></button>
           <div class="quick-add">
             <span class="quick-add__label">Quick Add</span>
             <div class="sizes">${p.sizes.map((s) => `<button class="size" data-add="${p.key}" data-size="${s}">${s}</button>`).join('')}</div>
@@ -168,17 +168,59 @@
   window.HAYABELLA.addToBag = addToBag;
   window.HAYABELLA.showToast = showToast;
 
+  /* ---------- Wishlist (kept in this visitor's browser) ----------
+     A list of product keys. Every [data-wish="<key>"] button reflects and toggles it. */
+  const WISH_KEY = 'hb-wishlist';
+  const wishCount = $('[data-wish-count]');
+  const wishListeners = [];
+  const readWish = () => {
+    try {
+      const raw = JSON.parse(localStorage.getItem(WISH_KEY) || '[]');
+      return Array.isArray(raw) ? raw.filter((k) => window.HAYABELLA.CATALOG[k]) : [];
+    } catch (e) { return []; }
+  };
+  let wish = readWish();
+  function syncHearts() {
+    $$('[data-wish]').forEach((b) => {
+      const on = wish.includes(b.dataset.wish);
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-pressed', on);
+    });
+    if (wishCount) { wishCount.textContent = wish.length; wishCount.hidden = !wish.length; }
+  }
+  function saveWish() {
+    try { localStorage.setItem(WISH_KEY, JSON.stringify(wish)); } catch (e) { /* storage unavailable */ }
+    syncHearts();
+    wishListeners.forEach((fn) => fn(wish));
+  }
+  const wishlist = {
+    keys: () => [...wish],
+    has: (key) => wish.includes(key),
+    toggle(key) {
+      const on = !wish.includes(key);
+      wish = on ? [key, ...wish] : wish.filter((k) => k !== key);
+      saveWish();
+      return on;
+    },
+    remove(key) { wish = wish.filter((k) => k !== key); saveWish(); },
+    onChange(fn) { wishListeners.push(fn); },
+    sync: syncHearts
+  };
+  window.HAYABELLA.wishlist = wishlist;
+  window.addEventListener('storage', (e) => { if (e.key === WISH_KEY) { wish = readWish(); syncHearts(); wishListeners.forEach((fn) => fn(wish)); } });
+
   document.addEventListener('click', (e) => {
     const add = e.target.closest('[data-add]');
     if (add) {
       addToBag(add.dataset.add, add.dataset.size);
       return;
     }
-    const wish = e.target.closest('.wish');
-    if (wish) {
-      const on = wish.classList.toggle('is-active');
-      wish.setAttribute('aria-pressed', on);
-      showToast(on ? 'Added to wishlist' : 'Removed from wishlist');
+    const heart = e.target.closest('[data-wish]');
+    if (heart) {
+      e.preventDefault();
+      const p = window.HAYABELLA.CATALOG[heart.dataset.wish];
+      const on = wishlist.toggle(heart.dataset.wish);
+      showToast(on ? `${p.name} saved to wishlist` : `${p.name} removed from wishlist`, on ? { href: 'wishlist.html', text: 'View wishlist' } : null);
     }
   });
 
@@ -368,5 +410,6 @@
   $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
   $$('[data-rail]').forEach(setupRail);
+  syncHearts();
   observeReveals();
 })();
