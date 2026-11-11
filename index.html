@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261111a">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261111b">
 </head>
 <body>
 
@@ -145,23 +145,45 @@
 
     <!-- Hero slider: one banner image per slide.
          Desktop banner 1920x800, mobile banner 1080x1350 (assets/images/banners/).
-         To change a slide, replace its two images (or add another <a class="hero__slide"> block). -->
+         To change a slide, replace its two images (or add another <a class="hero__slide"> block).
+         The first slide is a video background (assets/videos/). -->
     <section class="hero" aria-roledescription="carousel" aria-label="Featured collections" data-slider>
       <h1 class="sr-only">Hayabella, luxury abayas and modest wear</h1>
       <div class="hero__slides">
-        <a href="collection.html" class="hero__slide is-active" aria-roledescription="slide" aria-label="1 of 3: The Noir Edit: fluid black chiffon, hand-set crystals. Shop now">
+        <!-- Video slide: three vertical videos side by side on desktop, the centre one alone on phones -->
+        <div class="hero__slide hero__slide--video is-active" aria-roledescription="slide" aria-label="1 of 4: Made to Move" data-video-slide>
+          <div class="hero__videos">
+            <video class="hero__video hide-sm" poster="assets/videos/burgundy-petal-abaya-poster.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
+              <source src="assets/videos/burgundy-petal-abaya.mp4" type="video/mp4"><source src="assets/videos/burgundy-petal-abaya.webm" type="video/webm">
+            </video>
+            <video class="hero__video" poster="assets/videos/plum-velvet-abaya-poster.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
+              <source src="assets/videos/plum-velvet-abaya.mp4" type="video/mp4"><source src="assets/videos/plum-velvet-abaya.webm" type="video/webm">
+            </video>
+            <video class="hero__video hide-sm" poster="assets/videos/lilac-lace-abaya-poster.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
+              <source src="assets/videos/lilac-lace-abaya.mp4" type="video/mp4"><source src="assets/videos/lilac-lace-abaya.webm" type="video/webm">
+            </video>
+          </div>
+          <div class="hero__overlay">
+            <p class="eyebrow">Hayabella Films</p>
+            <p class="hero__vtitle">Made to Move</p>
+            <p class="hero__vtext">Satin, chiffon and velvet that catch the light with every step.</p>
+            <a href="collection.html?edit=new" class="btn btn--light">Shop New In</a>
+          </div>
+          <button type="button" class="hero__vtoggle" aria-label="Pause video" data-hero-vtoggle><span></span></button>
+        </div>
+        <a href="collection.html" class="hero__slide" aria-roledescription="slide" aria-label="2 of 4: The Noir Edit: fluid black chiffon, hand-set crystals. Shop now">
           <picture>
             <source media="(max-width: 767px)" srcset="assets/images/banners/noir-edit-mobile.jpg" width="1080" height="1350">
-            <img src="assets/images/banners/noir-edit-desktop.jpg" alt="The Noir Edit: fluid black chiffon, hand-set crystals. Shop now" width="1920" height="800">
+            <img src="assets/images/banners/noir-edit-desktop.jpg" alt="The Noir Edit: fluid black chiffon, hand-set crystals. Shop now" width="1920" height="800" loading="lazy">
           </picture>
         </a>
-        <a href="collection.html" class="hero__slide" aria-roledescription="slide" aria-label="2 of 3: Berry Luxe: sculpted petal cuffs in deep burgundy. Shop Berry Luxe">
+        <a href="collection.html" class="hero__slide" aria-roledescription="slide" aria-label="3 of 4: Berry Luxe: sculpted petal cuffs in deep burgundy. Shop Berry Luxe">
           <picture>
             <source media="(max-width: 767px)" srcset="assets/images/banners/berry-luxe-mobile.jpg" width="1080" height="1350">
             <img src="assets/images/banners/berry-luxe-desktop.jpg" alt="Berry Luxe: sculpted petal cuffs in deep burgundy. Shop Berry Luxe" width="1920" height="800" loading="lazy">
           </picture>
         </a>
-        <a href="collection.html" class="hero__slide" aria-roledescription="slide" aria-label="3 of 3: The Pearl Collection: ivory crepe with blush embroidery. Shop the collection">
+        <a href="collection.html" class="hero__slide" aria-roledescription="slide" aria-label="4 of 4: The Pearl Collection: ivory crepe with blush embroidery. Shop the collection">
           <picture>
             <source media="(max-width: 767px)" srcset="assets/images/banners/pearl-collection-mobile.jpg" width="1080" height="1350">
             <img src="assets/images/banners/pearl-collection-desktop.jpg" alt="The Pearl Collection: ivory crepe with blush embroidery. Shop the collection" width="1920" height="800" loading="lazy">
@@ -377,7 +399,7 @@
 
   <div class="toast" role="status" aria-live="polite" data-toast></div>
 
-  <script src="assets/js/catalog.js?v=20261111a"></script>
-  <script src="assets/js/main.js?v=20261111a"></script>
+  <script src="assets/js/catalog.js?v=20261111b"></script>
+  <script src="assets/js/main.js?v=20261111b"></script>
 </body>
 </html>

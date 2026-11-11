@@ -283,6 +283,26 @@
       return d;
     });
 
+    // video slide: play only the videos that are visible, and only while that slide is showing
+    const vSlide = $('[data-video-slide]', hero);
+    const vToggle = $('[data-hero-vtoggle]', hero);
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let vUserPaused = reduceMotion;
+    function syncHeroVideo() {
+      if (!vSlide) return;
+      const showing = slides[idx] === vSlide;
+      $$('video', vSlide).forEach((v) => {
+        const visible = v.offsetParent !== null;
+        if (showing && visible && !vUserPaused) { const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}); } else v.pause();
+      });
+      if (vToggle) {
+        vToggle.classList.toggle('is-paused', vUserPaused);
+        vToggle.setAttribute('aria-label', vUserPaused ? 'Play video' : 'Pause video');
+      }
+    }
+    if (vToggle) vToggle.addEventListener('click', (e) => { e.stopPropagation(); vUserPaused = !vUserPaused; syncHeroVideo(); });
+    window.addEventListener('resize', () => syncHeroVideo());
+
     function go(n) {
       slides[idx].classList.remove('is-active');
       dots[idx].classList.remove('is-active');
@@ -293,6 +313,7 @@
       dots[idx].classList.add('is-active');
       dots.forEach((d, i) => d.setAttribute('aria-selected', i === idx));
       slides.forEach((sl, i) => { sl.setAttribute('aria-hidden', i !== idx); sl.tabIndex = i === idx ? 0 : -1; });
+      syncHeroVideo();
       restart();
     }
     function restart() {

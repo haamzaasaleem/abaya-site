@@ -122,6 +122,8 @@ Keep important text and faces away from the very bottom centre (the slide dots s
 
 To swap a banner, replace its two files with the same names. To add, remove or reorder slides, edit the `<a class="hero__slide">` blocks in `index.html`: each has the link (`href`), the two image paths and an `aria-label` describing the banner for screen readers. The three current banners (The Noir Edit, Berry Luxe, The Pearl Collection) are starter images made from the previous slides.
 
+**Video slide.** The first slide (`data-video-slide`) is a video background with live text ("Made to Move", Shop New In). Desktop shows three vertical videos side by side; phones show only the middle one (the others have `hide-sm` and never load). Videos play muted only while that slide is showing, have a pause button, and do not autoplay for visitors who prefer reduced motion. To change them, swap the `<video>` sources in that block (MP4 + WebM + poster JPG in `assets/videos/`).
+
 ## Wishlist
 
 Every heart (product cards, product page) saves the piece to a wishlist kept in the visitor's browser (`localStorage`, key `hb-wishlist`, a list of product keys). Hearts stay filled on every page, the header heart shows a count and opens `wishlist.html`, and the toast offers "View wishlist". On the wishlist page each piece has a size dropdown with Add to Bag and a remove button; an empty wishlist links to New In and all abayas. It is per device until customer accounts exist.
