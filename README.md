@@ -51,12 +51,11 @@ assets/videos/          Collection videos (WebM + MP4) with poster frames
 8. Full-width campaign banner
 9. Shop by Occasion
 10. **Product slider: The Occasion Edit**
-11. "Made to Move" film banner: five vertical videos in a staggered row (swipeable on mobile) over a blurred backdrop, autoplaying muted when scrolled into view, with pause/play buttons
-12. Brand story
-13. Instagram / lookbook grid
-14. Newsletter sign-up (10% off)
-15. Peach benefits bar: shipping, crafted with care, customer care
-16. Footer (accordion on mobile)
+11. Brand story
+12. Instagram / lookbook grid
+13. Newsletter sign-up (10% off)
+14. Peach benefits bar: shipping, crafted with care, customer care
+15. Footer (accordion on mobile)
 
 Each product slider has a centered title and intro line, then the products: 4 per view on desktop, 3 on tablet, 2 on mobile, with side arrows (desktop), swipe, dot pagination and a "View All" link. Product cards show a fabric line, name, USD price and a "New" / "% Off" pill, plus hover image swap, quick add and wishlist.
 

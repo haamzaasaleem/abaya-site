@@ -58,7 +58,7 @@ svg { width: 22px; height: 22px; flex-shrink: 0; }
   color: var(--olive);
 }
 /* on photos and dark bands the eyebrow keeps the surrounding text colour */
-.film .eyebrow, .campaign .eyebrow, .split__content .eyebrow { color: inherit; opacity: .85; }
+.campaign .eyebrow, .split__content .eyebrow { color: inherit; opacity: .85; }
 
 /* Buttons ---------------------------------------------------------------- */
 .btn {
@@ -335,35 +335,6 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color
   background: var(--olive); color: var(--white); font-size: 10px; letter-spacing: .06em; text-transform: uppercase;
 }
 .pill--sale { background: #c8553d; }
-
-/* Film banner ------------------------------------------------------------ */
-.film { position: relative; overflow: hidden; background: #2b2230; color: var(--white); padding: clamp(64px, 9vw, 120px) 0; }
-.film__backdrop {
-  position: absolute; inset: -60px;
-  background: url("../videos/lilac-lace-abaya-poster.jpg") center / cover no-repeat;
-  filter: blur(48px) saturate(1.1); transform: scale(1.1); opacity: .9;
-}
-.film__backdrop::after { content: ""; position: absolute; inset: 0; background: rgba(30, 22, 34, .68); }
-.film__inner { position: relative; display: flex; flex-direction: column; align-items: center; gap: clamp(32px, 4vw, 56px); }
-.film__text { max-width: 560px; text-align: center; }
-.film__title { font-family: var(--serif); font-size: clamp(44px, 5.6vw, 80px); line-height: 1; margin-bottom: 22px; }
-.film__text p:not(.eyebrow) { font-size: 16px; opacity: .85; margin: 0 auto 30px; max-width: 460px; }
-.film__reels { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(12px, 1.6vw, 22px); width: 100%; max-width: 1200px; padding-bottom: 48px; }
-.reel { position: relative; margin: 0; aspect-ratio: 9/16; overflow: hidden; background: #3a2f3e; box-shadow: 0 30px 60px rgba(0, 0, 0, .35); }
-.reel--offset { transform: translateY(48px); }
-.reel video { width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer; }
-.reel__toggle {
-  position: absolute; right: 12px; bottom: 12px; width: 32px; height: 32px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  border: 1px solid rgba(255, 255, 255, .7); background: rgba(0, 0, 0, .2); opacity: .75; transition: opacity .3s;
-}
-@media (hover: hover) {
-  .reel__toggle { opacity: 0; }
-  .reel:hover .reel__toggle, .reel__toggle:focus-visible, .reel.is-paused .reel__toggle { opacity: 1; }
-}
-/* pause icon (two bars); play triangle when paused */
-.reel__toggle span { width: 8px; height: 10px; border-left: 2px solid var(--white); border-right: 2px solid var(--white); }
-.reel.is-paused .reel__toggle span { width: 0; height: 0; border: 0; border-left: 9px solid var(--white); border-top: 6px solid transparent; border-bottom: 6px solid transparent; margin-left: 3px; }
 
 /* Campaign --------------------------------------------------------------- */
 .campaign { position: relative; height: clamp(480px, 70vh, 760px); overflow: hidden; color: var(--white); }
@@ -844,15 +815,6 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color
   .product__media .product__mark { width: 30px; top: 9px; left: 9px; }
   .wish svg { width: 15px; height: 15px; }
   .rail__dots { margin-top: 20px; gap: 8px; }
-  .film__backdrop::after { background: rgba(30, 22, 34, .7); }
-  /* swipeable reel row on phones */
-  .film__reels {
-    display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
-    width: auto; align-self: stretch; margin: 0 calc(var(--gutter) * -1); padding: 0 var(--gutter) 28px; gap: 10px;
-  }
-  .film__reels::-webkit-scrollbar { display: none; }
-  .film__reels .reel { flex: 0 0 42%; scroll-snap-align: center; }
-  .reel--offset { transform: translateY(28px); }
   .campaign::after { background: linear-gradient(0deg, rgba(30, 27, 26, .75), rgba(30, 27, 26, 0) 70%); }
   .campaign__content { top: auto; bottom: 40px; transform: none; right: var(--gutter); }
   .looks { grid-template-columns: repeat(3, 1fr); }
