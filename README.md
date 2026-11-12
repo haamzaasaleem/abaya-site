@@ -122,7 +122,7 @@ Keep important text and faces away from the very bottom centre (the slide dots s
 
 To swap a banner, replace its two files with the same names. To add, remove or reorder slides, edit the `<a class="hero__slide">` blocks in `index.html`: each has the link (`href`), the two image paths and an `aria-label` describing the banner for screen readers. The three current banners (The Noir Edit, Berry Luxe, The Pearl Collection) are starter images made from the previous slides.
 
-**Video slide.** The first slide (`data-video-slide`) is a video background with live text ("Made to Move", Shop New In). Desktop shows three vertical videos side by side; phones show only the middle one (the others have `hide-sm` and never load). Videos play muted only while that slide is showing, have a pause button, and do not autoplay for visitors who prefer reduced motion. To change them, swap the `<video>` sources in that block (MP4 + WebM + poster JPG in `assets/videos/`).
+**Video slide.** The first slide (`data-video-slide`) is a video background with live text ("Made to Move", Shop New In): one campaign film merged from the photoshoot clips, with a wide cut for desktop (`hero-film-desktop`, 1280x534) and a portrait cut for phones (`hero-film-mobile`, 720x900), each about 2 MB in MP4 and WebM with a poster JPG in `assets/videos/`. Only the version for the screen size plays; it plays muted only while that slide is showing, has a pause button, and does not autoplay for visitors who prefer reduced motion.
 
 ## Wishlist
 

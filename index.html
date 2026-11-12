@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261111b">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261112a">
 </head>
 <body>
 
@@ -150,17 +150,14 @@
     <section class="hero" aria-roledescription="carousel" aria-label="Featured collections" data-slider>
       <h1 class="sr-only">Hayabella, luxury abayas and modest wear</h1>
       <div class="hero__slides">
-        <!-- Video slide: three vertical videos side by side on desktop, the centre one alone on phones -->
-        <div class="hero__slide hero__slide--video is-active" aria-roledescription="slide" aria-label="1 of 4: Made to Move" data-video-slide>
+        <!-- Video slide: one merged campaign film, a wide cut for desktop and a portrait cut for phones -->
+        <div class="hero__slide hero__slide--video is-active" aria-roledescription="slide" aria-label="1 of 4: Made to Move" data-video-slide data-duration="20000">
           <div class="hero__videos">
-            <video class="hero__video hide-sm" poster="assets/videos/burgundy-petal-abaya-poster.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
-              <source src="assets/videos/burgundy-petal-abaya.mp4" type="video/mp4"><source src="assets/videos/burgundy-petal-abaya.webm" type="video/webm">
+            <video class="hero__video hero__video--desktop" poster="assets/videos/hero-film-desktop-poster.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
+              <source src="assets/videos/hero-film-desktop.mp4" type="video/mp4"><source src="assets/videos/hero-film-desktop.webm" type="video/webm">
             </video>
-            <video class="hero__video" poster="assets/videos/plum-velvet-abaya-poster.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
-              <source src="assets/videos/plum-velvet-abaya.mp4" type="video/mp4"><source src="assets/videos/plum-velvet-abaya.webm" type="video/webm">
-            </video>
-            <video class="hero__video hide-sm" poster="assets/videos/lilac-lace-abaya-poster.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
-              <source src="assets/videos/lilac-lace-abaya.mp4" type="video/mp4"><source src="assets/videos/lilac-lace-abaya.webm" type="video/webm">
+            <video class="hero__video hero__video--mobile" poster="assets/videos/hero-film-mobile-poster.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
+              <source src="assets/videos/hero-film-mobile.mp4" type="video/mp4"><source src="assets/videos/hero-film-mobile.webm" type="video/webm">
             </video>
           </div>
           <div class="hero__overlay">
@@ -399,7 +396,7 @@
 
   <div class="toast" role="status" aria-live="polite" data-toast></div>
 
-  <script src="assets/js/catalog.js?v=20261111b"></script>
-  <script src="assets/js/main.js?v=20261111b"></script>
+  <script src="assets/js/catalog.js?v=20261112a"></script>
+  <script src="assets/js/main.js?v=20261112a"></script>
 </body>
 </html>

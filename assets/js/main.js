@@ -288,13 +288,15 @@
     const vToggle = $('[data-hero-vtoggle]', hero);
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let vUserPaused = reduceMotion;
+    let wasShowing = false;
     function syncHeroVideo() {
       if (!vSlide) return;
       const showing = slides[idx] === vSlide;
       $$('video', vSlide).forEach((v) => {
         const visible = v.offsetParent !== null;
-        if (showing && visible && !vUserPaused) { const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}); } else v.pause();
+        if (showing && visible && !vUserPaused) { if (!wasShowing) v.currentTime = 0; const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}); } else v.pause();
       });
+      wasShowing = showing;
       if (vToggle) {
         vToggle.classList.toggle('is-paused', vUserPaused);
         vToggle.setAttribute('aria-label', vUserPaused ? 'Play video' : 'Pause video');
@@ -318,7 +320,9 @@
     }
     function restart() {
       clearInterval(timer);
-      if (!hero.classList.contains('is-paused')) timer = setInterval(() => go(idx + 1), DURATION);
+      const ms = +slides[idx].dataset.duration || DURATION;
+      hero.style.setProperty('--slide-duration', ms + 'ms');
+      if (!hero.classList.contains('is-paused')) timer = setInterval(() => go(idx + 1), ms);
     }
 
     $('[data-next]', hero).addEventListener('click', () => go(idx + 1));
