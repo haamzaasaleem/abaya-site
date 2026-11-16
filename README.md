@@ -124,6 +124,15 @@ To swap a banner, replace its two files with the same names. To add, remove or r
 
 **Video slide.** The first slide (`data-video-slide`) is a video background with live text ("Made to Move", Shop New In): one 16.6 s campaign film merged from 8 of the photoshoot clips (each shot cut and cropped around the model's face, so faces stay in frame on both cuts; the slide's `data-duration` matches the film length), colour-graded per clip (white balance, levels, brighter faces, light sharpening), with a wide cut for desktop (`hero-film-desktop`, 1920x800, about 6 MB) and a portrait cut for phones (`hero-film-mobile`, 864x1080, about 3.5 MB), in MP4 and WebM with a poster JPG in `assets/videos/`. Only the version for the screen size plays; it plays muted only while that slide is showing, has a pause button, and does not autoplay for visitors who prefer reduced motion.
 
+**Rebuilding the film from the original clips.** `tools/make-hero-film.py` cuts the right 2.6 s from each of the 8 clips, crops them around the model's face for desktop and mobile, colour-grades each clip, merges them with cross-fades and writes all six files into `assets/videos/`. It needs only Python 3 and ffmpeg (`sudo pacman -S --needed python ffmpeg` on Manjaro/Arch). Put the original clips in one folder (they can keep their names; each is found by its number, e.g. `1000035254`) and run from the repository folder:
+
+```bash
+python3 tools/make-hero-film.py ~/Videos/hayabella-clips          # final files, about 3 minutes
+python3 tools/make-hero-film.py ~/Videos/hayabella-clips --fast   # quick MP4-only test
+```
+
+The shot timings, crops and grade for each clip are in the `SHOTS` table at the top of the script.
+
 ## Wishlist
 
 Every heart (product cards, product page) saves the piece to a wishlist kept in the visitor's browser (`localStorage`, key `hb-wishlist`, a list of product keys). Hearts stay filled on every page, the header heart shows a count and opens `wishlist.html`, and the toast offers "View wishlist". On the wishlist page each piece has a size dropdown with Add to Bag and a remove button; an empty wishlist links to New In and all abayas. It is per device until customer accounts exist.
