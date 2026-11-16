@@ -2,7 +2,9 @@
    Replace with an API / CMS later. Images:
    - img / alt   : studio cut-outs in assets/images/products/ (cards + gallery)
    - life        : lifestyle photos in assets/images/photos/ (gallery only)
-   - video       : file name in assets/videos/ (gallery only)            */
+   - video       : file name in assets/videos/ (gallery only)
+   - clip        : short silent loop in assets/videos/cards/ that plays on the product card
+                   (3:4, about 5 s; .mp4 + .webm + -poster.jpg). Cards without one get a slow drift. */
 (function () {
   'use strict';
 
@@ -21,6 +23,7 @@
   //     name: 'Pearl White Greek Key Abaya', tag: 'Satin | Crystal Border',
   //     img: 'white-greekkey-front', alt: 'white-greekkey-back',      // assets/images/products/*.jpg
   //     life: ['white-greekkey-studio'], video: 'white-greekkey',    // optional: photos/*.jpg, videos/*.mp4|webm
+  //     clip: 'white-greekkey',                                      // optional: videos/cards/*.mp4|webm (card loop)
   //     price: 229, sizes: ['S', 'M', 'L', 'XL'], colors: [['Pearl White', '#F7F5F0']],
   //     desc: 'Short description shown on the product page.'
   //   },
@@ -29,7 +32,7 @@
   const CATALOG = {
     white: { name: 'Pearl White Greek Key Abaya', tag: 'Satin | Crystal Border', img: 'white-greekkey-feature', alt: 'white-greekkey-standing', life: ['white-greekkey-studio'], price: 229, sizes: ['S', 'M', 'L', 'XL'], colors: [['Pearl White', '#F7F5F0']],
       desc: 'A luminous satin abaya with a relaxed batwing silhouette, framed by a Greek key border of hand-set crystals along the placket, shoulders and cuffs. Finished with a matching chiffon shawl.' },
-    plum: { name: 'Plum Velvet Crystal Abaya', tag: 'Velvet | Crystal Trim', img: 'plum-velvet-full', alt: 'plum-velvet-close', video: 'plum-velvet-abaya', price: 189, sizes: ['S', 'M', 'L', 'XL'], colors: [['Plum', '#4E2A5A']],
+    plum: { name: 'Plum Velvet Crystal Abaya', tag: 'Velvet | Crystal Trim', img: 'plum-velvet-full', alt: 'plum-velvet-close', video: 'plum-velvet-abaya', clip: 'plum-velvet', price: 189, sizes: ['S', 'M', 'L', 'XL'], colors: [['Plum', '#4E2A5A']],
       desc: 'Rich plum velvet with scalloped crystal trim tracing the placket, hem and flared sleeves. A tasseled waist tie lets you define the shape for evenings and winter occasions.' }
   };
 
@@ -67,6 +70,7 @@
   window.HAYABELLA = {
     CATALOG, PRODUCTS, listing, FAMILY_HEX,
     IMG: 'assets/images/products/',
+    CLIP: 'assets/videos/cards/',
     LIFE: 'assets/images/photos/',
     VIDEO: 'assets/videos/',
     money: (n) => 'USD ' + n.toFixed(2),

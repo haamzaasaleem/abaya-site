@@ -5,7 +5,14 @@
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
-  const { PRODUCTS, IMG, money, url } = window.HAYABELLA;
+  const { PRODUCTS, IMG, CLIP, money, url } = window.HAYABELLA;
+
+  // a short silent loop for a card (plays only while on screen, see "Live media" below)
+  function cardClip(name, cls = '') {
+    return `<video class="live-video ${cls}" muted loop playsinline preload="none" poster="${CLIP + name}-poster.jpg" aria-hidden="true" tabindex="-1" data-live>
+      <source src="${CLIP + name}.mp4" type="video/mp4"><source src="${CLIP + name}.webm" type="video/webm"></video>`;
+  }
+  window.HAYABELLA.cardClip = cardClip;
 
   function productCard(p) {
     const pill = p.sale
@@ -15,11 +22,11 @@
       ? `<s>${money(p.price)}</s><span class="now">${money(p.sale)}</span>`
       : `<span>${money(p.price)}</span>`;
     return `
-      <article class="product">
-        <div class="product__media">
+      <article class="product${p.clip ? ' product--clip' : ''}">
+        <div class="product__media" data-live-still>
           <a href="${url(p.key)}" class="product__link" aria-label="${p.name}">
             <img src="${IMG + p.img}.jpg" alt="${p.name}" loading="lazy">
-            ${p.alt ? `<img src="${IMG + p.alt}.jpg" alt="" class="img-alt" loading="lazy">` : ''}
+            ${p.clip ? cardClip(p.clip) : p.alt ? `<img src="${IMG + p.alt}.jpg" alt="" class="img-alt" loading="lazy">` : ''}
           </a>
           <img src="assets/images/brand/hb-logo-full.svg" alt="" class="product__mark" aria-hidden="true">
           <button class="wish" data-wish="${p.key}" aria-label="Save ${p.name} to wishlist" aria-pressed="false"><svg><use href="#i-heart"/></svg></button>
@@ -262,6 +269,31 @@
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') { toggleLayer(drawer, false); toggleLayer(search, false); }
   });
+
+  /* ---------- Live media: card clips play only while on screen; still cards drift ---------- */
+  (function liveMedia() {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+      const el = e.target;
+      if (el.tagName === 'VIDEO') {
+        if (e.isIntersecting) {
+          el.classList.add('is-ready');
+          const pr = el.play(); if (pr && pr.catch) pr.catch(() => {});
+        } else el.pause();
+      } else el.classList.toggle('is-live', e.isIntersecting);
+    }), { threshold: 0.25 });
+    const seen = new WeakSet();
+    const scan = (root) => {
+      const els = $$('video[data-live], [data-live-still]', root);
+      if (root.matches && root.matches('video[data-live], [data-live-still]')) els.push(root);
+      els.forEach((el) => { if (seen.has(el)) return; seen.add(el); io.observe(el); });
+    };
+    scan(document);
+    // cards are rendered by script (sliders, collection grid, wishlist): watch for new ones
+    new MutationObserver((muts) => muts.forEach((m) => m.addedNodes.forEach((n) => { if (n.nodeType === 1) scan(n); })))
+      .observe(document.body, { childList: true, subtree: true });
+  })();
 
   /* ---------- Hero slider ---------- */
   const hero = $('[data-slider]');

@@ -345,6 +345,14 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color
 .product__media .img-alt { opacity: 0; }
 .product:hover .img-alt { opacity: 1; }
 .product:hover .product__media img { transform: scale(1.03); }
+/* Live cards: a looping clip (product.clip) or, without one, a slow drift while on screen */
+.live-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.2s var(--ease); }
+.product__media .live-video { object-position: center bottom; }
+.product--clip:hover .live-video { transform: scale(1.03); }
+@keyframes card-drift { from { transform: scale(1); } to { transform: scale(1.07) translate(-1%, -1.2%); } }
+.product__media.is-live > a > img:first-child,
+.wl-card__media.is-live img { animation: card-drift 9s ease-in-out infinite alternate; }
+.product:hover .product__media.is-live > a > img:first-child { animation-play-state: paused; }
 /* HB Hayabella watermark on every product image */
 .product__media .product__mark {
   inset: auto; top: 12px; left: 12px; z-index: 1; width: 40px; height: auto;
@@ -396,6 +404,8 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color
 .occasion { position: relative; overflow: hidden; aspect-ratio: 7/9; display: block; }
 .occasion img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; transition: transform 1.2s var(--ease); }
 .occasion:hover img { transform: scale(1.05); }
+.occasion .live-video { object-position: center 15%; }
+.occasion:hover .live-video { transform: scale(1.05); }
 .occasion__label {
   position: absolute; left: 20px; right: 20px; bottom: 20px;
   background: rgba(250, 247, 243, .94); padding: 22px; text-align: center;
@@ -403,6 +413,20 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color
 }
 .occasion:hover .occasion__label { transform: translateY(-6px); }
 .occasion__label h3 { font-family: var(--serif); font-size: 26px; margin-bottom: 8px; }
+
+/* Marquee: endless scrolling brand line ---------------------------------- */
+.marquee { overflow: hidden; text-align: center; padding: clamp(30px, 4.4vw, 64px) 0 clamp(36px, 5vw, 70px); }
+.marquee__track { display: flex; width: max-content; animation: marquee 48s linear infinite; }
+.marquee:hover .marquee__track { animation-play-state: paused; }
+.marquee__group {
+  display: flex; flex-shrink: 0; align-items: center; gap: .85em; padding-right: .85em;
+  font-family: var(--sans); font-weight: 400; text-transform: uppercase; letter-spacing: .12em;
+  font-size: clamp(26px, 3.3vw, 54px); line-height: 1.15; color: var(--gold); white-space: nowrap;
+}
+.marquee__sep { font-weight: 300; opacity: .75; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+.marquee__eyebrow { margin-top: clamp(22px, 3vw, 34px); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); }
+.marquee__sub { margin-top: 8px; font-size: 13px; letter-spacing: .24em; text-transform: uppercase; color: var(--ink); }
 
 /* Story ------------------------------------------------------------------ */
 .story { background: var(--sage-tint); padding: clamp(64px, 9vw, 120px) 0; text-align: center; }
@@ -849,6 +873,8 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color
   .hero__cta { font-size: 11px; }
   .hero__dots { left: 0; right: 0; bottom: 12px; justify-content: center; }
   .hero__vtoggle { right: 14px; top: 14px; }
+  .marquee__eyebrow, .marquee__sub { padding: 0 var(--gutter); }
+  .marquee__sub { font-size: 11px; letter-spacing: .16em; }
   .usp__item { padding: 16px 4px; gap: 10px; }
   .usp__item svg { width: 22px; height: 22px; }
   .usp__item strong { font-size: 10px; letter-spacing: .1em; }
@@ -888,5 +914,6 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  .marquee__track, .product__media img, .wl-card__media img { animation: none !important; }
   html { scroll-behavior: auto; }
 }

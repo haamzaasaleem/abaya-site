@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261117a">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261117b">
 </head>
 <body>
 
@@ -280,6 +280,16 @@
       </a>
     </section>
 
+    <!-- Marquee: scrolling brand line. Edit the text in both groups (the second is a copy for the seamless loop). -->
+    <section class="marquee" aria-label="Modesty – The New Bold. Hayabella">
+      <div class="marquee__track" aria-hidden="true">
+        <div class="marquee__group"><span>Modesty – The New Bold</span><span class="marquee__sep">|</span><span>Hayabella</span><span class="marquee__sep">|</span><span>Modesty – The New Bold</span><span class="marquee__sep">|</span><span>Hayabella</span><span class="marquee__sep">|</span><span>Modesty – The New Bold</span><span class="marquee__sep">|</span><span>Hayabella</span><span class="marquee__sep">|</span></div>
+        <div class="marquee__group"><span>Modesty – The New Bold</span><span class="marquee__sep">|</span><span>Hayabella</span><span class="marquee__sep">|</span><span>Modesty – The New Bold</span><span class="marquee__sep">|</span><span>Hayabella</span><span class="marquee__sep">|</span><span>Modesty – The New Bold</span><span class="marquee__sep">|</span><span>Hayabella</span><span class="marquee__sep">|</span></div>
+      </div>
+      <p class="marquee__eyebrow">Luxury abayas &amp; modest wear</p>
+      <p class="marquee__sub">Elegance, designed for every occasion</p>
+    </section>
+
     <!-- Product slider: Best Sellers -->
     <section class="rail" aria-label="Best sellers" data-rail>
       <header class="rail__intro container">
@@ -316,9 +326,9 @@
           <h2 class="section__title">Dressed for Every Occasion</h2>
         </header>
         <div class="occasions">
-          <a href="collection.html?edit=occasion" class="occasion"><img src="assets/images/photos/ivory-pearl-front.jpg" alt="" loading="lazy"><div class="occasion__label"><h3>Eid &amp; Festive</h3><span class="link-underline">Shop now</span></div></a>
-          <a href="collection.html?style=Crystal" class="occasion"><img src="assets/images/photos/burgundy-petal-close.jpg" alt="" loading="lazy"><div class="occasion__label"><h3>Wedding Guest</h3><span class="link-underline">Shop now</span></div></a>
-          <a href="collection.html?fabric=Crepe,Linen" class="occasion"><img src="assets/images/photos/mauve-ruffle.jpg" alt="" loading="lazy"><div class="occasion__label"><h3>Everyday Elegance</h3><span class="link-underline">Shop now</span></div></a>
+          <a href="collection.html?edit=occasion" class="occasion" data-live-still><img src="assets/videos/cards/occasion-festive-poster.jpg" alt="" loading="lazy"><video class="live-video" muted loop playsinline preload="none" poster="assets/videos/cards/occasion-festive-poster.jpg" aria-hidden="true" tabindex="-1" data-live><source src="assets/videos/cards/occasion-festive.mp4" type="video/mp4"><source src="assets/videos/cards/occasion-festive.webm" type="video/webm"></video><div class="occasion__label"><h3>Eid &amp; Festive</h3><span class="link-underline">Shop now</span></div></a>
+          <a href="collection.html?style=Crystal" class="occasion" data-live-still><img src="assets/videos/cards/occasion-wedding-poster.jpg" alt="" loading="lazy"><video class="live-video" muted loop playsinline preload="none" poster="assets/videos/cards/occasion-wedding-poster.jpg" aria-hidden="true" tabindex="-1" data-live><source src="assets/videos/cards/occasion-wedding.mp4" type="video/mp4"><source src="assets/videos/cards/occasion-wedding.webm" type="video/webm"></video><div class="occasion__label"><h3>Wedding Guest</h3><span class="link-underline">Shop now</span></div></a>
+          <a href="collection.html?fabric=Crepe,Linen" class="occasion" data-live-still><img src="assets/videos/cards/occasion-everyday-poster.jpg" alt="" loading="lazy"><video class="live-video" muted loop playsinline preload="none" poster="assets/videos/cards/occasion-everyday-poster.jpg" aria-hidden="true" tabindex="-1" data-live><source src="assets/videos/cards/occasion-everyday.mp4" type="video/mp4"><source src="assets/videos/cards/occasion-everyday.webm" type="video/webm"></video><div class="occasion__label"><h3>Everyday Elegance</h3><span class="link-underline">Shop now</span></div></a>
         </div>
       </div>
     </section>
@@ -436,7 +446,7 @@
 
   <div class="toast" role="status" aria-live="polite" data-toast></div>
 
-  <script src="assets/js/catalog.js?v=20261117a"></script>
-  <script src="assets/js/main.js?v=20261117a"></script>
+  <script src="assets/js/catalog.js?v=20261117b"></script>
+  <script src="assets/js/main.js?v=20261117b"></script>
 </body>
 </html>
