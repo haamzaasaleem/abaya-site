@@ -208,12 +208,41 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color
 
 /* Hero: banner-image slider -------------------------------------------- */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
-.hero { position: relative; overflow: hidden; background: var(--sand); }
-.hero__slides { position: relative; aspect-ratio: 1920 / 800; max-height: 85vh; width: 100%; }
-.hero__slide { position: absolute; inset: 0; display: block; opacity: 0; visibility: hidden; transition: opacity .9s var(--ease), visibility .9s; }
-.hero__slide.is-active { opacity: 1; visibility: visible; }
-.hero__slide picture, .hero__slide img { display: block; width: 100%; height: 100%; }
-.hero__slide img { object-fit: cover; object-position: center; }
+.hero { position: relative; overflow: hidden; background: #0d0b0c; }
+/* fills the window below the header; never taller than 16:9 nor wider than 2.4:1 */
+.hero__slides {
+  position: relative; width: 100%;
+  height: min(calc(100svh - var(--hero-top, 160px)), 56.25vw); min-height: 41.67vw;
+}
+/* the current slide fades to black, then the next fades up out of the dark */
+.hero__slide {
+  position: absolute; inset: 0; display: block; overflow: hidden; color: var(--white);
+  opacity: 0; visibility: hidden; transition: opacity .7s ease, visibility 0s linear .7s;
+}
+.hero__slide.is-active { opacity: 1; visibility: visible; transition: opacity 1.3s ease .55s, visibility 0s; }
+.hero__media, .hero__videos { position: absolute; inset: 0; display: block; transform: scale(1.09); transition: transform 0s linear .7s; }
+.hero__slide.is-active .hero__media, .hero__slide.is-active .hero__videos { transform: scale(1); transition: transform 8s cubic-bezier(.22, .61, .36, 1) .2s; }
+.hero__media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.hero__slide--banner .hero__media img { object-position: left center; }   /* keep the banner text in view */
+/* soft shade bottom-left so the caption reads on any photo */
+.hero__slide--photo::after, .hero__slide--video::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(20deg, rgba(10, 8, 9, .5), rgba(10, 8, 9, .12) 38%, transparent 60%);
+}
+.hero__caption { position: absolute; z-index: 1; left: clamp(20px, 3.2vw, 60px); bottom: clamp(28px, 4vw, 64px); display: block; }
+.hero__ctitle {
+  display: block; font-family: var(--sans); font-weight: 300; text-transform: uppercase;
+  font-size: clamp(20px, 2.05vw, 34px); letter-spacing: .2em; line-height: 1.2; margin: 0 0 14px;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, .25);
+}
+.hero__cta {
+  display: inline-block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--white);
+  padding-bottom: 3px; border-bottom: 1px solid rgba(255, 255, 255, .85); transition: border-color .3s;
+}
+.hero__cta:hover, .hero__slide:hover .hero__cta { border-color: transparent; }
+.hero__caption > * { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
+.hero__slide.is-active .hero__caption > * { opacity: 1; transform: none; transition: opacity 1s ease 1.25s, transform 1s cubic-bezier(.22, .61, .36, 1) 1.25s; }
+.hero__slide.is-active .hero__caption > :nth-child(2) { transition-delay: 1.45s; }
 .hero__arrow {
   position: absolute; top: 50%; z-index: 2;
   width: 48px; height: 48px; margin-top: -24px;
@@ -225,36 +254,23 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color
 .hero__arrow:hover { background: var(--white); }
 .hero__arrow--prev { left: 20px; }
 .hero__arrow--next { right: 20px; }
-.hero__dots { position: absolute; left: 0; right: 0; bottom: 20px; z-index: 2; display: flex; justify-content: center; gap: 10px; }
+.hero__dots { position: absolute; right: clamp(20px, 3.2vw, 60px); bottom: clamp(30px, 4vw, 66px); z-index: 2; display: flex; gap: 4px; }
 .hero__dots { pointer-events: none; }
 .hero__dot { pointer-events: auto; }
-.hero__dot { width: 36px; height: 20px; position: relative; }
-.hero__dot::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: rgba(255, 255, 255, .55); box-shadow: 0 0 4px rgba(0, 0, 0, .25); }
-.hero__dot::after { content: ""; position: absolute; left: 0; top: 50%; height: 2px; width: 0; background: var(--white); }
-.hero__dot.is-active::after { animation: progress var(--slide-duration, 6s) linear forwards; }
-.hero.is-paused .hero__dot.is-active::after { animation-play-state: paused; }
-@keyframes progress { to { width: 100%; } }
+.hero__dot { width: 16px; height: 16px; position: relative; }
+.hero__dot::before {
+  content: ""; position: absolute; left: 5px; top: 5px; width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255, 255, 255, .55); box-shadow: 0 0 0 1px rgba(0, 0, 0, .22), 0 0 6px rgba(0, 0, 0, .2); transition: background .3s, transform .3s;
+}
+.hero__dot:hover::before { background: rgba(255, 255, 255, .8); }
+.hero__dot.is-active::before { background: var(--white); transform: scale(1.25); }
 
 /* Hero video slide */
-.hero__slide--video { background: #2b2230; color: var(--white); }
-.hero__videos { position: absolute; inset: 0; }
+.hero__slide--video { background: #1b1619; }
 .hero__video--mobile { display: none !important; }
 .hero__video { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
-.hero__slide--video::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20, 16, 22, .62), rgba(20, 16, 22, .25) 55%, rgba(20, 16, 22, .15)); pointer-events: none; }
-.hero__overlay {
-  position: absolute; z-index: 1; top: 50%; transform: translateY(-50%);
-  left: max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter))); max-width: 460px;
-}
-.hero__overlay .eyebrow { color: rgba(255, 255, 255, .85); }
-.hero__vtitle { font-family: var(--serif); font-size: clamp(44px, 5.4vw, 84px); line-height: 1; margin-bottom: 18px; }
-.hero__vtext { font-size: 17px; opacity: .9; margin-bottom: 30px; }
-.hero__overlay > * { opacity: 0; transform: translateY(18px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
-.hero__slide.is-active .hero__overlay > * { opacity: 1; transform: none; }
-.hero__slide.is-active .hero__overlay > :nth-child(2) { transition-delay: .12s; }
-.hero__slide.is-active .hero__overlay > :nth-child(3) { transition-delay: .24s; }
-.hero__slide.is-active .hero__overlay > :nth-child(4) { transition-delay: .36s; }
 .hero__vtoggle {
-  position: absolute; z-index: 3; right: 20px; bottom: 18px; width: 34px; height: 34px; border-radius: 50%;
+  position: absolute; z-index: 3; right: 20px; top: 20px; width: 34px; height: 34px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   border: 1px solid rgba(255, 255, 255, .7); background: rgba(0, 0, 0, .25);
 }
@@ -822,16 +838,17 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color
 @media (max-width: 767px) {
   body { font-size: 14px; }
   .hide-sm { display: none; }
-  .hero__slides { aspect-ratio: 1080 / 1350; max-height: none; }
+  .hero__slides { height: auto; min-height: 0; aspect-ratio: 4 / 5; }
   .hero__arrow { display: none; }
-  .hero__dots { bottom: 14px; }
   .hero__video--desktop { display: none !important; }
   .hero__video--mobile { display: block !important; }
-  .hero__slide--video::after { background: linear-gradient(transparent 35%, rgba(20, 16, 22, .75)); }
-  .hero__overlay { top: auto; bottom: 56px; left: var(--gutter); right: var(--gutter); transform: none; max-width: none; text-align: center; }
-  .hero__vtitle { font-size: 44px; margin-bottom: 12px; }
-  .hero__vtext { font-size: 15px; margin-bottom: 20px; }
-  .hero__vtoggle { right: 14px; bottom: auto; top: 14px; }
+  .hero__slide--photo::after, .hero__slide--video::after { background: linear-gradient(transparent 50%, rgba(10, 8, 9, .55)); }
+  .hero__slide--banner .hero__media img { object-position: center; }
+  .hero__caption { left: 20px; right: 20px; bottom: 44px; }
+  .hero__ctitle { font-size: 20px; letter-spacing: .18em; margin-bottom: 10px; }
+  .hero__cta { font-size: 11px; }
+  .hero__dots { left: 0; right: 0; bottom: 12px; justify-content: center; }
+  .hero__vtoggle { right: 14px; top: 14px; }
   .usp__item { padding: 16px 4px; gap: 10px; }
   .usp__item svg { width: 22px; height: 22px; }
   .usp__item strong { font-size: 10px; letter-spacing: .1em; }

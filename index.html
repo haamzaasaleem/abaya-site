@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261112a">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261117a">
 </head>
 <body>
 
@@ -143,15 +143,17 @@
 
   <main>
 
-    <!-- Hero slider: one banner image per slide.
-         Desktop banner 1920x800, mobile banner 1080x1350 (assets/images/banners/).
-         To change a slide, replace its two images (or add another <a class="hero__slide"> block).
-         The first slide is a video background (assets/videos/). -->
+    <!-- Hero slider. Each slide fades in out of black with a slow zoom, then its caption appears.
+         Slide 1 is the campaign film (assets/videos/).
+         Photo slides (hero__slide--photo): full-bleed photo with a caption bottom-left;
+           desktop image 1920x800 or larger, mobile 864x1080 or 1080x1350 (assets/images/slides/).
+         Banner slides: designed banners with the text in the image (assets/images/banners/).
+         To add a slide, copy a photo slide block and change its images, caption and link. -->
     <section class="hero" aria-roledescription="carousel" aria-label="Featured collections" data-slider>
       <h1 class="sr-only">Hayabella, luxury abayas and modest wear</h1>
       <div class="hero__slides">
         <!-- Video slide: one merged campaign film, a wide cut for desktop and a portrait cut for phones -->
-        <div class="hero__slide hero__slide--video is-active" aria-roledescription="slide" aria-label="1 of 4: Made to Move" data-video-slide data-duration="16600">
+        <div class="hero__slide hero__slide--video is-active" aria-roledescription="slide" aria-label="Made to Move: the Hayabella campaign film" data-video-slide data-duration="16600">
           <div class="hero__videos">
             <video class="hero__video hero__video--desktop" poster="assets/videos/hero-film-desktop-poster.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
               <source src="assets/videos/hero-film-desktop.mp4" type="video/mp4"><source src="assets/videos/hero-film-desktop.webm" type="video/webm">
@@ -160,28 +162,66 @@
               <source src="assets/videos/hero-film-mobile.mp4" type="video/mp4"><source src="assets/videos/hero-film-mobile.webm" type="video/webm">
             </video>
           </div>
-          <div class="hero__overlay">
-            <p class="eyebrow">Hayabella Films</p>
-            <p class="hero__vtitle">Made to Move</p>
-            <p class="hero__vtext">Satin, chiffon and velvet that catch the light with every step.</p>
-            <a href="collection.html?edit=new" class="btn btn--light">Shop New In</a>
+          <div class="hero__caption">
+            <p class="hero__ctitle">Made to Move</p>
+            <a href="collection.html?edit=new" class="hero__cta">Shop new in</a>
           </div>
           <button type="button" class="hero__vtoggle" aria-label="Pause video" data-hero-vtoggle><span></span></button>
         </div>
-        <a href="collection.html" class="hero__slide" aria-roledescription="slide" aria-label="2 of 4: The Noir Edit: fluid black chiffon, hand-set crystals. Shop now">
-          <picture>
+        <a href="collection.html" class="hero__slide hero__slide--photo" aria-roledescription="slide" aria-label="Signature Greek Key. Shop now">
+          <picture class="hero__media">
+            <source media="(max-width: 767px)" srcset="assets/images/slides/greekkey-teal-mobile.jpg" width="864" height="1080">
+            <img src="assets/images/slides/greekkey-teal-desktop.jpg" alt="Model in a sky-blue abaya with Greek-key trim and matching hijab" width="1920" height="800" loading="lazy">
+          </picture>
+          <span class="hero__caption">
+            <span class="hero__ctitle">Signature Greek Key</span>
+            <span class="hero__cta">Shop now</span>
+          </span>
+        </a>
+        <a href="collection.html?fabric=Satin" class="hero__slide hero__slide--photo" aria-roledescription="slide" aria-label="The Satin Edit. Shop satin">
+          <picture class="hero__media">
+            <source media="(max-width: 767px)" srcset="assets/images/slides/satin-seated-mobile.jpg" width="864" height="1080">
+            <img src="assets/images/slides/satin-seated-desktop.jpg" alt="Model seated in a dusty-blue satin abaya with embellished trim" width="1920" height="800" loading="lazy">
+          </picture>
+          <span class="hero__caption">
+            <span class="hero__ctitle">The Satin Edit</span>
+            <span class="hero__cta">Shop satin</span>
+          </span>
+        </a>
+        <a href="collection.html?edit=new" class="hero__slide hero__slide--photo" aria-roledescription="slide" aria-label="New In. Shop new in">
+          <picture class="hero__media">
+            <source media="(max-width: 767px)" srcset="assets/images/slides/stripe-kimono-mobile.jpg" width="864" height="1080">
+            <img src="assets/images/slides/stripe-kimono-desktop.jpg" alt="Model in a blue and white striped kimono abaya with white hijab" width="1920" height="800" loading="lazy">
+          </picture>
+          <span class="hero__caption">
+            <span class="hero__ctitle">New In</span>
+            <span class="hero__cta">Shop new in</span>
+          </span>
+        </a>
+        <a href="collection.html?edit=occasion" class="hero__slide hero__slide--photo" aria-roledescription="slide" aria-label="Occasion Wear. Shop occasion">
+          <picture class="hero__media">
+            <source media="(max-width: 767px)" srcset="assets/images/slides/floral-noir-mobile.jpg" width="864" height="1080">
+            <img src="assets/images/slides/floral-noir-desktop.jpg" alt="Model in a black open abaya with embroidered roses" width="1920" height="800" loading="lazy">
+          </picture>
+          <span class="hero__caption">
+            <span class="hero__ctitle">Occasion Wear</span>
+            <span class="hero__cta">Shop occasion</span>
+          </span>
+        </a>
+        <a href="collection.html" class="hero__slide hero__slide--banner" aria-roledescription="slide" aria-label="The Noir Edit: fluid black chiffon, hand-set crystals. Shop now">
+          <picture class="hero__media">
             <source media="(max-width: 767px)" srcset="assets/images/banners/noir-edit-mobile.jpg" width="1080" height="1350">
             <img src="assets/images/banners/noir-edit-desktop.jpg" alt="The Noir Edit: fluid black chiffon, hand-set crystals. Shop now" width="1920" height="800" loading="lazy">
           </picture>
         </a>
-        <a href="collection.html" class="hero__slide" aria-roledescription="slide" aria-label="3 of 4: Berry Luxe: sculpted petal cuffs in deep burgundy. Shop Berry Luxe">
-          <picture>
+        <a href="collection.html" class="hero__slide hero__slide--banner" aria-roledescription="slide" aria-label="Berry Luxe: sculpted petal cuffs in deep burgundy. Shop Berry Luxe">
+          <picture class="hero__media">
             <source media="(max-width: 767px)" srcset="assets/images/banners/berry-luxe-mobile.jpg" width="1080" height="1350">
             <img src="assets/images/banners/berry-luxe-desktop.jpg" alt="Berry Luxe: sculpted petal cuffs in deep burgundy. Shop Berry Luxe" width="1920" height="800" loading="lazy">
           </picture>
         </a>
-        <a href="collection.html" class="hero__slide" aria-roledescription="slide" aria-label="4 of 4: The Pearl Collection: ivory crepe with blush embroidery. Shop the collection">
-          <picture>
+        <a href="collection.html" class="hero__slide hero__slide--banner" aria-roledescription="slide" aria-label="The Pearl Collection: ivory crepe with blush embroidery. Shop the collection">
+          <picture class="hero__media">
             <source media="(max-width: 767px)" srcset="assets/images/banners/pearl-collection-mobile.jpg" width="1080" height="1350">
             <img src="assets/images/banners/pearl-collection-desktop.jpg" alt="The Pearl Collection: ivory crepe with blush embroidery. Shop the collection" width="1920" height="800" loading="lazy">
           </picture>
@@ -396,7 +436,7 @@
 
   <div class="toast" role="status" aria-live="polite" data-toast></div>
 
-  <script src="assets/js/catalog.js?v=20261112a"></script>
-  <script src="assets/js/main.js?v=20261112a"></script>
+  <script src="assets/js/catalog.js?v=20261117a"></script>
+  <script src="assets/js/main.js?v=20261117a"></script>
 </body>
 </html>

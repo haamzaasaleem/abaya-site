@@ -268,10 +268,17 @@
   if (hero) {
     const slides = $$('.hero__slide', hero);
     const dotsWrap = $('[data-dots]', hero);
-    const DURATION = 6000;
+    const DURATION = 6500;
     let idx = 0;
     let timer;
-    hero.style.setProperty('--slide-duration', DURATION + 'ms');
+
+    // the hero fills the window below the announcement bar and header
+    const setHeroTop = () => document.documentElement.style.setProperty('--hero-top', Math.round(hero.getBoundingClientRect().top + window.scrollY) + 'px');
+    setHeroTop();
+    window.addEventListener('resize', setHeroTop);
+
+    // screen-reader labels: "n of N"
+    slides.forEach((sl, i) => sl.setAttribute('aria-label', `${i + 1} of ${slides.length}: ${sl.getAttribute('aria-label')}`));
 
     const dots = slides.map((_, i) => {
       const d = document.createElement('button');
@@ -310,8 +317,6 @@
       dots[idx].classList.remove('is-active');
       idx = (n + slides.length) % slides.length;
       slides[idx].classList.add('is-active');
-      // restart progress animation
-      void dots[idx].offsetWidth;
       dots[idx].classList.add('is-active');
       dots.forEach((d, i) => d.setAttribute('aria-selected', i === idx));
       slides.forEach((sl, i) => { sl.setAttribute('aria-hidden', i !== idx); sl.tabIndex = i === idx ? 0 : -1; });
@@ -321,7 +326,6 @@
     function restart() {
       clearInterval(timer);
       const ms = +slides[idx].dataset.duration || DURATION;
-      hero.style.setProperty('--slide-duration', ms + 'ms');
       if (!hero.classList.contains('is-paused')) timer = setInterval(() => go(idx + 1), ms);
     }
 
