@@ -300,7 +300,7 @@
   if (hero) {
     const slides = $$('.hero__slide', hero);
     const dotsWrap = $('[data-dots]', hero);
-    const DURATION = 6500;
+    const DURATION = 5650;   // about 5.25 s on screen after the .4 s change, as on the reference
     let idx = 0;
     let timer;
 

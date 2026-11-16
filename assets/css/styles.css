@@ -217,14 +217,20 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color
   position: relative; width: 100%;
   height: min(calc(100svh - var(--hero-top, 160px)), 56.25vw); min-height: 41.67vw;
 }
-/* the current slide fades to black, then the next fades up out of the dark */
+/* Slide change (timed from the Nishat slider):
+   the current slide drops to black in .15s, black holds .25s, then the next slide
+   fades up over .75s while settling from 120% to 100% size in .8s; it then stays still. */
+.hero {
+  --hero-out: .15s; --hero-black: .25s; --hero-in-at: calc(var(--hero-out) + var(--hero-black));
+  --hero-ease: cubic-bezier(.25, .46, .45, .94);   /* ease-out */
+}
 .hero__slide {
   position: absolute; inset: 0; display: block; overflow: hidden; color: var(--white);
-  opacity: 0; visibility: hidden; transition: opacity .7s ease, visibility 0s linear .7s;
+  opacity: 0; visibility: hidden; transition: opacity var(--hero-out) ease-in, visibility 0s linear var(--hero-out);
 }
-.hero__slide.is-active { opacity: 1; visibility: visible; transition: opacity 1.3s ease .55s, visibility 0s; }
-.hero__media, .hero__videos { position: absolute; inset: 0; display: block; transform: scale(1.09); transition: transform 0s linear .7s; }
-.hero__slide.is-active .hero__media, .hero__slide.is-active .hero__videos { transform: scale(1); transition: transform 8s cubic-bezier(.22, .61, .36, 1) .2s; }
+.hero__slide.is-active { opacity: 1; visibility: visible; transition: opacity .75s var(--hero-ease) var(--hero-in-at), visibility 0s; }
+.hero__media, .hero__videos { position: absolute; inset: 0; display: block; transform: scale(1.2); transition: transform 0s linear var(--hero-out); }
+.hero__slide.is-active .hero__media, .hero__slide.is-active .hero__videos { transform: scale(1); transition: transform .8s var(--hero-ease) var(--hero-in-at); }
 .hero__media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 .hero__slide--banner .hero__media img { object-position: left center; }   /* keep the banner text in view */
 /* soft shade bottom-left so the caption reads on any photo */
@@ -243,9 +249,11 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color
   padding-bottom: 3px; border-bottom: 1px solid rgba(255, 255, 255, .85); transition: border-color .3s;
 }
 .hero__cta:hover, .hero__slide:hover .hero__cta { border-color: transparent; }
-.hero__caption > * { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
-.hero__slide.is-active .hero__caption > * { opacity: 1; transform: none; transition: opacity 1s ease 1.25s, transform 1s cubic-bezier(.22, .61, .36, 1) 1.25s; }
-.hero__slide.is-active .hero__caption > :nth-child(2) { transition-delay: 1.45s; }
+.hero__caption > * { opacity: 0; transform: translateY(12px); transition: opacity var(--hero-out), transform 0s linear var(--hero-out); }
+.hero__slide.is-active .hero__caption > * {
+  opacity: 1; transform: none;
+  transition: opacity .4s var(--hero-ease) calc(var(--hero-in-at) + .25s), transform .4s var(--hero-ease) calc(var(--hero-in-at) + .25s);
+}
 .hero__arrow {
   position: absolute; top: 50%; z-index: 2;
   width: 48px; height: 48px; margin-top: -24px;
