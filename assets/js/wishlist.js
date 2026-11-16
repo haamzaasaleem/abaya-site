@@ -17,7 +17,7 @@
       : `<span>${money(p.price)}</span>`;
     return `
       <li class="wl-card" data-key="${key}">
-        <div class="wl-card__media" data-live-still>
+        <div class="wl-card__media">
           <a href="${url(key)}" aria-label="${p.name}"><img src="${IMG + p.img}.jpg" alt="${p.name}" loading="lazy">${p.clip ? H.cardClip(p.clip) : ''}</a>
           <button type="button" class="wl-card__remove" data-wl-remove aria-label="Remove ${p.name} from wishlist"><svg><use href="#i-close"/></svg></button>
         </div>

@@ -23,7 +23,7 @@
       : `<span>${money(p.price)}</span>`;
     return `
       <article class="product${p.clip ? ' product--clip' : ''}">
-        <div class="product__media" data-live-still>
+        <div class="product__media">
           <a href="${url(p.key)}" class="product__link" aria-label="${p.name}">
             <img src="${IMG + p.img}.jpg" alt="${p.name}" loading="lazy">
             ${p.clip ? cardClip(p.clip) : p.alt ? `<img src="${IMG + p.alt}.jpg" alt="" class="img-alt" loading="lazy">` : ''}
@@ -270,7 +270,7 @@
     if (e.key === 'Escape') { toggleLayer(drawer, false); toggleLayer(search, false); }
   });
 
-  /* ---------- Live media: card clips play only while on screen; still cards drift ---------- */
+  /* ---------- Live media: card clips play only while on screen ---------- */
   (function liveMedia() {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduce || !('IntersectionObserver' in window)) return;
@@ -281,12 +281,12 @@
           el.classList.add('is-ready');
           const pr = el.play(); if (pr && pr.catch) pr.catch(() => {});
         } else el.pause();
-      } else el.classList.toggle('is-live', e.isIntersecting);
+      }
     }), { threshold: 0.25 });
     const seen = new WeakSet();
     const scan = (root) => {
-      const els = $$('video[data-live], [data-live-still]', root);
-      if (root.matches && root.matches('video[data-live], [data-live-still]')) els.push(root);
+      const els = $$('video[data-live]', root);
+      if (root.matches && root.matches('video[data-live]')) els.push(root);
       els.forEach((el) => { if (seen.has(el)) return; seen.add(el); io.observe(el); });
     };
     scan(document);
