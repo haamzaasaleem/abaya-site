@@ -144,3 +144,14 @@ The shot timings, crops and grade for each clip are in the `SHOTS` table at the 
 ## Wishlist
 
 Every heart (product cards, product page) saves the piece to a wishlist kept in the visitor's browser (`localStorage`, key `hb-wishlist`, a list of product keys). Hearts stay filled on every page, the header heart shows a count and opens `wishlist.html`, and the toast offers "View wishlist". On the wishlist page each piece has a size dropdown with Add to Bag and a remove button; an empty wishlist links to New In and all abayas. It is per device until customer accounts exist.
+
+## WordPress + WooCommerce theme
+
+`wordpress-theme/hayabella/` is the same site as a WordPress theme for WooCommerce, developed by Cybersia Labs (https://cybersialabs.com).
+
+- Install: zip the `hayabella` folder (or use the provided `hayabella.zip`), then Appearance → Themes → Add New → Upload Theme. WooCommerce must be active.
+- Everything is edited in Appearance → Customize: brand colours, announcement bar, every hero slide (video / photo / banner, desktop and mobile), feature strip, three product sliders, split banners, marquee, campaign, occasion tiles, story, lookbook, newsletter, perks and footer. Each section can be switched off.
+- Menus (header with dropdowns, mobile, three footer columns) are set in Appearance → Menus; the shop filter sidebar in Widgets → Shop filters.
+- Products come from WooCommerce. Each product has a "Hayabella card" box for a card video loop, the line above the name and a badge.
+- `wordpress-theme/sample-products.csv` imports the two demo abayas (Products → Import).
+- Full instructions: `wordpress-theme/hayabella/readme.txt`.

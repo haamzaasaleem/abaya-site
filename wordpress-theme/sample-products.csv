@@ -1,0 +1,15 @@
+Type,SKU,Name,Published,Is featured?,Visibility in catalog,Short description,Description,In stock?,Regular price,Sale price,Categories,Images,Parent,Attribute 1 name,Attribute 1 value(s),Attribute 1 visible,Attribute 1 global,Attribute 1 default,Meta: _hb_card_tag,Meta: _hb_badge,Meta: _hb_card_video
+variable,HB-PEARL-GK,Pearl White Greek Key Abaya,1,1,visible,A luminous satin abaya with a relaxed batwing silhouette and a Greek key border of hand-set crystals.,"A luminous satin abaya with a relaxed batwing silhouette, framed by a Greek key border of hand-set crystals along the placket, shoulders and cuffs. Finished with a matching chiffon shawl.
+
+Care: dry clean recommended. Cool iron on the reverse side.",1,,,"Abayas, Occasion Wear","https://haamzaasaleem.github.io/abaya-site/assets/images/products/white-greekkey-feature.jpg, https://haamzaasaleem.github.io/abaya-site/assets/images/products/white-greekkey-standing.jpg, https://haamzaasaleem.github.io/abaya-site/assets/images/photos/white-greekkey-studio.jpg",,Size,"S, M, L, XL",1,1,,Satin | Crystal Border,New,
+variation,HB-PEARL-GK-S,Pearl White Greek Key Abaya - S,1,,,,,1,229,,,,HB-PEARL-GK,Size,S,,1,,,,
+variation,HB-PEARL-GK-M,Pearl White Greek Key Abaya - M,1,,,,,1,229,,,,HB-PEARL-GK,Size,M,,1,,,,
+variation,HB-PEARL-GK-L,Pearl White Greek Key Abaya - L,1,,,,,1,229,,,,HB-PEARL-GK,Size,L,,1,,,,
+variation,HB-PEARL-GK-XL,Pearl White Greek Key Abaya - XL,1,,,,,1,229,,,,HB-PEARL-GK,Size,XL,,1,,,,
+variable,HB-PLUM-VEL,Plum Velvet Crystal Abaya,1,1,visible,Rich plum velvet with scalloped crystal trim and a tasseled waist tie.,"Rich plum velvet with scalloped crystal trim tracing the placket, hem and flared sleeves. A tasseled waist tie lets you define the shape for evenings and winter occasions.
+
+Care: dry clean only. Steam lightly from the reverse.",1,,,"Abayas, Occasion Wear","https://haamzaasaleem.github.io/abaya-site/assets/images/products/plum-velvet-full.jpg, https://haamzaasaleem.github.io/abaya-site/assets/images/products/plum-velvet-close.jpg",,Size,"S, M, L, XL",1,1,,Velvet | Crystal Trim,,https://haamzaasaleem.github.io/abaya-site/assets/videos/cards/plum-velvet.mp4
+variation,HB-PLUM-VEL-S,Plum Velvet Crystal Abaya - S,1,,,,,1,189,159,,,HB-PLUM-VEL,Size,S,,1,,,,
+variation,HB-PLUM-VEL-M,Plum Velvet Crystal Abaya - M,1,,,,,1,189,159,,,HB-PLUM-VEL,Size,M,,1,,,,
+variation,HB-PLUM-VEL-L,Plum Velvet Crystal Abaya - L,1,,,,,1,189,159,,,HB-PLUM-VEL,Size,L,,1,,,,
+variation,HB-PLUM-VEL-XL,Plum Velvet Crystal Abaya - XL,1,,,,,1,189,159,,,HB-PLUM-VEL,Size,XL,,1,,,,
