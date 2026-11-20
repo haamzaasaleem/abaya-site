@@ -401,8 +401,8 @@ a:hover .link-underline, .link-underline:hover { background-size: 40% 1px; color
 .campaign:hover img { transform: scale(var(--zoom)); }
 .campaign::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(30, 27, 26, .78) 10%, rgba(30, 27, 26, .35) 45%, rgba(30, 27, 26, 0) 70%); }
 .campaign__content {
-  position: absolute; z-index: 1; top: 50%; left: var(--gutter); transform: translateY(-50%);
-  max-width: 460px; padding-left: max(0px, calc((100vw - var(--container)) / 2));
+  position: absolute; z-index: 1; top: 50%; transform: translateY(-50%);
+  left: max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter))); max-width: 460px;
 }
 .campaign__content h2 { font-family: var(--serif); font-size: clamp(38px, 5vw, 72px); line-height: 1.05; margin-bottom: 18px; }
 .campaign__content p:not(.eyebrow) { margin-bottom: 30px; font-size: 16px; }

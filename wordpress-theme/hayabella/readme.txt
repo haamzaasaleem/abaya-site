@@ -64,6 +64,15 @@ The built-in form only shows a thank-you message. To collect emails, install an 
 (Mailchimp for WordPress, MailPoet, Klaviyo...) and paste its form shortcode in
 Customize → Hayabella: Homepage → Newsletter.
 
+== Remote updates ==
+
+An administrator signed in with an Application Password can update this theme from the GitHub
+repository (haamzaasaleem/abaya-site, folder wordpress-theme/hayabella) without uploading files:
+  GET  /wp-json/hayabella/v1/status   versions
+  POST /wp-json/hayabella/v1/deploy   install the latest theme from the main branch
+Only users who can update themes and manage options can call these. To turn this off, revoke
+the Application Password (Users → Profile → Application Passwords).
+
 == Credits ==
 
 Developed by Cybersia Labs (https://cybersialabs.com).
